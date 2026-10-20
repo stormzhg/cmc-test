@@ -1,0 +1,223 @@
+[
+  {
+    "provider": "stackit",
+    "defaultEndpoint": "https://api.openai-compat.model-serving.eu01.onstackit.cloud/v1",
+    "llmModel": [
+      {
+        "model": "llama",
+        "instances": ["cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic"]
+      },
+      {
+        "model": "gpt-oss-120b",
+        "instances": ["openai/gpt-oss-120b"]
+      }
+    ],
+    "embeddingModel": [
+      {
+        "model": "mistral-embed",
+        "instances": ["intfloat/e5-mistral-7b-instruct"]
+      },
+      {
+        "model": "qwen-vl-embed",
+        "instances": ["Qwen/Qwen3-VL-Embedding-8B"]
+      }
+    ],
+    "visionModel": [
+      {
+        "model": "gemma",
+        "instances": ["google/gemma-3-27b-it"]
+      }
+    ]
+  },
+  {
+    "provider": "osoac",
+    "defaultEndpoint": "https://api.openai-compat.model-serving.eu01.onstackit.cloud/v1",
+    "llmModel": [
+      {
+        "model": "llama",
+        "instances": ["cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic"]
+      },
+      {
+        "model": "gpt-oss-120b",
+        "instances": ["openai/gpt-oss-120b"]
+      },
+      {
+        "model": "qwen3.5",
+        "instances": ["Qwen/Qwen3.5-397B-A17B"]
+      }
+    ],
+    "embeddingModel": [
+      {
+        "model": "mistral-embed",
+        "instances": ["intfloat/e5-mistral-7b-instruct"]
+      },
+      {
+        "model": "qwen-vl-embed",
+        "instances": ["Qwen/Qwen3-VL-Embedding-8B"]
+      },
+      {
+        "model": "qwen-text-embed",
+        "instances": ["Qwen/Qwen3-Embedding-8B"]
+      }
+    ],
+    "visionModel": [
+      {
+        "model": "gemma",
+        "instances": ["google/gemma-3-27b-it"]
+      }
+    ]
+  },
+  {
+    "provider": "openai-native",
+    "defaultEndpoint": "https://api.openai.com/v1",
+    "llmModel": [
+      {
+        "model": "gpt-5.1",
+        "instances": ["gpt-5.1"]
+      }
+    ],
+    "embeddingModel": [
+      {
+        "model": "text-embedding-3-large",
+        "instances": ["text-embedding-3-large"]
+      }
+    ],
+    "reasoningModel": [
+      {
+        "model": "gpt-5.4",
+        "instances": ["gpt-5.4"]
+      }
+    ],
+    "textToSpeechModel": [
+      {
+        "model": "gpt-4o-mini-tts",
+        "instances": ["gpt-4o-mini-tts"]
+      }
+    ],
+    "transcriptionModel": [
+      {
+        "model": "gpt-4o-mini-transcribe",
+        "instances": ["gpt-4o-mini-transcribe"]
+      }
+    ]
+  },
+  {
+    "provider": "gemini",
+    "defaultEndpoint": "https://aiplatform.googleapis.com",
+    "llmModel": [
+      {
+        "model": "gemini-3.5-flash-lite",
+        "instances": ["gemini-3.5-flash-lite"]
+      },
+      {
+        "model": "gemini-2.5-flash",
+        "instances": ["gemini-2.5-flash"]
+      }
+    ],
+    "embeddingModel": [
+      {
+        "model": "gemini-embedding-001",
+        "instances": ["gemini-embedding-001"]
+      }
+    ],
+    "textToSpeechModel": [
+      {
+        "model": "chirp-3-tts",
+        "instances": ["chirp-3"]
+      }
+    ],
+    "transcriptionModel": [
+      {
+        "model": "chirp-3-stt",
+        "instances": ["chirp_3"]
+      }
+    ]
+  },
+  {
+    "provider": "azure",
+    "defaultEndpoint": "",
+    "llmModel": [
+      {
+        "model": "gpt-5.1",
+        "instances": ["gpt-5.1"]
+      }
+    ],
+    "embeddingModel": [
+      {
+        "model": "text-embedding-3-large",
+        "instances": ["text-embedding-3-large"]
+      }
+    ],
+    "reasoningModel": [
+      {
+        "model": "gpt-5.4",
+        "instances": ["gpt-5.4"]
+      }
+    ],
+    "textToSpeechModel": [
+      {
+        "model": "gpt-4o-mini-tts",
+        "instances": ["gpt-4o-mini-tts"]
+      }
+    ],
+    "transcriptionModel": [
+      {
+        "model": "gpt-4o-mini-transcribe",
+        "instances": ["gpt-4o-mini-transcribe"]
+      }
+    ]
+  },
+  {
+    "provider": "bedrock",
+    "defaultEndpoint": "",
+    "regions": [
+      "us-east-1",
+      "us-east-2",
+      "us-west-2",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-south-1",
+      "eu-west-1",
+      "eu-west-2",
+      "ap-northeast-1",
+      "ap-south-1",
+      "ap-southeast-2",
+      "ap-southeast-3",
+      "ap-southeast-4",
+      "sa-east-1"
+    ],
+    "llmModel": [
+      {
+        "model": "llama",
+        "instances": ["us.meta.llama3-3-70b-instruct-v1:0"],
+        "supportedRegions": ["us-east-1", "us-east-2", "us-west-2"]
+      },
+      {
+        "model": "gpt-oss",
+        "instances": ["openai.gpt-oss-120b-1:0"]
+      }
+    ],
+    "embeddingModel": [
+      {
+        "model": "cohere",
+        "instances": ["us.cohere.embed-v4:0"],
+        "supportedRegions": ["us-east-1", "us-east-2", "us-west-2"]
+      },
+      {
+        "model": "cohere",
+        "instances": ["eu.cohere.embed-v4:0"],
+        "supportedRegions": ["eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2"]
+      },
+      {
+        "model": "cohere",
+        "instances": ["global.cohere.embed-v4:0", "cohere.embed-v4:0"],
+        "supportedRegions": ["ap-northeast-1"]
+      },
+      {
+        "model": "cohere",
+        "instances": ["global.cohere.embed-v4:0"],
+        "supportedRegions": ["ap-south-1", "ap-southeast-2", "ap-southeast-3", "ap-southeast-4", "sa-east-1"]
+      }
+    ]
+  }
+]

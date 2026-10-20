@@ -1,0 +1,9 @@
+{{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: Mesh
+metadata:
+  # Fixed mesh name required by Consul
+  name: mesh
+spec:
+  allowEnablingPermissiveMutualTLS: true
+{{- end }}

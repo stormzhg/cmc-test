@@ -1,0 +1,278 @@
+{{- if .Values.apilayer.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mstr-api-layer-role
+rules:
+- apiGroups:
+  - cloud.microstrategy.com
+  resources:
+  - mstrenvironments/status
+  verbs:
+  - update
+  - patch
+- apiGroups:
+  - cloud.microstrategy.com
+  resources:
+  - mstrenvironments
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - delete
+  - patch
+  - update
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - storageclasses
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - services
+  - endpoints
+  verbs:
+  - list
+  - get
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/exec
+  - pods/log
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+{{- if .Values.apilayer.networkDiagnose.enabled }}
+# Adding an ephemeral diagnosis container to an existing workload Pod uses the
+# pods/ephemeralcontainers subresource rather than a normal Pod update. The injected container is
+# unprivileged and the mutation is additive-only, so this belongs to the base capability and follows
+# the master switch — not the host-network switch, which exists to widen the SCC.
+- apiGroups:
+  - ""
+  resources:
+  - pods/ephemeralcontainers
+  verbs:
+  - get
+  - patch
+  - update
+# The carrier identity. A carrier runs in a customer namespace, whose default service account is not
+# bound to the installation's SCC, so the api-layer creates one account per namespace it diagnoses and
+# grants it the use of that SCC through a Role and a RoleBinding of its own. All three are deleted again
+# when the caller deletes the last run in the namespace, which is why the delete rules are here:
+#   * `use` on the SCC itself is what lets the api-layer create a Role that grants it (RBAC refuses to
+#     hand out a permission the creator does not hold);
+#   * every `delete` is scoped by resourceNames to the three fixed names, so this permission can remove
+#     exactly the objects the api-layer created and nothing else;
+#   * the account name is the one fact to keep in step with the api-layer: the Role and RoleBinding are
+#     named `<account>-scc-use`.
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  resourceNames:
+  - {{ .Values.apilayer.networkDiagnose.serviceAccountName | default "mstr-network-diagnose-sa" }}
+  verbs:
+  - delete
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  verbs:
+  - create
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  resourceNames:
+  - {{ .Values.apilayer.networkDiagnose.serviceAccountName | default "mstr-network-diagnose-sa" }}-scc-use
+  verbs:
+  - delete
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - rolebindings
+  verbs:
+  - create
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - rolebindings
+  resourceNames:
+  - {{ .Values.apilayer.networkDiagnose.serviceAccountName | default "mstr-network-diagnose-sa" }}-scc-use
+  verbs:
+  - delete
+- apiGroups:
+  - security.openshift.io
+  resources:
+  - securitycontextconstraints
+  resourceNames:
+  - {{ .Values.openshift.operator.SCCName | default "mstr-operator-scc" }}
+  verbs:
+  - use
+{{- end }}
+- apiGroups:
+    - ""
+  resources:
+    - persistentvolumeclaims
+    - serviceaccounts
+    - persistentvolumes
+  verbs:
+    - get
+    - list
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  - networkpolicies
+  verbs:
+  - list
+  - get
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - list
+  - create
+  - get
+  - delete
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  - replicasets
+  verbs:
+  - list
+  - get
+  - patch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - deployments/scale
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - delete
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups:
+    - scheduling.k8s.io
+  resources:
+    - priorityclasses
+  verbs:
+    - get
+    - list
+- apiGroups:
+    - rbac.authorization.k8s.io
+  resources:
+    - roles
+    - rolebindings
+  verbs:
+    - get
+    - list
+- apiGroups:
+    - cloud.microstrategy.com
+  resources:
+    - mstrbackuptemplates
+    - mstrsynctemplates
+  verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+- apiGroups:
+    - cloud.microstrategy.com
+  resources:
+    - mstrbackups
+    - mstrsyncs
+    - mstrrefreshes
+  verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+- apiGroups:
+    - cloud.microstrategy.com
+  resources:
+    - mstrenvironmentrecords
+  verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+- apiGroups:
+    - cloud.microstrategy.com
+  resources:
+    - mstrenvironmentrecords/status
+  verbs:
+    - update
+    - patch
+{{- end }}

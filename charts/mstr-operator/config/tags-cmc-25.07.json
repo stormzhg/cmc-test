@@ -1,0 +1,162 @@
+{
+    "GAName": "25.07",
+    "BuildNumber": "11.5.0700.0019",
+    "DisplayName": "Strategy One - Jul 2025",
+    "Certified": true,
+    "GA": false,
+    "HelmChartVersion": "25.07",
+    "Services": [
+        {
+            "name": "architect-service",
+            "tag": "m2021-.-11.5.0700.00048"
+        },
+        {
+            "name": "biweb",
+            "tag": "m2021-.-11.5.0700.00041"
+        },
+        {
+            "name": "cluster-state-service",
+            "tag": "m2021-.-11.5.0700.00004"
+        },
+        {
+            "name": "cloud-connector-server",
+            "tag": "m2021-.-11.5.0700.00003"
+        },
+        {
+            "name": "collabservice",
+            "tag": "m2021-.-11.5.0700.00009"
+        },
+        {
+            "name": "community-connectors",
+            "tag": "m2021-.-11.5.0700.00496"
+        },
+        {
+            "name": "configurable-http-proxy",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "elasticsearch-service",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "gateway-drivers-mcp",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "image-awaiter",
+            "tag": "m2021-.-11.5.0700.00007"
+        },
+        {
+            "name": "insight-service",
+            "tag": "m2021-.-11.5.0700.00004"
+        },
+        {
+            "name": "integrity-service",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "iserver",
+            "tag": "m2021-.-11.5.0700.00058"
+        },
+        {
+            "name": "iserver-post-upgrade",
+            "tag": "m2021-.-11.5.0700.00058"
+        },
+        {
+            "name": "kafka",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "mstrbak",
+            "tag": "m2021-.-11.5.0700.00073"
+        },
+        {
+            "name": "mstrbak-service",
+            "tag": "m2021-.-11.5.0700.00049"
+        },
+        {
+            "name": "nee",
+            "tag": "m2021-.-11.5.0700.00109"
+        },
+        {
+            "name": "platform-analytics-consumer",
+            "tag": "m2021-.-11.5.0700.00004"
+        },
+        {
+            "name": "podmanager",
+            "tag": "m2021-.-11.5.0700.00007"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "python-executor",
+            "tag": "m2021-.-11.5.0700.00007"
+        },
+        {
+            "name": "redis",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "search-service",
+            "tag": "m2021-.-11.5.0700.00005"
+        },
+        {
+            "name": "universal-semantic",
+            "tag": "m2021-.-11.5.0700.00032"
+        },
+        {
+            "name": "web-dossier",
+            "tag": "m2021-.-11.5.0700.00129"
+        },
+        {
+            "name": "zookeeper",
+            "tag": "m2021-.-11.5.0700.00002"
+        },
+        {
+            "name": "mstr-mobile",
+            "tag": "m2021-.-11.5.0700.00041"
+        },
+        {
+            "name": "fluent-bit",
+            "tag": "4.0.2"
+        },
+        {
+            "name": "mstr-md",
+            "tag": "25.06"
+        },
+        {
+            "name": "mstr-operator",
+            "tag": "25.07.31"
+        },
+        {
+            "name": "mstr-orchestrator/api-layer",
+            "tag": "25.07.31"
+        },
+        {
+            "name": "mstr-orchestrator/web-layer",
+            "tag": "25.07.31"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "m2021-.-11.5.0600.00005"
+        },
+        {
+            "name": "pause",
+            "tag": "3.2"
+        },
+        {
+            "name": "mstr-telemetry-client",
+            "tag": "25.07"
+        },
+        {
+            "name": "mstr-cleanup",
+            "tag": "25.06.4"
+        },
+        {
+            "name": "mstr-validator",
+            "tag": "25.06.12"
+        }
+    ]
+}

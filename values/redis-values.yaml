@@ -1,0 +1,7 @@
+global:
+  imageRegistry: "mstrcmcprod.azurecr.io"
+  storageClass: "nfs-subdir-external-provisioner"
+  imagePullSecrets:
+    - mstr-redis-image-pull-secret
+metrics:
+  enabled: false

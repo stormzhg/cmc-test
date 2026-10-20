@@ -1,0 +1,409 @@
+{
+  "insight": {
+    "electronName": "",
+    "uiName": "",
+    "helmName": "insight",
+    "enabled": false,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": false,
+    "rabbitMQEnabled": true
+  },
+  "realtimeServer": {
+    "electronName": "realtimeServer",
+    "uiName": "Realtime Service",
+    "helmName": "realtime-server",
+    "enabled": false,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": false,
+    "rabbitMQEnabled": false,
+    "globals": [
+      "enabled"
+    ]
+  },
+  "workflowService": {
+    "electronName": "workflowService",
+    "uiName": "Workflow Service",
+    "helmName": "workflow-service",
+    "enabled": false,
+    "rabbitMQEnabled": false,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true
+  },
+  "clusterStateService": {
+    "electronName": "clusterStateService",
+    "uiName": "Cluster State Service",
+    "helmName": "cluster-state-service",
+    "rabbitMQEnabled": false,
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "critical": true
+  },
+  "elasticsearchService": {
+    "electronName": "elasticsearchService",
+    "uiName": "Elasticsearch Service",
+    "helmName": "elasticsearch-service",
+    "enabled": true,
+    "editable": false,
+    "rabbitMQEnabled": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true,
+    "globals": [
+      "enabled"
+    ]
+  },
+  "searchService": {
+    "electronName": "searchService",
+    "uiName": "Search Service",
+    "helmName": "search-service",
+    "enabled": true,
+    "rabbitMQEnabled": false,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "globals": [
+      "enabled"
+    ]
+  },
+  "insightService": {
+    "electronName": "insightService",
+    "uiName": "Insight Service",
+    "helmName": "insight-service",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true
+  },
+  "library": {
+    "electronName": "library",
+    "uiName": "Library",
+    "repository": "web-dossier",
+    "helmName": "library",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "environment": {
+      "collaborationEnabled": true,
+      "collaborationServerTls": true
+    },
+    "globals": [
+      "protocol",
+      "dnsEntry",
+      "tls"
+    ],
+    "critical": true
+  },
+  "paconsumer": {
+    "electronName": "paconsumer",
+    "uiName": "PA Consumer",
+    "repository": "platform-analytics-consumer",
+    "helmName": "paconsumer",
+    "rabbitMQEnabled": false,
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true
+  },
+  "padiagnostics": {
+    "electronName": "padiagnostics",
+    "uiName": "PA Diagnostics",
+    "repository": "pl-microstrategy-diagnostics",
+    "helmName": "padiagnostics",
+    "rabbitMQEnabled": false,
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": false
+  },
+  "collabServer": {
+    "electronName": "collabServer",
+    "uiName": "Collaboration",
+    "repository": "collabservice",
+    "helmName": "collaboration",
+    "rabbitMQEnabled": false,
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "autoScalingSupported": true,
+    "loggingEnabled": true,
+    "environment": {
+      "tlsEnabled": true
+    },
+    "globals": [
+      "dnsEntry",
+      "protocol",
+      "tls"
+    ]
+  },
+  "biweb": {
+    "electronName": "biweb",
+    "uiName": "Web",
+    "helmName": "biweb",
+    "enabled": true,
+    "editable": true,
+    "rabbitMQEnabled": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "globals": [
+      "enabled",
+      "dnsEntry",
+      "protocol",
+      "tls"
+    ],
+    "critical": true
+  },
+  "mstrbak": {
+    "electronName": "mstrbak",
+    "uiName": "Backup",
+    "helmName": "mstrbak",
+    "repository": "mstrbak",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true,
+    "rabbitMQEnabled": false,
+    "globals": [
+      "image"
+    ]
+  },
+  "refresh": {
+    "electronName": "mstrbakRefresh",
+    "uiName": "MicroStrategy Refresh",
+    "helmName": "mstrbak-refresh",
+    "helmGlobalName": "refresh",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true,
+    "noImage": true
+  },
+  "mstrbakService": {
+    "electronName": "mstrbakService",
+    "uiName": "Backup Client",
+    "helmName": "mstrbak-service",
+    "repository": "mstrbak-service",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "rabbitMQEnabled": false,
+    "loggingEnabled": false,
+    "globals": [
+      "gatewayDriversImage",
+      "image"
+    ]
+  },
+  "iserver": {
+    "electronName": "iserver",
+    "uiName": "Intelligence",
+    "helmName": "iserver",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "customizedSidecarSupported": true,
+    "additionalVolumesSupported": true,
+    "critical": true
+  },
+  "modelingServer": {
+    "electronName": "modelingServer",
+    "uiName": "Modeling Server",
+    "repository": "architect-service",
+    "helmName": "modeling-server",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "rabbitMQEnabled": false,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "loggingEnabled": true
+  },
+  "newExportEngine": {
+    "electronName": "newExportEngine",
+    "uiName": "Export Engine",
+    "repository": "nee",
+    "helmName": "new-export-engine",
+    "enabled": true,
+    "editable": false,
+    "rabbitMQEnabled": false,
+    "autoscalingEnabled": true,
+    "autoScalingSupported": true,
+    "loggingEnabled": true
+  },
+  "repository": {
+    "electronName": "repository",
+    "uiName": "Repository",
+    "repository": "postgres",
+    "helmName": "repository",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": false,
+    "critical": true
+  },
+  "communityConnectors": {
+    "electronName": "communityConnectors",
+    "uiName": "Community Connectors",
+    "helmName": "community-connectors",
+    "rabbitMQEnabled": false,
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "globals": [
+      "dnsEntry",
+      "protocol",
+      "tls"
+    ]
+  },
+  "mstrMobile": {
+    "electronName": "mstrMobile",
+    "uiName": "Mobile",
+    "repository": "mstr-mobile",
+    "helmName": "mobile",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "rabbitMQEnabled": false,
+    "globals": [
+      "enabled",
+      "dnsEntry",
+      "protocol",
+      "tls"
+    ],
+    "critical": false
+  },
+  "kafka": {
+    "electronName": "kafka",
+    "uiName": "Kafka",
+    "helmName": "kafka",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "livenessProbe": {
+      "initialDelaySeconds": 1200
+    },
+    "replicaCount": 1,
+    "globals": [
+      "replicas"
+    ]
+  },
+  "redis": {
+    "electronName": "redis",
+    "uiName": "Redis",
+    "helmName": "redis",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": false
+  },
+  "dgserver": {
+    "electronName": "dgserver",
+    "uiName": "Data Gateway Service",
+    "helmName": "dgs",
+    "repository": "dgserver",
+    "enabled": false,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "rabbitMQEnabled": false,
+    "loggingEnabled": true,
+    "globals": [
+      "dnsEntry",
+      "protocol"
+    ]
+  },
+  "cloudConnector": {
+    "electronName": "cloudConnector",
+    "uiName": "Cloud Connector",
+    "repository": "cloud-connector-server",
+    "helmName": "cloud-connector",
+    "rabbitMQEnabled": false,
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "loggingEnabled": true
+  },
+  "scripthub": {
+    "electronName": "jupyterhub",
+    "uiName": "Python Service",
+    "repository": "podmanager",
+    "helmName": "jupyterhub",
+    "enabled": true,
+    "editable": false,
+    "autoscalingEnabled": true,
+    "loggingEnabled": true,
+    "globals": [
+      "enabled"
+    ]
+  },
+  "busybox": {
+    "electronName": "jupyterhub",
+    "uiName": "PA Consumer",
+    "helmName": "jupyterhub",
+    "enabled": false,
+    "editable": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true,
+    "globals": [
+      "enabled"
+    ]
+  },
+  "universalSemantic": {
+    "electronName": "universalSemantic",
+    "uiName": "Universal Semantic",
+    "repository": "universal-semantic",
+    "helmName": "universal-semantic",
+    "enabled": true,
+    "editable": false,
+    "rabbitMQEnabled": false,
+    "autoscalingEnabled": true,
+    "autoScalingSupported": true,
+    "loggingEnabled": true,
+    "globals": [
+      "dnsEntry"
+    ]
+  },
+  "integrityService": {
+    "electronName": "integrityService",
+    "uiName": "Integrity Service",
+    "repository": "integrity-service",
+    "helmName": "integrity-service",
+    "enabled": true,
+    "editable": false,
+    "rabbitMQEnabled": false,
+    "autoscalingEnabled": true,
+    "monitoringEnabled": true,
+    "autoScalingSupported": true,
+    "loggingEnabled": true
+  },
+  "environmentAgent": {
+    "electronName": "environmentAgent",
+    "uiName": "Environment Agent",
+    "repository": "environment-agent",
+    "helmName": "environment-agent",
+    "enabled": true,
+    "editable": false,
+    "rabbitMQEnabled": false,
+    "autoscalingEnabled": false,
+    "loggingEnabled": true
+  }
+}

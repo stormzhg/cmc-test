@@ -1,0 +1,12 @@
+{{- if and .Values.global .Values.global.proxy }}
+{{- if or .Values.global.proxy.httpProxy .Values.global.proxy.httpsProxy }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mstr-api-layer-proxy-config
+data:
+  http-proxy: {{ .Values.global.proxy.httpProxy | default "" | quote }}
+  https-proxy: {{ .Values.global.proxy.httpsProxy | default "" | quote }}
+  no-proxy: {{ .Values.global.proxy.noProxy | default "" | quote }}
+{{- end }}
+{{- end }}

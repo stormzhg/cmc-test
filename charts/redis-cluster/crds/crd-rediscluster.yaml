@@ -1,0 +1,53 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: redisclusters.mstr.com
+spec:
+  group: mstr.com
+  names:
+    kind: RedisCluster
+    plural: redisclusters
+    singular: rediscluster
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                replicas:
+                  type: integer
+                  minimum: 6
+                  description: "Number of Redis nodes in the cluster (minimum 6 for cluster mode)."
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+                  description: "Current phase of the RedisCluster (Ready, Scaling, Error, etc.)."
+                actualReplicas:
+                  type: integer
+                  description: "Current number of replicas in the cluster."
+                reshardingProcess:
+                  type: object
+                  properties:
+                    inProgress:
+                      type: boolean
+                      description: "Indicates if a resharding operation is in progress."
+                    sourceNode:
+                      type: string
+                      description: "Node ID of the source node for resharding."
+                    targetNode:
+                      type: string
+                      description: "Node ID of the target node for resharding."
+                    slotsMoved:
+                      type: integer
+                      description: "Number of slots moved during resharding."
+                    slotsTotal:
+                      type: integer
+                      description: "Total number of slots to be moved during resharding."

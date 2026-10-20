@@ -1,0 +1,11 @@
+{{- if .Values.apilayer.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mstr-api-layer-config
+data:
+  rollbackExpirationSeconds: "2592000"
+  aiEndpoints: |
+    - https://mstr-ai-apim-prod.cloud.microstrategy.com
+    - https://ai-apim-prod-mstr.cloud.microstrategy.com
+{{- end }}

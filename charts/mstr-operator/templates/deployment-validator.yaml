@@ -1,0 +1,118 @@
+{{- if .Values.validator.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mstr-validator
+  labels:
+    app.kubernetes.io/name: mstr-validator
+    app: mstr-validator
+spec:
+  replicas: {{ .Values.validator.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: mstr-validator
+  template:
+    metadata:
+      labels:
+        app: mstr-validator
+        {{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+        sidecar.istio.io/inject: "true"
+        {{- end }}
+      {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+      annotations:
+        'consul.hashicorp.com/connect-inject': 'true'
+        'consul.hashicorp.com/transparent-proxy': 'true'
+      {{- end }}
+    spec:
+      serviceAccountName: mstr-validator-service
+      restartPolicy: Always
+      securityContext: {{- .Values.global.podSecurityContext | toYaml | nindent 8 }}
+      {{- if .Values.global.nodeSelector }}
+      nodeSelector: {{- toYaml .Values.global.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.global.tolerations }}
+      tolerations: {{- toYaml .Values.global.tolerations | nindent 8 }}
+      {{- end }}
+      initContainers:
+      {{- if .Values.global.volumePermissions.enabled }}
+        {{- include "common.volumePermissions" . | nindent 6 }}
+      {{- end }}
+      - args:
+        - mkdir -p /tmp/operator/validator-logs;
+        command:
+        - /bin/sh
+        - -c
+        image: {{ .Values.validator.image.registry | default .Values.global.image.registry }}/mstr-validator:{{ .Values.validator.image.tag | default .Values.global.image.tag }}
+        imagePullPolicy: {{ .Values.global.image.imagePullPolicy }}
+        name: file-initializer
+        securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+        {{- include "common.initContainerResources" . | nindent 8 }}
+        env:
+        - name: CLUSTER_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: name
+              name: mstr-operator-config
+        volumeMounts:
+        - mountPath: /tmp
+          name: operator-volume
+          subPathExpr: $(CLUSTER_NAME)
+      containers:
+      - name: mstr-validator
+        image: {{ .Values.validator.image.registry | default .Values.global.image.registry }}/mstr-validator:{{ .Values.validator.image.tag | default .Values.global.image.tag }}
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+        resources: {{ toYaml .Values.validator.resources | nindent 10 }}
+        env:
+        - name: CLUSTER_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: name
+              name: mstr-operator-config
+        - name: LOG_LEVEL
+          value: "{{ .Values.validator.logs.level | default "info" }}"
+        {{- if .Values.validator.logs.config }}
+        - name: LOG_MAX_SIZE
+          value: "{{ .Values.validator.logs.config.maxSize | default 100 }}"
+        - name: LOG_MAX_BACKUPS
+          value: "{{ .Values.validator.logs.config.maxBackups | default 5 }}"
+        - name: LOG_MAX_AGE
+          value: "{{ .Values.validator.logs.config.maxAge | default 30 }}"
+        - name: LOG_COMPRESS
+          value: "{{ .Values.validator.logs.config.compress | default true }}"
+        {{- end }}
+        {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+        - name: SERVICE_MESH_TYPE
+          value: "consul"
+        {{- else if or (.Values.global.istio.enabled) (.Capabilities.APIVersions.Has "networking.istio.io/v1") (.Capabilities.APIVersions.Has "networking.istio.io/v1beta1") }}
+        - name: SERVICE_MESH_TYPE
+          value: "istio"
+        {{- end }}
+        {{- if .Values.global.enableIPv6 }}
+        - name: ENABLE_IPV6
+          value: "true"
+        {{- end }}
+        securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+        volumeMounts:
+        - name: operator-volume
+          mountPath: /home/mstr/operator/logs
+          subPathExpr: $(CLUSTER_NAME)/operator/validator-logs
+        - name: third-party-config
+          mountPath: /etc/secrets/third-party-config
+          readOnly: true
+        - name: validator-auth
+          mountPath: /etc/secrets/mstr-validator-auth
+          readOnly: true
+      volumes:
+      - name: operator-volume
+        persistentVolumeClaim:
+          claimName: "mstr-operator-persistent-storage"
+      - name: third-party-config
+        secret:
+          secretName: mstr-3rd-party-config
+          optional: true
+      - name: validator-auth
+        secret:
+          secretName: mstr-validator-auth
+{{- end }}

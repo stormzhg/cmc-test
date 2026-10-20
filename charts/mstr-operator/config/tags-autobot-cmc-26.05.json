@@ -1,0 +1,34 @@
+{
+    "GAName": "26.05",
+    "BuildNumber": "11.6.0500.0175",
+    "DisplayName": "Strategy One - May 2026",
+    "Certified": true,
+    "GA": true,
+    "HelmChartVersion": "26.05",
+    "Services": [
+        {
+            "name": "ai-engine-chat-service",
+            "tag": "m2605-.-11.6.0500.00616"
+        },
+        {
+            "name": "ai-engine-ingestion-service",
+            "tag": "m2605-.-11.6.0500.00100"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2605-.-11.6.0500.00017"
+        },
+        {
+            "name": "redis-stack-server",
+            "tag": "m2605-.-11.6.0500.00018"
+        },
+        {
+            "name": "clickhouse",
+            "tag": "m2605-.-11.6.0500.00031"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "m2021-.-11.6.0500.00008"
+        }
+    ]
+}

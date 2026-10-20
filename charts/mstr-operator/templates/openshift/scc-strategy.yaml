@@ -1,0 +1,73 @@
+{{- if and (eq (include "common.isOpenshiftCluster" .) "true") (.Values.openshift.operator.autoCreateSCC) }}
+{{- $diagnose := .Values.apilayer.networkDiagnose }}
+apiVersion: security.openshift.io/v1
+kind: SecurityContextConstraints
+metadata:
+  name: {{ .Values.openshift.operator.SCCName | default "mstr-operator-scc" }}
+allowHostIPC: false
+# Network diagnosis runs its carriers under this one SCC instead of creating one of its own, so the
+# permissions its optional views need are opened here exactly when those views are planned: each
+# switch follows the capability switch unless the operator narrowed it, and a narrowed view is never
+# planned, so nothing here has to stay shut for it.
+allowHostNetwork: {{ include "common.networkDiagnose.hostNetworkEnabled" . }}
+allowHostPorts: false
+allowPrivilegeEscalation: {{ include "common.networkDiagnose.privilegedEnabled" . }}
+allowHostPID: false
+allowPrivilegedContainer: {{ include "common.networkDiagnose.privilegedEnabled" . }}
+allowHostDirVolumePlugin: false
+allowedUnsafeSysctls: null
+allowedCapabilities:
+  - CHOWN
+  - NET_ADMIN
+  - CAP_CHOWN
+  - NET_BIND_SERVICE
+  {{- if $diagnose.enabled }}
+  # The privileged carrier asks for NET_RAW itself, and an installation that keeps raw-packet checks
+  # available needs it here: the ICMP probe no longer declares it, so an ordinary carrier is never
+  # admitted with it, but the privileged view adds it explicitly and admission refuses that carrier
+  # without this capability.
+  - NET_RAW
+  {{- end }}
+defaultAddCapabilities: null
+requiredDropCapabilities:
+  - ALL
+priority: 100
+readOnlyRootFilesystem: false
+fsGroup:
+  ranges:
+    - max: 1000
+      min: 1000
+  type: MustRunAs
+{{- if .Values.global.volumePermissions.enabled }}
+runAsUser:
+  type: RunAsAny
+{{- else }}
+runAsUser:
+  type: MustRunAsNonRoot
+{{- end }}
+{{- if .Values.openshift.operator.useSELinuxOptionTypeSPCT }}
+seLinuxContext:
+  type: RunAsAny
+{{- else }}
+seLinuxContext:
+  type: MustRunAs
+{{- end }}
+seccompProfiles:
+  - runtime/default
+supplementalGroups:
+  ranges:
+    - max: 1000
+      min: 999
+    - max: 1337
+      min: 1337
+  type: MustRunAs
+users: []
+groups: []
+volumes:
+  - configMap
+  - secret
+  - emptyDir
+  - persistentVolumeClaim
+  - projected
+  - downwardAPI
+{{- end }}

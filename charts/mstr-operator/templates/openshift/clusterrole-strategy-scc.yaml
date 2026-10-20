@@ -1,0 +1,15 @@
+{{- if and (eq (include "common.isOpenshiftCluster" .) "true") (.Values.openshift.operator.autoCreateClusterRole) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.openshift.operator.clusterRoleName | default "mstr-operator-scc-use-clusterrole" }}
+rules:
+  - verbs:
+      - use
+    apiGroups:
+      - security.openshift.io
+    resources:
+      - securitycontextconstraints
+    resourceNames:
+      - {{ .Values.openshift.operator.SCCName | default "mstr-operator-scc" }}
+{{- end }}

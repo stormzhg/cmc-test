@@ -1,0 +1,14 @@
+{{- if .Values.apilayer.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mstr-api-layer-clusterrolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: mstr-api-layer-role
+subjects:
+  - kind: ServiceAccount
+    name: mstr-api-layer-service
+    namespace: {{ .Release.Namespace }}
+{{- end }}

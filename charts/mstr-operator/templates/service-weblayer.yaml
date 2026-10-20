@@ -1,0 +1,37 @@
+{{- if .Values.weblayer.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: mstr-web-layer-service
+  labels:
+    app.kubernetes.io/name: web-layer
+    service: web-layer
+spec:
+  type: {{ .Values.weblayer.serviceType }}
+  selector:
+    app.kubernetes.io/name: web-layer
+    app: web-layer
+  ports:
+  - name: https
+    port: {{ .Values.weblayer.port }}
+    protocol: TCP
+    targetPort: {{ .Values.weblayer.port }}
+  - name: http
+    port: {{ .Values.weblayer.httpPort }}
+    protocol: TCP
+    targetPort: {{ .Values.weblayer.httpPort }}
+{{ if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: mstr-web-layer-service
+  labels:
+    app.kubernetes.io/name: web-layer
+    service: web-layer
+spec:
+  localRequestTimeoutMs: {{ .Values.consul.localRequestTimeoutMs | default 4000000 }}
+  protocol: http
+  mutualTLSMode: {{ .Values.consul.mutualTLSMode | default "permissive" }}
+{{- end }}
+{{- end }}

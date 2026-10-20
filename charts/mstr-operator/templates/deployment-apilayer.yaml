@@ -1,0 +1,303 @@
+{{- if .Values.apilayer.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mstr-api-layer-deployment
+  labels:
+    app.kubernetes.io/name: api-layer
+    app: api-layer
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: api-layer
+      app: api-layer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: api-layer
+        app: api-layer
+        {{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+        sidecar.istio.io/inject: "true"
+        maistra.io/expose-route: "true"
+        {{- end }}
+      {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+      annotations:
+        'consul.hashicorp.com/connect-inject': 'true'
+        'consul.hashicorp.com/transparent-proxy': 'true'
+      {{- end }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - api-layer
+                topologyKey: kubernetes.io/hostname
+      terminationGracePeriodSeconds: 120
+      serviceAccountName: mstr-api-layer-service
+      restartPolicy: Always
+      securityContext: {{- .Values.global.podSecurityContext | toYaml | nindent 8 }}
+      {{- if .Values.global.nodeSelector }}
+      nodeSelector: {{- toYaml .Values.global.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.global.tolerations }}
+      tolerations: {{- toYaml .Values.global.tolerations | nindent 8 }}
+      {{- end }}
+      initContainers:
+      {{- if .Values.global.volumePermissions.enabled }}
+        {{- include "common.volumePermissions" . | nindent 8 }}
+      {{- end }}
+        - name: file-initializer
+          env:
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: name
+                  name: mstr-operator-config
+          image: {{ .Values.apilayer.image.registry | default .Values.global.image.registry }}/mstr-orchestrator/api-layer:{{ .Values.apilayer.image.tag | default .Values.global.image.tag }}
+          imagePullPolicy: {{ .Values.apilayer.image.imagePullPolicy | default .Values.global.image.imagePullPolicy }}
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - mkdir -p /tmp/operator/config;
+              mkdir -p /tmp/operator/customizations
+              mkdir -p /tmp/operator/logs/envServiceLogs;
+              mkdir -p /tmp/operator/env-templates;
+              mkdir -p /tmp/operator/logs/validatorLogs;
+          {{- include "common.initContainerResources" . | nindent 10 }}
+          volumeMounts:
+            - mountPath: /tmp
+              name: operator-volume
+              subPathExpr: $(CLUSTER_NAME)
+          securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+      containers:
+        - env:
+            {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+            - name: SERVICE_MESH_TYPE
+              value: "consul"
+            {{- else if or (.Values.global.istio.enabled) (.Capabilities.APIVersions.Has "networking.istio.io/v1") (.Capabilities.APIVersions.Has "networking.istio.io/v1beta1") }}
+            - name: SERVICE_MESH_TYPE
+              value: "istio"
+            {{- end }}
+            - name: RELEASE_VERSION
+              value: {{ .Values.global.version | quote }}
+            - name: JWT_EXPIRATION_MS
+              value: {{ .Values.apilayer.jwt.expirationMs | quote }}
+            - name: JWT_REFRESH_EXPIRATION_MS
+              value: {{ .Values.apilayer.jwt.refreshExpirationMs | quote }}
+            - name: VALIDATOR_SERVER_URL
+              value: mstr-validator-service
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mstr-operator-config
+                  key: name
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            {{- if .Values.telemetry.enabled }}
+            - name: TELEMETRY_SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mstr-operator-config
+                  key: server
+            - name: MSTR_PROFILE_PATH
+              value: /home/mstr/profile/mstr_customer.profile
+            {{- end }}
+            - name: SERVER_SSL_KEYSTORE_CERTIFICATE
+              value: /etc/certs/tls.crt
+            - name: SERVER_SSL_KEYSTORE_KEY
+              value: /etc/certs/tls.key
+            - name: API_LAYER_NAMESPACE
+              value: {{ .Release.Namespace }}
+            - name: WEBAPP_CUSTOMIZATIONS_UPLOAD_TIMEOUT
+              value: {{ .Values.apilayer.connection.execTimeout | quote }}
+            - name: WEBAPP_CUSTOMIZATIONS_TMP_DIR
+              value: /shared-tmp/customizations
+            - name: API_AUDIT_LOG_CLEANUP_RETENTION_DAYS
+              value: "3"
+            - name: API_TMP_CLEANUP_INTERVAL_SECONDS
+              value: "86400"
+            - name: API_ENV_TEMPLATES_DIR
+              value: /etc/env-templates
+            - name: API_TERRAFORM_TEMPLATES_DIR
+              value: /app/template
+            - name: MSTR_ENVIRONMENT_SERVICE_LOGS_FOLDER
+              value: /var/log/envServiceLogs
+            - name: API_VALIDATOR_LOGS_FOLDER
+              value: /var/log/validatorLogs
+            - name: NETWORK_DIAGNOSE_ENABLED
+              value: {{ .Values.apilayer.networkDiagnose.enabled | quote }}
+            # Both elevated switches follow the capability switch unless the operator narrows them, and
+            # narrowing is what keeps that view from being planned at all.
+            - name: NETWORK_DIAGNOSE_HOST_NETWORK_ENABLED
+              value: {{ include "common.networkDiagnose.hostNetworkEnabled" . | quote }}
+            - name: NETWORK_DIAGNOSE_PRIVILEGED_ENABLED
+              value: {{ include "common.networkDiagnose.privilegedEnabled" . | quote }}
+            - name: NETWORK_DIAGNOSE_IMAGE_REGISTRY
+              value: "{{ .Values.apilayer.image.registry | default .Values.global.image.registry }}"
+            # The identity the carriers run as, and the SCC it has to be admitted under. On a cluster
+            # without SCCs the name stays empty and no identity is set up for a run: the carriers then
+            # stay on the namespace's own default service account. On OpenShift the name is the SCC this
+            # installation is expected to have widened — openshift.operator.SCCName, or the operator
+            # chart's own default when it creates one — so an installation that supplies its own SCC must
+            # name it there. The injected view is unaffected either way — an ephemeral container runs as
+            # the workload Pod's own service account, under that Pod's SCC.
+            - name: NETWORK_DIAGNOSE_SERVICE_ACCOUNT
+              value: {{ .Values.apilayer.networkDiagnose.serviceAccountName | quote }}
+            # The secrets a diagnosed namespace has none of: the carriers copy them in, so diagnosis
+            # works in a namespace nobody prepared for it.
+            - name: NETWORK_DIAGNOSE_PULL_SECRETS
+              value: "{{ join "," .Values.global.imagePullSecrets }}"
+            - name: NETWORK_DIAGNOSE_SCC
+              value: "{{ if and (eq (include "common.isOpenshiftCluster" .) "true") .Values.apilayer.networkDiagnose.enabled }}{{ .Values.openshift.operator.SCCName | default `mstr-operator-scc` }}{{ end }}"
+            {{- range $name, $value := .Values.apilayer.networkDiagnose.extraEnv }}
+            - name: {{ $name }}
+              value: {{ $value | quote }}
+            {{- end }}
+            - name: API_GRACEFUL_SHUTDOWN_TIMEOUT_MS
+              value: {{ .Values.apilayer.shutdown.gracefulShutdownTimeoutMs | quote }}
+            - name: API_LEADER_ELECTION_ENABLED
+              value: "true"
+            - name: API_LEADER_CONFIG_MAP_NAME
+              value: mstr-api-layer-leader
+            - name: LEADER_UPDATE_PERIOD_MS
+              value: "30000"
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: API_LOGGING_VERBOSE
+              value: "false"
+            {{- if eq (include "common.isOpenshiftCluster" .) "true" }}
+            - name: API_CLUSTER_PLATFORM
+              value: openshift
+            {{- end }}
+            {{- if .Values.azureServiceMesh }}
+            {{- if .Values.azureServiceMesh.enabled }}
+            - name: ASM_ENABLED
+              value: "true"
+            {{- end }}
+            {{- end }}
+            {{- if .Values.global.enableIPv6 }}
+            - name: ENABLE_IPV6
+              value: "true"
+            {{- end }}
+          image: {{ .Values.apilayer.image.registry | default .Values.global.image.registry }}/mstr-orchestrator/api-layer:{{ .Values.apilayer.image.tag | default .Values.global.image.tag }}
+          imagePullPolicy: {{ .Values.apilayer.image.imagePullPolicy | default .Values.global.image.imagePullPolicy }}
+          resources: {{ toYaml .Values.global.resources | nindent 12 }}
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/liveness
+              port: {{ .Values.apilayer.container.ports.http }}
+              scheme: HTTP
+            initialDelaySeconds: 40
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: api-layer
+          ports:
+            - containerPort: {{ .Values.apilayer.container.ports.http }}
+              name: http
+              protocol: TCP
+            - containerPort: {{ .Values.apilayer.container.ports.https }}
+              name: https
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /actuator/health/readiness
+              port: {{ .Values.apilayer.container.ports.http }}
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          lifecycle:
+            preStop:
+              exec:
+                # Wait 5s before sending SIGTERM to process the in-flight request before it's removed from load balancer
+                command: [ "sh", "-c", "sleep 5" ]
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp-folder
+            - mountPath: /etc/config
+              subPathExpr: $(CLUSTER_NAME)/operator/config
+              name: operator-volume
+            - mountPath: /etc/env-templates
+              subPathExpr: $(CLUSTER_NAME)/operator/env-templates
+              name: operator-volume
+            - mountPath: /var/log/envServiceLogs
+              subPathExpr: $(CLUSTER_NAME)/operator/logs/envServiceLogs
+              name: operator-volume
+            - mountPath: /shared-tmp/customizations
+              subPathExpr: $(CLUSTER_NAME)/operator/customizations
+              name: operator-volume
+            - mountPath: /var/log/validatorLogs
+              subPathExpr: $(CLUSTER_NAME)/operator/validator-logs
+              name: operator-volume
+            - mountPath: /var/log/operatorTelemetry
+              subPathExpr: $(CLUSTER_NAME)/operator/logs
+              name: operator-volume
+            - mountPath: /etc/secrets/third-party-config
+              name: third-party-config
+              readOnly: true
+            - mountPath: /etc/secrets/mstr-api-layer-secret
+              name: mstr-api-layer-secret
+              readOnly: true
+            - mountPath: /etc/secrets/mstr-cmc-accounts
+              name: mstr-cmc-accounts
+              readOnly: true
+            - mountPath: /etc/secrets/mstr-validator-auth
+              name: validator-auth
+              readOnly: true
+            {{- if .Values.telemetry.enabled }}
+            - mountPath: /home/mstr/profile
+              name: profile
+            {{- end }}
+            - mountPath: /etc/certs
+              name: cert
+              readOnly: true
+          securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+      volumes:
+        - name: tmp-folder
+          emptyDir: { }
+        - name: operator-volume
+          persistentVolumeClaim:
+            claimName: mstr-operator-persistent-storage
+        - name: third-party-config
+          secret:
+            secretName: mstr-3rd-party-config
+            optional: true
+        - name: mstr-api-layer-secret
+          secret:
+            secretName: mstr-api-layer-secret
+        - name: mstr-cmc-accounts
+          secret:
+            secretName: mstr-cmc-accounts
+        - name: validator-auth
+          secret:
+            secretName: mstr-validator-auth
+        {{- if .Values.telemetry.enabled }}
+        - name: profile
+          secret:
+            secretName: mstr-customer-profile
+        {{- end }}
+        - name: cert
+          secret:
+            secretName: {{ .Values.apilayer.tlsCert.sslKeyStoreSecretName }}
+  {{- end }}

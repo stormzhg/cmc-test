@@ -1,0 +1,9 @@
+{{- if and (.Capabilities.APIVersions.Has "security.istio.io/v1beta1") (not .Values.global.enableStrictMTLS) }}
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: mstr-operator-peer-authentication
+spec:
+  mtls:
+    mode: PERMISSIVE
+{{- end }}

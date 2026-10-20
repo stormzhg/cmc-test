@@ -1,0 +1,626 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mstr-operator-role
+rules:
+{{- if .Capabilities.APIVersions.Has "cloud.google.com/v1" }}
+  - verbs:
+    - list
+    - delete
+    - get
+    - create
+    - watch
+    - patch
+    apiGroups:
+      - 'cloud.google.com'
+    resources:
+      - backendconfigs
+{{- end }}
+  # Operator itself does need this permission, but it needds to create a ClusterRole for nginx-ingress-controller
+  - verbs:
+    - update
+    apiGroups:
+      - 'networking.k8s.io'
+    resources:
+      - ingresses/status
+  # Operator itself does need this permission, but it needds to create a ClusterRole for nginx-ingress-controller
+  - verbs:
+    - list
+    - watch
+    - get
+    apiGroups:
+      - 'networking.k8s.io'
+    resources:
+      - ingressclasses
+  {{- if or (.Values.global.istio.enabled) (.Capabilities.APIVersions.Has "security.istio.io/v1beta1") (.Capabilities.APIVersions.Has "security.istio.io/v1") }}
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - update
+    - delete
+    - patch
+    apiGroups:
+      - 'security.istio.io'
+    resources:
+      - authorizationpolicies
+      - peerauthentications
+  {{- end }}
+  # Operator itself does need this permission, but it needds to create a ClusterRole for nginx-ingress-controller
+  - verbs:
+    - get
+    - update
+    apiGroups:
+      - 'coordination.k8s.io'
+    resources:
+      - leases
+    resourceNames:
+      - ingress-controller-leader
+  - verbs:
+    - bind
+    apiGroups:
+    - 'rbac.authorization.k8s.io'
+    resources:
+    - clusterroles
+    resourceNames:
+    - view
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+    apiGroups:
+    - 'postgresql.cnpg.io'
+    resources:
+    - clusters
+  # Operator itself does need this permission, but it needds to create a ClusterRole for nginx-ingress-controller
+  - verbs:
+    - list
+    - watch
+    - create
+    apiGroups:
+      - 'coordination.k8s.io'
+    resources:
+      - leases
+  # Operator itself does need this permission, but it needds to create a ClusterRole for nginx-ingress-controller
+  - verbs:
+    - list
+    - watch
+    - get
+    apiGroups:
+      - ''
+    resources:
+      - nodes
+  - verbs:
+      - get
+      - list
+      - watch
+      {{- if not (eq (include "common.isOpenshiftCluster" .) "true") }}
+      - create
+      - delete
+      - patch
+      - update
+      {{- end }}
+    apiGroups:
+      - 'rbac.authorization.k8s.io'
+    resources:
+      - clusterroles
+  - verbs:
+    - create
+    - patch
+    - delete
+    apiGroups:
+      - ''
+    resources:
+      - events
+  - verbs:
+    - create
+    apiGroups:
+      - 'events.k8s.io'
+    resources:
+      - events
+# for autoscaling objects
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+    apiGroups:
+    - 'keda.sh'
+    resources:
+    - scaledobjects
+    - triggerauthentications
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+    apiGroups:
+    - 'monitoring.coreos.com'
+    resources:
+    - podmonitors
+  - verbs:
+      - update
+      - patch
+      - get
+    apiGroups:
+      - 'cloud.microstrategy.com'
+    resources:
+      - mstrenvironments/status
+      - mstrbackups/status
+      - mstrrefreshes/status
+      - mstrenvironmentrecords/status
+      - mstrsyncs/status
+      - mstriserverclusters/status
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+    apiGroups:
+      - 'cloud.microstrategy.com'
+    resources:
+      - mstrenvironments
+      - mstrbackups
+      - mstrbackuptemplates
+      - mstrrefreshes
+      - mstrenvironmentrecords
+      - mstrsyncs
+      - mstrsynctemplates
+      - mstriserverclusters
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+    apiGroups:
+      - 'storage.k8s.io'
+    resources:
+      - storageclasses
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - 'apiextensions.k8s.io'
+    resources:
+      - customresourcedefinitions
+  - verbs:
+      - list
+      - watch
+      - get
+    apiGroups:
+      - 'admissionregistration.k8s.io'
+    resources:
+      - mutatingwebhookconfigurations
+      - validatingwebhookconfigurations
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+      - deletecollection
+    apiGroups:
+      - 'rbac.authorization.k8s.io'
+    resources:
+      - roles
+      - rolebindings
+      {{- if not (eq (include "common.isOpenshiftCluster" .) "true") }}
+      - clusterrolebindings
+      {{- end }}
+  {{- if or (.Values.global.istio.enabled) (.Capabilities.APIVersions.Has "networking.istio.io/v1") (.Capabilities.APIVersions.Has "networking.istio.io/v1beta1") }}
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+      - deletecollection
+    apiGroups:
+      - 'networking.istio.io'
+    resources:
+      - virtualservices
+      - gateways
+      - destinationrules
+      - envoyfilters
+  {{- end }}
+  {{- if not (eq (include "common.isOpenshiftCluster" .) "true") }}
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+      - use
+    apiGroups:
+      - 'policy'
+    resources:
+      - podsecuritypolicies
+  {{- end }}
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - ''
+    resources:
+      - namespaces
+      - bindings
+      - persistentvolumes
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - cert-manager.io
+    resources:
+      - certificates
+      - certificaterequests
+      - issuers
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - cert-manager.io
+    resources:
+      - certificates
+      - certificaterequests
+      - issuers
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - ''
+    resources:
+      - pods/exec
+      - secrets
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - ''
+    resources:
+      - pods
+      - pods/exec
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - ''
+    resources:
+      - configmaps
+      - endpoints
+      - persistentvolumeclaims
+      - replicationcontrollers
+      - replicationcontrollers/scale
+      - secrets
+      - serviceaccounts
+      - services
+      - services/proxy
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - apps
+    resources:
+      - daemonsets
+      - deployments
+      - deployments/rollback
+      - deployments/scale
+      - replicasets
+      - replicasets/scale
+      - statefulsets
+      - statefulsets/scale
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - batch
+    resources:
+      - cronjobs
+      - jobs
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - extensions
+    resources:
+      - daemonsets
+      - deployments
+      - deployments/rollback
+      - deployments/scale
+      - ingresses
+      - networkpolicies
+      - replicasets
+      - replicasets/scale
+      - replicationcontrollers/scale
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - policy
+    resources:
+      - poddisruptionbudgets
+  - verbs:
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
+    apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+      - networkpolicies
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - metrics.k8s.io
+    resources:
+      - pods
+      - nodes
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - ''
+    resources:
+      - configmaps
+      - endpoints
+      - persistentvolumeclaims
+      - persistentvolumeclaims/status
+      - pods
+      - replicationcontrollers
+      - replicationcontrollers/scale
+      - serviceaccounts
+      - services
+      - services/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - ''
+    resources:
+      - events
+      - limitranges
+      - namespaces/status
+      - pods/log
+      - pods/status
+      - replicationcontrollers/status
+      - resourcequotas
+      - resourcequotas/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - apps
+    resources:
+      - controllerrevisions
+      - daemonsets
+      - daemonsets/status
+      - deployments
+      - deployments/scale
+      - deployments/status
+      - replicasets
+      - replicasets/scale
+      - replicasets/status
+      - statefulsets
+      - statefulsets/scale
+      - statefulsets/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+      - horizontalpodautoscalers/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - batch
+    resources:
+      - cronjobs
+      - cronjobs/status
+      - jobs
+      - jobs/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - extensions
+    resources:
+      - daemonsets
+      - daemonsets/status
+      - deployments
+      - deployments/scale
+      - deployments/status
+      - ingresses
+      - ingresses/status
+      - networkpolicies
+      - replicasets
+      - replicasets/scale
+      - replicasets/status
+      - replicationcontrollers/scale
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - policy
+    resources:
+      - poddisruptionbudgets
+      - poddisruptionbudgets/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+      - ingresses/status
+      - networkpolicies
+  - verbs:
+      - create
+      - get
+      - list
+      - update
+      - delete
+      - watch
+    apiGroups:
+      - scheduling.k8s.io
+    resources:
+      - priorityclasses
+  {{- if not (eq (include "common.isOpenshiftCluster" .) "true") }}
+  - verbs:
+      - create
+      - get
+      - list
+      - update
+      - delete
+      - watch
+      - patch
+    apiGroups:
+      - ""
+    resources:
+      - resourcequotas
+  {{- end }}
+  - verbs:
+      - get
+      - list
+      - create
+      - update
+      - watch
+      - patch
+      - delete
+    apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+  {{- if eq (include "common.isOpenshiftCluster" .) "true" }}
+  - verbs:
+      - '*'
+    apiGroups:
+      - '*'
+    resources:
+      - '*/finalizers'
+  {{- end }}
+  {{- if .Capabilities.APIVersions.Has "cilium.io/v2/CiliumNetworkPolicy" }}
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+    apiGroups:
+    - 'cilium.io'
+    resources:
+    - ciliumnetworkpolicies
+  {{- end }}
+  {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+    apiGroups:
+    - 'consul.hashicorp.com'
+    resources:
+    - servicedefaults
+    - serviceresolvers
+    - serviceintentions
+    - servicerouters
+    - routetimeoutfilters
+  {{- if .Capabilities.APIVersions.Has "gateway.networking.k8s.io/v1beta1" }}
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+    apiGroups:
+    - 'gateway.networking.k8s.io'
+    resources:
+    - gateways
+    - httproutes
+    - tcproutes
+  {{- end }}
+  {{- end }}
+

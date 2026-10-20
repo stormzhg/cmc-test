@@ -1,0 +1,109 @@
+{
+  "db-spec": [
+    {
+      "name": "db.r6g.xlarge",
+      "cpu": 4,
+      "memory": 32,
+      "description": "Standard Performance - 4 vCPU, 32GB RAM"
+    },
+    {
+      "name": "db.r6g.2xlarge",
+      "cpu": 8,
+      "memory": 64,
+      "description": "Enhanced Performance - 8 vCPU, 64GB RAM"
+    },
+    {
+      "name": "db.r6g.4xlarge",
+      "cpu": 16,
+      "memory": 128,
+      "description": "Advanced Performance - 16 vCPU, 128GB RAM"
+    },
+    {
+      "name": "db.r6g.8xlarge",
+      "cpu": 32,
+      "memory": 256,
+      "description": "High Performance - 32 vCPU, 256GB RAM"
+    },
+    {
+      "name": "db.r6g.12xlarge",
+      "cpu": 48,
+      "memory": 384,
+      "description": "Premium Performance - 48 vCPU, 384GB RAM"
+    },
+    {
+      "name": "db.r6g.16xlarge",
+      "cpu": 64,
+      "memory": 512,
+      "description": "Maximum Performance - 64 vCPU, 512GB RAM"
+    },
+    {
+      "name": "db.r5.2xlarge",
+      "cpu": 8,
+      "memory": 64,
+      "description": "Alternative Enhanced - 8 vCPU, 64GB RAM (Intel)"
+    }
+  ],
+  "redis-spec": [
+    {
+      "name": "cache.r6g.large",
+      "cpu": 2,
+      "memory": 13,
+      "description": "Standard Performance - 2 vCPU, 13GB RAM"
+    },
+    {
+      "name": "cache.r6g.xlarge",
+      "cpu": 4,
+      "memory": 26,
+      "description": "Enhanced Performance - 4 vCPU, 26GB RAM"
+    },
+    {
+      "name": "cache.r6g.2xlarge",
+      "cpu": 8,
+      "memory": 52,
+      "description": "Advanced Performance - 8 vCPU, 52GB RAM"
+    },
+    {
+      "name": "cache.r6g.4xlarge",
+      "cpu": 16,
+      "memory": 104,
+      "description": "High Performance - 16 vCPU, 104GB RAM"
+    },
+    {
+      "name": "cache.r6g.8xlarge",
+      "cpu": 32,
+      "memory": 208,
+      "description": "Premium Performance - 32 vCPU, 208GB RAM"
+    },
+    {
+      "name": "cache.r6gd.xlarge",
+      "cpu": 4,
+      "memory": 26,
+      "disk": 474,
+      "description": "Enhanced with SSD - 4 vCPU, 26GB RAM + 474GB SSD"
+    }
+  ],
+  "regions": [
+    "us-east-1",
+    "us-east-2",
+    "us-west-1",
+    "us-west-2",
+    "ca-central-1",
+    "eu-north-1",
+    "eu-west-1",
+    "eu-west-2",
+    "eu-west-3",
+    "eu-central-1",
+    "eu-south-1",
+    "ap-northeast-1",
+    "ap-northeast-2",
+    "ap-northeast-3",
+    "ap-southeast-1",
+    "ap-southeast-2",
+    "ap-southeast-3",
+    "ap-south-1",
+    "ap-east-1",
+    "sa-east-1",
+    "af-south-1",
+    "me-south-1"
+  ]
+}

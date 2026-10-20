@@ -1,0 +1,100 @@
+{{- if .Values.telemetry.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mstr-telemetry-role
+rules:
+  - verbs:
+    - get
+    - list
+    - watch
+    apiGroups:
+    - ''
+    resources:
+    - pods
+    - pods/log
+    - secrets
+    - nodes
+    - namespaces
+    - events
+    - services
+    - persistentvolumes
+    - persistentvolumeclaims
+    - serviceaccounts
+  - verbs:
+    - get
+    - list
+    - watch
+    apiGroups:
+    - 'networking.k8s.io'
+    resources:
+    - networkpolicies
+  - verbs:
+    - list
+    - get
+    - watch
+    apiGroups:
+    - 'scheduling.k8s.io'
+    resources:
+    - priorityclasses
+  - verbs:
+    - get
+    - list
+    - watch
+    apiGroups:
+    - 'rbac.authorization.k8s.io'
+    resources:
+    - roles
+    - rolebindings
+  - verbs:
+    - get
+    - list
+    - watch
+    apiGroups:
+    - 'apps'
+    resources:
+    - deployments
+    - statefulsets
+    - daemonsets
+    - replicasets
+  - verbs:
+    - get
+    - list
+    - watch
+    apiGroups:
+    - 'batch'
+    resources:
+    - jobs
+    - cronjobs
+  - verbs:
+    - get
+    apiGroups:
+    - 'metrics.k8s.io'
+    resources:
+    - pods
+    - nodes
+  - verbs:
+    - get
+    - list
+    - watch
+    apiGroups:
+    - 'cloud.microstrategy.com'
+    resources:
+    - mstrenvironments
+    - mstrbackups
+    - mstrbackuptemplates
+    - mstrenvironmentrecords
+    - mstrrefreshes
+    - mstrsyncs
+    - mstrsynctemplates
+    - mstriserverclusters
+  - verbs:
+    - get
+    - list
+    - watch
+    - create
+    apiGroups:
+    - ''
+    resources:
+    - pods/exec
+{{- end }}

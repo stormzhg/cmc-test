@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mstr-operator-persistent-storage
+  annotations:
+    "helm.sh/resource-policy": "keep"
+spec:
+  {{- if or (eq .Values.global.storageClassName "") .Values.global.storageClassName }}
+  storageClassName: {{ .Values.global.storageClassName | quote }}
+  {{- end }}
+  {{- if .Values.global.volumeName }}
+  volumeName: {{ .Values.global.volumeName | quote }}
+  {{- end }}
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      {{- $existing := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "mstr-operator-persistent-storage") }}
+      {{- if and $existing $existing.spec $existing.spec.resources $existing.spec.resources.requests }}
+      {{- $existingStorage := index $existing.spec.resources.requests "storage" }}
+      {{- if $existingStorage }}
+      storage: {{ $existingStorage }}
+      {{- else }}
+      storage: 200Gi
+      {{- end }}
+      {{- else }}
+      storage: 200Gi
+      {{- end }}

@@ -1,0 +1,8 @@
+global:
+  image:
+    registry: "mstrcmcdev.azurecr.io"
+  storageClassName: "nfs-subdir-external-provisioner"
+  imagePullSecrets:
+    - mstr-image-pull-secret
+telemetry:
+  serverUrl: "https://cmc-portal.microstrategy.com/"

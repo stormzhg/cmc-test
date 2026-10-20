@@ -1,0 +1,44 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mstr-operator-cert
+  labels:
+    app.kubernetes.io/name: mstr-operator
+spec:
+  commonName: mstr-operator-webhook.{{ .Release.Namespace }}.svc
+  dnsNames:
+  - mstr-operator-webhook.{{ .Release.Namespace }}.svc
+  {{- if not .Values.global.certificate.useCustomIssuer }}
+  isCA: false
+  encodeUsagesInRequest: false
+  subject:
+    organizations:
+      - mstr
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS8
+    size: 2048
+  issuerRef:
+    name: mstr-operator-issuer
+    kind: Issuer
+  {{- else }}
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  issuerRef:
+    name: {{ .Values.global.certificate.issuerName }}
+    kind: {{ .Values.global.certificate.issuerKind }}
+  {{- end }}
+  keystores:
+    pkcs12:
+      passwordSecretRef:
+        name: pkcs12-pass
+        key: password
+      create: true
+  secretName: mstr-operator-tls
+  renewBefore: 2880h #120d
+  duration: {{ .Values.global.certificate.duration }}

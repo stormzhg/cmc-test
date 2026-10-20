@@ -1,0 +1,53 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: mstriserverclusters.cloud.microstrategy.com
+spec:
+  group: cloud.microstrategy.com
+  names:
+    kind: MstrIServerCluster
+    listKind: MstrIServerClusterList
+    plural: mstriserverclusters
+    singular: mstriservercluster
+    shortNames:
+    - isc
+  scope: Namespaced
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    subresources:
+      scale:
+        specReplicasPath: .spec.replicas
+        statusReplicasPath: .status.replicas
+        labelSelectorPath: .status.labelSelector
+      status: {}
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            required:
+            - replicas
+            properties:
+              replicas:
+                type: integer
+                minimum: 0
+                description: Desired number of IServer replicas (set by KEDA)
+          status:
+            type: object
+            properties:
+              replicas:
+                type: integer
+                description: Current observed number of replicas
+              labelSelector:
+                type: string
+                description: Label selector for pods managed by this config
+    additionalPrinterColumns:
+    - name: Replicas
+      type: integer
+      jsonPath: .spec.replicas
+    - name: Age
+      type: date
+      jsonPath: .metadata.creationTimestamp

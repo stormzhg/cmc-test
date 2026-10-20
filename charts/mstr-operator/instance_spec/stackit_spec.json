@@ -1,0 +1,232 @@
+{
+  "db-spec": [
+    {
+      "cpu": 2,
+      "description": "PostgreSQL-Flex-2.16-Single-EU01",
+      "id": "2.16",
+      "memory": 16,
+      "nodeType": "Single"
+    },
+    {
+      "cpu": 4,
+      "description": "PostgreSQL-Flex-4.32-Single-EU01",
+      "id": "4.32",
+      "memory": 32,
+      "nodeType": "Single"
+    },
+    {
+      "cpu": 8,
+      "description": "PostgreSQL-Flex-8.16-Single-EU01",
+      "id": "8.16",
+      "memory": 16,
+      "nodeType": "Single"
+    }
+  ],
+  "redis-spec": [
+    {
+      "name": "stackit-redis-4.16.100-replica",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 100
+    },
+    {
+      "name": "stackit-redis-4.16.250-replica",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 250
+    },
+    {
+      "name": "stackit-redis-4.16.250-replica-HiPerf",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 250
+    },
+    {
+      "name": "stackit-redis-8.32.100-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 100
+    },
+    {
+      "name": "stackit-redis-8.32.250-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 250
+    },
+    {
+      "name": "stackit-redis-8.32.250-replica-HiPerf",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 250
+    }
+  ],
+  "searchengine-spec": [
+    {
+      "name": "stackit-opensearch-4.16.50-replica",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 50
+    },
+    {
+      "name": "stackit-opensearch-4.16.100-replica",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 100
+    },
+    {
+      "name": "stackit-opensearch-4.16.250-replica",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 250
+    },
+    {
+      "name": "stackit-opensearch-4.16.500-replica",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-4.16.500-replica-HiPerf",
+      "node": 3,
+      "cpu": 4,
+      "memory": 16,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-8.16.50-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 16,
+      "disk": 50
+    },
+    {
+      "name": "stackit-opensearch-8.16.100-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 16,
+      "disk": 100
+    },
+    {
+      "name": "stackit-opensearch-8.16.250-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 16,
+      "disk": 250
+    },
+    {
+      "name": "stackit-opensearch-8.16.500-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 16,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-8.16.500-replica-HiPerf",
+      "node": 3,
+      "cpu": 8,
+      "memory": 16,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-8.32.100-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 100
+    },
+    {
+      "name": "stackit-opensearch-8.32.250-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 250
+    },
+    {
+      "name": "stackit-opensearch-8.32.500-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-8.32.1000-replica-HiPerf",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 1000
+    },
+    {
+      "name": "stackit-opensearch-8.32.1000-replica",
+      "node": 3,
+      "cpu": 8,
+      "memory": 32,
+      "disk": 1000
+    },
+    {
+      "name": "stackit-opensearch-16.32.100-replica",
+      "node": 3,
+      "cpu": 16,
+      "memory": 32,
+      "disk": 100
+    },
+    {
+      "name": "stackit-opensearch-16.32.250-replica",
+      "node": 3,
+      "cpu": 16,
+      "memory": 32,
+      "disk": 250
+    },
+    {
+      "name": "stackit-opensearch-16.32.500-replica",
+      "node": 3,
+      "cpu": 16,
+      "memory": 32,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-16.32.1000-replica-HiPerf",
+      "node": 3,
+      "cpu": 16,
+      "memory": 32,
+      "disk": 1000
+    },
+    {
+      "name": "stackit-opensearch-16.32.1000-replica",
+      "node": 3,
+      "cpu": 16,
+      "memory": 32,
+      "disk": 1000
+    },
+    {
+      "name": "stackit-opensearch-16.64.500-replica",
+      "node": 3,
+      "cpu": 16,
+      "memory": 64,
+      "disk": 500
+    },
+    {
+      "name": "stackit-opensearch-16.64.1000-replica-HiPerf",
+      "node": 3,
+      "cpu": 16,
+      "memory": 64,
+      "disk": 1000
+    },
+    {
+      "name": "stackit-opensearch-16.64.1000-replica",
+      "node": 3,
+      "cpu": 16,
+      "memory": 64,
+      "disk": 1000
+    }
+  ]
+}

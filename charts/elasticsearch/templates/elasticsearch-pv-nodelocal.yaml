@@ -1,0 +1,36 @@
+{{- if .Values.nodeLocalStorage.enabled }}
+{{- $replicas := int (toString (.Values.replicas.min)) }}
+{{- range $i, $e := untilStep 0 $replicas 1 }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ template "elasticsearch.uname" $ }}-local-pv-{{ $i }}
+  labels:
+    heritage: {{ $.Release.Service | quote }}
+    release: {{ $.Release.Name | quote }}
+    chart: "{{ $.Chart.Name }}"
+    app: "{{ template "elasticsearch.uname" $ }}"
+spec:
+  capacity:
+    storage: {{ $.Values.nodeLocalStorage.storageSize }}
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: {{ default "local-path" $.Values.nodeLocalStorage.storageClassName }}
+  claimRef:
+    namespace: {{ $.Release.Namespace }}
+    name: elasticsearch-data-nodelocalstorage-{{ template "elasticsearch.uname" $ }}-{{ $i }}
+  local:
+    path: /tmp
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/os
+          operator: In
+          values:
+          - linux
+{{- end }}
+{{- end }}

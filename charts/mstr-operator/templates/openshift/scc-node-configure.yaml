@@ -1,0 +1,41 @@
+{{- if and (.Values.nodeConfigure.enabled) (eq (include "common.isOpenshiftCluster" .) "true") (.Values.openshift.nodeConfigure.autoCreateSCC) }}
+apiVersion: security.openshift.io/v1
+kind: SecurityContextConstraints
+metadata:
+  name: {{ .Values.openshift.nodeConfigure.SCCName | default "mstr-node-configure-scc" }}
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPorts: false
+allowHostDirVolumePlugin: true
+allowHostPID: true
+allowPrivilegeEscalation: true
+allowPrivilegedContainer: true
+allowedUnsafeSysctls:
+  - vm.max_map_count
+  - kernel.sem
+  - kernel.shmmni
+  - kernel.core_pattern
+  - fs.inotify.max_user_instances
+allowedCapabilities: null
+defaultAddCapabilities: null
+requiredDropCapabilities:
+  - ALL
+priority: 100
+readOnlyRootFilesystem: false
+fsGroup:
+  type: RunAsAny
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: MustRunAs
+seccompProfiles:
+  - runtime/default
+users: []
+groups: []
+volumes:
+  - configMap
+  - hostPath
+  - emptyDir
+  - projected
+  - downwardAPI
+{{- end }}

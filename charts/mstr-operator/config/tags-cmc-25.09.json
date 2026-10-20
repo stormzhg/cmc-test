@@ -1,0 +1,198 @@
+{
+    "GAName": "25.09",
+    "BuildNumber": "11.5.0900.0106",
+    "DisplayName": "Strategy One - Sep 2025",
+    "Certified": true,
+    "GA": false,
+    "HelmChartVersion": "25.09",
+    "Services": [
+        {
+            "name": "architect-service",
+            "tag": "m2509-.-11.5.0900.00367"
+        },
+        {
+            "name": "biweb",
+            "tag": "m2509-.-11.5.0900.00331"
+        },
+        {
+            "name": "cluster-state-service",
+            "tag": "m2509-.-11.5.0900.00020"
+        },
+        {
+            "name": "cloud-connector-server",
+            "tag": "m2509-.-11.5.0900.00020"
+        },
+        {
+            "name": "collabservice",
+            "tag": "m2509-.-11.5.0900.00048"
+        },
+        {
+            "name": "community-connectors",
+            "tag": "m2509-.-11.5.0900.00543"
+        },
+        {
+            "name": "configurable-http-proxy",
+            "tag": "m2509-.-11.5.0900.00014"
+        },
+        {
+            "name": "elasticsearch-service",
+            "tag": "m2509-.-11.5.0900.00022"
+        },
+        {
+            "name": "gateway-drivers-mcp",
+            "tag": "m2509-.-11.5.0900.00018"
+        },
+        {
+            "name": "image-awaiter",
+            "tag": "m2509-.-11.5.0900.00041"
+        },
+        {
+            "name": "insight-service",
+            "tag": "m2509-.-11.5.0900.00017"
+        },
+        {
+            "name": "integrity-service",
+            "tag": "m2509-.-11.5.0900.00036"
+        },
+        {
+            "name": "iserver",
+            "tag": "m2509-.-11.5.0900.00337"
+        },
+        {
+            "name": "iserver-post-upgrade",
+            "tag": "m2509-.-11.5.0900.00337"
+        },
+        {
+            "name": "kafka",
+            "tag": "m2509-.-11.5.0900.00015"
+        },
+        {
+            "name": "mstrbak",
+            "tag": "m2509-.-11.5.0900.00308"
+        },
+        {
+            "name": "mstrbak-service",
+            "tag": "m2509-.-11.5.0900.00308"
+        },
+        {
+            "name": "nee",
+            "tag": "m2509-.-11.5.0900.00394"
+        },
+        {
+            "name": "platform-analytics-consumer",
+            "tag": "m2509-.-11.5.0900.00035"
+        },
+        {
+            "name": "podmanager",
+            "tag": "m2509-.-11.5.0900.00081"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2509-.-11.5.0900.00016"
+        },
+        {
+            "name": "python-executor",
+            "tag": "m2509-.-11.5.0900.00081"
+        },
+        {
+            "name": "redis",
+            "tag": "m2509-.-11.5.0900.00014"
+        },
+        {
+            "name": "search-service",
+            "tag": "m2509-.-11.5.0900.00046"
+        },
+        {
+            "name": "universal-semantic",
+            "tag": "m2509-.-11.5.0900.00069"
+        },
+        {
+            "name": "web-dossier",
+            "tag": "m2509-.-11.5.0900.00420"
+        },
+        {
+            "name": "zookeeper",
+            "tag": "m2509-.-11.5.0900.00014"
+        },
+        {
+            "name": "environment-agent",
+            "tag": "m2509-.-11.5.0900.00030"
+        },
+        {
+            "name": "mstr-mobile",
+            "tag": "m2509-.-11.5.0900.00331"
+        },
+        {
+            "name": "fluent-bit",
+            "tag": "4.0.8"
+        },
+        {
+            "name": "mstr-md",
+            "tag": "25.09"
+        },
+        {
+            "name": "mstr-operator",
+            "tag": "25.09.219"
+        },
+        {
+            "name": "mstr-orchestrator/api-layer",
+            "tag": "25.09.219"
+        },
+        {
+            "name": "mstr-orchestrator/web-layer",
+            "tag": "25.09.219"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "m2021-.-11.5.0900.00008"
+        },
+        {
+            "name": "pause",
+            "tag": "3.2"
+        },
+        {
+            "name": "mstr-telemetry-client",
+            "tag": "25.09"
+        },
+        {
+            "name": "mstr-cleanup",
+            "tag": "25.09.12"
+        },
+        {
+            "name": "mstr-validator",
+            "tag": "25.09.12"
+        },
+        {
+            "name": "kedacore/keda",
+            "tag": "2.17.2"
+        },
+        {
+            "name": "kedacore/keda-metrics-apiserver",
+            "tag": "2.17.2"
+        },
+        {
+            "name": "prometheus-operator/prometheus-config-reloader",
+            "tag": "v0.85.0"
+        },
+        {
+            "name": "prometheus-operator/prometheus-operator",
+            "tag": "v0.85.0"
+        },
+        {
+            "name": "prometheus/prometheus",
+            "tag": "v3.5.0"
+        },
+        {
+            "name": "prometheus/node-exporter",
+            "tag": "v1.9.1"
+        },
+        {
+            "name": "kube-state-metrics",
+            "tag": "v2.16.0-mstr-20250827"
+        },
+        {
+            "name": "ingress-nginx/kube-webhook-certgen",
+            "tag": "v1.6.1"
+        }
+    ]
+}

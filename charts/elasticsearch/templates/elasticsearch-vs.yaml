@@ -1,0 +1,38 @@
+{{- if .Values.virtualService.enabled }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ template "elasticsearch.uname" . }}-virtualservice
+spec:
+  hosts: {{ .Values.virtualService.hosts }}
+  gateways:
+    - {{ .Values.virtualService.gateway }}
+  http:
+  - match:
+    - uri:
+        prefix: /elasticsearch-service/
+    rewrite:
+      uri: /
+    route:
+      - destination:
+          {{- if eq .Values.nodeGroup "master" }}
+          host: {{ template "elasticsearch.masterService" . }}
+          {{- else }}
+          host: {{ template "elasticsearch.uname" . }}
+          {{- end }}
+          port:
+            number: 9200
+        headers:
+        request:
+          remove:
+            - x-forwarded-host
+            - x-forwarded-port
+            - x-forwarded-prefix
+            - forwarded
+        response:
+          remove:
+            - server
+            - x-envoy-upstream-service-time
+          set:
+            Strict-Transport-Security: max-age=31536000; includeSubDomains
+{{- end -}}

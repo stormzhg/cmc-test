@@ -1,0 +1,16 @@
+{{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mstr-allow-all-ingress
+spec:
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+  podSelector:
+    matchLabels:
+      maistra.io/expose-route: "true"
+  policyTypes:
+  - Ingress
+{{- end }}

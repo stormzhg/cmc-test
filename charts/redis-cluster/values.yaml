@@ -1,0 +1,315 @@
+autoScalingEnabled: false
+cluster:
+  dnsLookupRetries: 120
+  dnsLookupSleep: 1
+  externalAccess:
+    enabled: false
+    hostMode: false
+    service:
+      annotations: {}
+      disableLoadBalancerIP: false
+      loadBalancerClass: ''
+      loadBalancerIP: []
+      loadBalancerIPAnnotaion: ''
+      loadBalancerSourceRanges: []
+      port: 6379
+      type: LoadBalancer
+  init: true
+  nodes: 6
+  replicas: 1
+  sleepBeforeDNSLookup: 0
+  update:
+    addNodes: false
+    currentNumberOfNodes: 6
+    currentNumberOfReplicas: 1
+    newExternalIPs: []
+clusterDomain: cluster.local
+commonAnnotations: {}
+commonLabels: {}
+consul:
+  mutualTLSMode: strict
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+  enabled: true
+  privileged: false
+  readOnlyRootFilesystem: false
+  runAsGroup: 1000
+  runAsNonRoot: true
+  runAsUser: 1000
+  seccompProfile:
+    type: RuntimeDefault
+diagnosticMode:
+  args:
+  - infinity
+  command:
+  - sleep
+  enabled: false
+existingSecret: ''
+existingSecretPasswordKey: ''
+exporterContainerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+  enabled: true
+  privileged: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+extraDeploy: []
+fullnameOverride: ''
+global:
+  compatibility:
+    openshift:
+      adaptSecurityContext: auto
+  defaultStorageClass: ''
+  imagePullSecrets: []
+  imageRegistry: ''
+  openshiftSccClusterRoleName: mstr-operator-scc-use-clusterrole
+  redis:
+    password: ''
+  security:
+    allowInsecureImages: false
+  storageClass: ''
+image:
+  debug: false
+  digest: ''
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+  registry: 385824333536.dkr.ecr.us-east-1.amazonaws.com
+  repository: redis-cluster
+  tag: 26.10.19
+istioEnabled: true
+logPersistence:
+  enabled: true
+  maxFileMB: 50
+  maxTotalMB: 1024
+  rotationIntervalMinutes: 10
+metrics:
+  enabled: true
+  image:
+    registry: 385824333536.dkr.ecr.us-east-1.amazonaws.com
+    repository: redis-exporter
+    tag: 26.10.19
+  podAnnotations:
+    prometheus.io/port: '9121'
+    prometheus.io/scrape: 'true'
+  resources:
+    limits:
+      cpu: 1
+      memory: 16Gi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  serviceMonitor: redis-exporter
+nameOverride: ''
+namespaceOverride: ''
+networkPolicy:
+  allowExternal: true
+  allowExternalEgress: true
+  enabled: true
+  extraEgress: []
+  extraIngress: []
+  ingressNSMatchLabels: {}
+  ingressNSPodMatchLabels: {}
+password: ''
+pdb:
+  create: true
+  maxUnavailable: ''
+  minAvailable: ''
+persistence:
+  accessModes:
+  - ReadWriteOnce
+  annotations: {}
+  enabled: true
+  labels: {}
+  matchExpressions: {}
+  matchLabels: {}
+  path: /redis/data
+  size: 8Gi
+  storageClass: ''
+  subPath: ''
+persistentVolumeClaimRetentionPolicy:
+  enabled: false
+  whenDeleted: Retain
+  whenScaled: Retain
+podDisruptionBudget: {}
+podSecurityContext:
+  enabled: true
+  fsGroup: 1000
+  fsGroupChangePolicy: Always
+  supplementalGroups: []
+  sysctls: []
+podSecurityPolicy:
+  create: false
+rbac:
+  create: false
+  role:
+    rules: []
+redis:
+  affinity: {}
+  args: []
+  automountServiceAccountToken: false
+  command: []
+  configmap: ''
+  containerPorts:
+    bus: 16379
+    redis: 6379
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  defaultConfigOverride: ''
+  extraEnvVars: []
+  extraEnvVarsCM: ''
+  extraEnvVarsSecret: ''
+  extraVolumeMounts: []
+  extraVolumes: []
+  hostAliases: []
+  hostNetwork: false
+  initContainers: []
+  lifecycleHooks:
+    preStop:
+      exec:
+        command:
+        - /bin/bash
+        - -c
+        - /scripts/pre_stop_hook.sh
+  livenessProbe:
+    enabled: true
+    failureThreshold: 5
+    initialDelaySeconds: 0
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 5
+  nodeAffinityPreset:
+    key: ''
+    type: ''
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ''
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podManagementPolicy: Parallel
+  priorityClassName: ''
+  readinessProbe:
+    enabled: true
+    failureThreshold: 5
+    initialDelaySeconds: 0
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 1
+  resources:
+    limits:
+      cpu: 2
+      memory: 16Gi
+    requests:
+      cpu: 250m
+      memory: 128Mi
+  resourcesPreset: none
+  schedulerName: ''
+  shareProcessNamespace: false
+  sidecars: []
+  startupProbe:
+    enabled: true
+    failureThreshold: 120
+    initialDelaySeconds: 5
+    path: /
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 5
+  terminationGracePeriodSeconds: 120
+  tolerations: []
+  topologySpreadConstraints: []
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
+  useAOFPersistence: 'yes'
+service:
+  annotations: {}
+  clusterIP: ''
+  externalTrafficPolicy: Cluster
+  extraPorts: []
+  headless:
+    annotations: {}
+  labels: {}
+  loadBalancerClass: ''
+  loadBalancerIP: ''
+  loadBalancerSourceRanges: []
+  nodePorts:
+    redis: ''
+  ports:
+    redis: 6379
+  sessionAffinity: None
+  sessionAffinityConfig: {}
+  type: ClusterIP
+serviceAccount:
+  annotations: {}
+  automountServiceAccountToken: false
+  create: true
+  name: ''
+serviceBindings:
+  enabled: false
+tls:
+  authClients: true
+  autoGenerated: false
+  certCAFilename: ''
+  certFilename: ''
+  certKeyFilename: ''
+  certificatesSecret: ''
+  dhParamsFilename: ''
+  enabled: false
+  existingSecret: ''
+updateJob:
+  activeDeadlineSeconds: 600
+  affinity: {}
+  annotations: {}
+  args: []
+  automountServiceAccountToken: false
+  command: []
+  extraEnvVars: []
+  extraEnvVarsCM: ''
+  extraEnvVarsSecret: ''
+  extraVolumeMounts: []
+  extraVolumes: []
+  helmHook: post-upgrade
+  hostAliases: []
+  initContainers: []
+  nodeAffinityPreset:
+    key: ''
+    type: ''
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ''
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  priorityClassName: ''
+  resources: {}
+  resourcesPreset: nano
+  tolerations: []
+usePassword: true
+usePasswordFiles: true
+volumePermissions:
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      add:
+      - CHOWN
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    runAsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+    seccompProfile:
+      type: RuntimeDefault
+  enabled: true
+  resources: {}
+  resourcesPreset: nano

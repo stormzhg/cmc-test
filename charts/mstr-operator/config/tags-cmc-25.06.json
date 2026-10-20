@@ -1,0 +1,166 @@
+{
+  "GAName": "25.06",
+  "BuildNumber": "11.5.0600.0047",
+  "DisplayName": "Strategy One - Jun 2025",
+  "Certified": true,
+  "GA": false,
+  "HelmChartVersion": "25.06",
+  "Services": [
+    {
+      "name": "architect-service",
+      "tag": "m2021-.-11.5.0600.00194"
+    },
+    {
+      "name": "biweb",
+      "tag": "m2021-.-11.5.0600.00178"
+    },
+    {
+      "name": "cluster-state-service",
+      "tag": "m2021-.-11.5.0600.00007"
+    },
+    {
+      "name": "cloud-connector-server",
+      "tag": "m2021-.-11.5.0600.00017"
+    },
+    {
+      "name": "collabservice",
+      "tag": "m2021-.-11.5.0600.00034"
+    },
+    {
+      "name": "community-connectors",
+      "tag": "m2021-.-11.5.0600.00493"
+    },
+    {
+      "name": "configurable-http-proxy",
+      "tag": "m2021-.-11.5.0600.00007"
+    },
+    {
+      "name": "elasticsearch-service",
+      "tag": "m2021-.-11.5.0600.00005"
+    },
+    {
+      "name": "gateway-drivers-mcp",
+      "tag": "m2021-.-11.5.0600.00012"
+    },
+    {
+      "name": "image-awaiter",
+      "tag": "m2021-.-11.5.0600.00021"
+    },
+    {
+      "name": "insight-service",
+      "tag": "m2021-.-11.5.0600.00011"
+    },
+    {
+      "name": "integrity-service",
+      "tag": "m2021-.-11.5.0600.00007"
+    },
+    {
+      "name": "iserver",
+      "tag": "m2021-.-11.5.0600.00232"
+    },
+    {
+      "name": "iserver-post-upgrade",
+      "tag": "m2021-.-11.5.0600.00233"
+    },
+    {
+      "name": "kafka",
+      "tag": "m2021-.-11.5.0600.00005"
+    },
+    {
+      "name": "mstrbak",
+      "tag": "m2021-.-11.5.0600.00210"
+    },
+    {
+      "name": "mstrbak-service",
+      "tag": "m2021-.-11.5.0600.00210"
+    },
+    {
+      "name": "nee",
+      "tag": "m2021-.-11.5.0600.00215"
+    },
+    {
+      "name": "platform-analytics-consumer",
+      "tag": "m2021-.-11.5.0600.00010"
+    },
+    {
+      "name": "podmanager",
+      "tag": "m2021-.-11.5.0600.00031"
+    },
+    {
+      "name": "postgres",
+      "tag": "m2021-.-11.5.0600.00005"
+    },
+    {
+      "name": "python-executor",
+      "tag": "m2021-.-11.5.0600.00031"
+    },
+    {
+      "name": "redis",
+      "tag": "m2021-.-11.5.0600.00005"
+    },
+    {
+      "name": "search-service",
+      "tag": "m2021-.-11.5.0600.00028"
+    },
+    {
+      "name": "universal-semantic",
+      "tag": "m2021-.-11.5.0600.00060"
+    },
+    {
+      "name": "web-dossier",
+      "tag": "m2021-.-11.5.0600.00233"
+    },
+    {
+      "name": "zero-to-jupyterhub-k8s",
+      "tag": "m2021-.-11.5.0600.00021"
+    },
+    {
+      "name": "zookeeper",
+      "tag": "m2021-.-11.5.0600.00005"
+    },
+    {
+      "name": "mstr-mobile",
+      "tag": "m2021-.-11.5.0600.00178"
+    },
+    {
+      "name": "fluent-bit",
+      "tag": "4.0.1"
+    },
+    {
+      "name": "mstr-md",
+      "tag": "25.06"
+    },
+    {
+      "name": "mstr-operator",
+      "tag": "25.06.107"
+    },
+    {
+      "name": "mstr-orchestrator/api-layer",
+      "tag": "25.06.107"
+    },
+    {
+      "name": "mstr-orchestrator/web-layer",
+      "tag": "25.06.107"
+    },
+    {
+      "name": "mstr-utilbox",
+      "tag": "m2021-.-11.5.0500.00009"
+    },
+    {
+      "name": "pause",
+      "tag": "3.2"
+    },
+    {
+      "name": "mstr-telemetry-client",
+      "tag": "25.06"
+    },
+    {
+      "name": "mstr-cleanup",
+      "tag": "25.06.1"
+    },
+    {
+      "name": "mstr-validator",
+      "tag": "25.06.6"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+[{
+  "serviceName": "library",
+  "logPath": "/usr/local/tomcat/webapps",
+  "fileNamePattern": "MicroStrategyLibrary-MicroStrategyLibrary*",
+  "fileExtension": ".log",
+  "dependentCheckpoint": [
+    "DBConnection",
+    "RedisConnection"
+  ],
+  "podNameAsFolder": false,
+  "fromServicePod": true,
+  "linesToRead": 200
+},
+  {
+    "serviceName": "iserver",
+    "logPath": "/opt/mstr/MicroStrategy/log",
+    "fileName": "DSSErrors",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "DBConnection"
+    ],
+    "podNameAsFolder": false,
+    "fromServicePod": true
+  },
+  {
+    "serviceName": "script-pom",
+    "logPath": "logs/iserver/scripthub",
+    "fileNamePattern": "*script-pom*",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "RedisConnection"
+    ],
+    "podNameAsFolder": false
+  },
+  {
+    "serviceName": "cluster-state-service",
+    "logPath": "logs/cluster-state-service",
+    "fileName": "cluster-state-svc-requests",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "RedisConnection"
+    ]
+  },
+  {
+    "serviceName": "cluster-state-service",
+    "logPath": "logs/cluster-state-service",
+    "fileName": "cluster-state-svc-application",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "RedisConnection"
+    ]
+  },
+  {
+    "serviceName": "cloud-connector",
+    "logPath": "logs/cloudconnector",
+    "fileName": "cc-server",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "RedisConnection"
+    ]
+  },
+  {
+    "serviceName": "insight-service",
+    "logPath": "logs/insightsvc",
+    "fileName": "InsightEngine",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "DBConnection"
+    ]
+  },
+  {
+    "serviceName": "paconsumer",
+    "logPath": "logs/paconsumer",
+    "fileName": "platform-analytics-consumer",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "RedisConnection",
+      "DBConnection"
+    ]
+  },
+  {
+    "serviceName": "paconsumer",
+    "logPath": "logs/paconsumer",
+    "fileName": "platform-analytics-consumer",
+    "fileExtension": ".err",
+    "dependentCheckpoint": [
+      "RedisConnection",
+      "DBConnection"
+    ]
+  },
+  {
+    "serviceName": "paconsumer",
+    "logPath": "logs/paconsumer",
+    "fileNamePattern": "platform-analytics-consumer-health-check*",
+    "fileExtension": ".out",
+    "dependentCheckpoint": [
+      "RedisConnection",
+      "DBConnection"
+    ]
+  },
+  {
+    "serviceName": "collaboration",
+    "logPath": "logs/collab/audit",
+    "fileName": "MSTR-COLLAB-SVC",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "DBConnection"
+    ]
+  },
+  {
+    "serviceName": "search-service",
+    "logPath": "logs/searchsvc",
+    "fileName": "SearchService",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "SearchEngineConnection"
+    ]
+  },
+  {
+    "serviceName": "validator",
+    "fromValidator": true,
+    "podNameAsFolder": false,
+    "logPath": "operator/validator-logs",
+    "fileName": "validator",
+    "fileExtension": ".log",
+    "dependentCheckpoint": [
+      "DBConnection",
+      "RedisConnection",
+      "SearchEngineConnection",
+      "LoggingConnection",
+      "AIEndpointConnection"
+    ]
+  }
+]

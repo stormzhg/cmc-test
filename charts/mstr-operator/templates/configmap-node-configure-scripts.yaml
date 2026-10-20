@@ -1,0 +1,68 @@
+{{- if .Values.nodeConfigure.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mstr-node-configure-scripts
+data:
+  entrypoint.sh: |
+    #!/bin/bash
+    echo "Starting execution of install script"
+    echo "Copying required binaries and files to the host filesystem"
+    cp /host-install-files/{wait.sh,install.sh} /host
+
+    nsenter -m -n -p -u -i -t 1 chmod +x /tmp/install/install.sh
+    nsenter -m -n -p -u -i -t 1 chmod +x /tmp/install/wait.sh
+
+    echo "Executing wait script for the node to become ready for script execution"
+    nsenter -m -n -p -u -i -t 1 bash /tmp/install/wait.sh
+
+    echo "Executing script"
+    nsenter -m -n -p -u -i -t 1 bash /tmp/install/install.sh
+
+    echo "Task completed. Sleeping..."
+    while true;
+    do
+      sleep 30
+    done
+  install.sh: |
+    #!/bin/bash
+    if [ ! -f /tmp/install/installation-complete-v2.txt ]
+    then
+      cat > /etc/sysctl.d/95-mstr-node-defaults.conf << 'EOF'
+    vm.max_map_count={{ .Values.nodeConfigure.vmMaxMapCount }}
+    kernel.sem={{ .Values.nodeConfigure.kernelSem }}
+    kernel.shmmni={{ .Values.nodeConfigure.kernelShmmni }}
+    kernel.core_pattern={{ .Values.nodeConfigure.kernelCorePattern }}
+    EOF
+      sysctl -p /etc/sysctl.d/95-mstr-node-defaults.conf
+
+      current_value=$(sysctl -n fs.inotify.max_user_instances)
+      if [ "$current_value" -lt {{ .Values.nodeConfigure.maxUserInstances }} ]; then
+        sysctl -w fs.inotify.max_user_instances={{ .Values.nodeConfigure.maxUserInstances }}
+      fi
+
+      cat > /etc/security/limits.d/95-mstr-node-defaults.conf << 'EOF'
+    *        soft    core           unlimited
+    *        hard    core           unlimited
+    *        soft    nice           0
+    *        hard    nice           0
+    *        soft    nofile         {{ .Values.nodeConfigure.nofile }}
+    *        hard    nofile         {{ .Values.nodeConfigure.nofile }}
+    *        soft    sigpending     {{ .Values.nodeConfigure.sigpending }}
+    *        hard    sigpending     {{ .Values.nodeConfigure.sigpending }}
+    *        soft    memlock        {{ .Values.nodeConfigure.memlock }}
+    *        hard    memlock        {{ .Values.nodeConfigure.memlock }}
+    EOF
+
+    # ----------- Do not modify the lines below ---------------
+      touch /tmp/install/installation-complete-v2.txt
+    else
+      # Script execution was completed previously. Exit gracefully.
+      exit 0
+    fi
+  wait.sh: |
+    #!/bin/bash
+    # Modify the wait script to suit your node ready logic
+    # E.g. Sleep for 5 mins to allow node to be ready
+    # sleep 5m
+{{- end }}

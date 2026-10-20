@@ -1,0 +1,24 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/mstr-operator-cert
+  name: mstr-operator-webhook
+webhooks:
+- name: mstr-env-validate.v1beta1.k8s
+  admissionReviewVersions: ["v1"]
+  clientConfig:
+    service:
+      name: mstr-operator-webhook
+      namespace: {{ .Release.Namespace }}
+      path: /validate
+      port: {{ .Values.operator.port }}
+  rules:
+  - apiGroups: ["cloud.microstrategy.com"]
+    apiVersions: ["v1", "v1beta1"]
+    operations: [ "CREATE","UPDATE","DELETE"]
+    resources: ["mstrenvironmentrecords", "mstrenvironments", "mstrbackups", "mstrrefreshes", "mstrbackuptemplates", "mstrsyncs", "mstrsynctemplates"]
+    scope: "Namespaced"
+  sideEffects: None
+  timeoutSeconds: 10
+  failurePolicy: Fail

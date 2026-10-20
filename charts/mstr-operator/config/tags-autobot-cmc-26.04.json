@@ -1,0 +1,34 @@
+{
+    "GAName": "26.04",
+    "BuildNumber": "11.6.0400.0163",
+    "DisplayName": "Strategy One - Apr 2026",
+    "Certified": true,
+    "GA": true,
+    "HelmChartVersion": "26.04",
+    "Services": [
+        {
+            "name": "ai-engine-chat-service",
+            "tag": "m2604-.-11.6.0400.01024"
+        },
+        {
+            "name": "ai-engine-ingestion-service",
+            "tag": "m2604-.-11.6.0400.00179"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2604-.-11.6.0400.00013"
+        },
+        {
+            "name": "redis-stack-server",
+            "tag": "m2604-.-11.6.0400.00018"
+        },
+        {
+            "name": "clickhouse",
+            "tag": "m2604-.-11.6.0400.00014"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "m2021-.-11.6.0400.00012"
+        }
+    ]
+}

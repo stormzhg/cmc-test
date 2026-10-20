@@ -1,0 +1,142 @@
+{
+  "GAName": "25.03",
+  "BuildNumber": "11.5.0300.0062",
+  "DisplayName": "Microstrategy One - Mar 2025",
+  "Certified": false,
+  "GA": false,
+  "HelmChartVersion": "25.03",
+  "Services": [
+    {
+      "name": "architect-service",
+      "tag": "m2021-.-11.5.0300.00168"
+    },
+    {
+      "name": "biweb",
+      "tag": "m2021-.-11.5.0300.00149"
+    },
+    {
+      "name": "cloud-connector-server",
+      "tag": "m2021-.-11.5.0300.00027"
+    },
+    {
+      "name": "cluster-state-service",
+      "tag": "m2021-.-11.5.0300.00020"
+    },
+    {
+      "name": "collabservice",
+      "tag": "m2021-.-11.5.0300.00070"
+    },
+    {
+      "name": "community-connectors",
+      "tag": "m2021-.-11.5.0300.00443"
+    },
+    {
+      "name": "configurable-http-proxy",
+      "tag": "m2021-.-11.5.0300.00011"
+    },
+    {
+      "name": "elasticsearch-service",
+      "tag": "m2021-.-11.5.0300.00014"
+    },
+    {
+      "name": "gateway-drivers-mcp",
+      "tag": "m2021-.-11.5.0300.00015"
+    },
+    {
+      "name": "image-awaiter",
+      "tag": "m2021-.-11.5.0300.00042"
+    },
+    {
+      "name": "insight-service",
+      "tag": "m2021-.-11.5.0300.00013"
+    },
+    {
+      "name": "iserver",
+      "tag": "m2021-.-11.5.0300.00132"
+    },
+    {
+      "name": "kafka",
+      "tag": "m2021-.-11.5.0300.00011"
+    },
+    {
+      "name": "mstrbak",
+      "tag": "m2021-.-11.5.0300.00124"
+    },
+    {
+      "name": "mstrbak-service",
+      "tag": "m2021-.-11.5.0300.00124"
+    },
+    {
+      "name": "nee",
+      "tag": "m2021-.-11.5.0300.00478"
+    },
+    {
+      "name": "platform-analytics-consumer",
+      "tag": "m2021-.-11.5.0300.00019"
+    },
+    {
+      "name": "postgres",
+      "tag": "m2021-.-11.5.0300.00012"
+    },
+    {
+      "name": "python-executor",
+      "tag": "m2021-.-11.5.0300.00014"
+    },
+    {
+      "name": "redis",
+      "tag": "m2021-.-11.5.0300.00011"
+    },
+    {
+      "name": "search-service",
+      "tag": "m2021-.-11.5.0300.00018"
+    },
+    {
+      "name": "web-dossier",
+      "tag": "m2021-.-11.5.0300.00474"
+    },
+    {
+      "name": "zero-to-jupyterhub-k8s",
+      "tag": "m2021-.-11.5.0300.00042"
+    },
+    {
+      "name": "zookeeper",
+      "tag": "m2021-.-11.5.0300.00011"
+    },
+    {
+      "name": "mstr-mobile",
+      "tag": "m2021-.-11.5.0300.00149"
+    },
+    {
+      "name": "fluent-bit",
+      "tag": "3.2.1"
+    },
+    {
+      "name": "mstr-md",
+      "tag": "latest"
+    },
+    {
+      "name": "mstr-operator",
+      "tag": "25.03.10"
+    },
+    {
+      "name": "mstr-orchestrator/api-layer",
+      "tag": "25.03.10"
+    },
+    {
+      "name": "mstr-orchestrator/web-layer",
+      "tag": "25.03.10"
+    },
+    {
+      "name": "mstr-utilbox",
+      "tag": "m2024_2412-.-11.4.1200.00018"
+    },
+    {
+      "name": "pause",
+      "tag": "3.2"
+    },
+    {
+      "name": "mstr-telemetry-client",
+      "tag": "25.03"
+    }
+  ]
+}

@@ -1,0 +1,1124 @@
+{
+    "64": {
+        "services": {
+            "mstrMobile": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.079"
+                    }
+                }
+            },
+            "biweb": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.063"
+                    },
+                    "limits": {
+                        "memory": "0.079"
+                    }
+                }
+            },
+            "pythonHub": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016",
+                        "cpu": "100m"
+                    },
+                    "limits": {
+                        "memory": "0.032",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "pythonProxy": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016",
+                        "cpu": "100m"
+                    },
+                    "limits": {
+                        "memory": "0.032",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "collabServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "insightService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.094"
+                    }
+                }
+            },
+            "iserver": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.313"
+                    },
+                    "limits": {
+                        "memory": "0.313"
+                    }
+                }
+            },
+            "kafka": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "library": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.063"
+                    },
+                    "limits": {
+                        "memory": "0.079"
+                    }
+                }
+            },
+            "modelingServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "newExportEngine": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.188"
+                    }
+                }
+            },
+            "paconsumer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "redis": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "repository": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.032"
+                    }
+                }
+            },
+            "zookeeper": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "cloudConnector": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "communityConnectors": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "clusterStateService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    },
+                    "limits": {
+                        "memory": "0.032"
+                    }
+                }
+            },
+            "searchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    },
+                    "limits": {
+                        "memory": "0.032"
+                    }
+                }
+            },
+            "elasticsearchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.063"
+                    }
+                }
+            }
+        }
+    },
+    "128": {
+        "services": {
+            "mstrMobile": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.055"
+                    }
+                }
+            },
+            "biweb": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.040"
+                    },
+                    "limits": {
+                        "memory": "0.063"
+                    }
+                }
+            },
+            "pythonHub": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.016",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "pythonProxy": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.016",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "collabServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "insightService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "iserver": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.547"
+                    },
+                    "limits": {
+                        "memory": "0.547"
+                    }
+                }
+            },
+            "kafka": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "library": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.040"
+                    },
+                    "limits": {
+                        "memory": "0.063"
+                    }
+                }
+            },
+            "modelingServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "newExportEngine": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    },
+                    "limits": {
+                        "memory": "0.094"
+                    }
+                }
+            },
+            "paconsumer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.012"
+                    }
+                }
+            },
+            "redis": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "repository": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    },
+                    "limits": {
+                        "memory": "0.032"
+                    }
+                }
+            },
+            "zookeeper": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "cloudConnector": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "communityConnectors": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "clusterStateService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "searchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "elasticsearchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.016"
+                    },
+                    "limits": {
+                        "memory": "0.032"
+                    }
+                }
+            }
+        }
+    },
+    "256": {
+        "services": {
+            "mstrMobile": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.024"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "biweb": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.051"
+                    }
+                }
+            },
+            "pythonHub": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.008",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "pythonProxy": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.008",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "collabServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "insightService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "iserver": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.625"
+                    },
+                    "limits": {
+                        "memory": "0.625"
+                    }
+                }
+            },
+            "kafka": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "library": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.032"
+                    },
+                    "limits": {
+                        "memory": "0.051"
+                    }
+                }
+            },
+            "modelingServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "newExportEngine": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    },
+                    "limits": {
+                        "memory": "0.094"
+                    }
+                }
+            },
+            "paconsumer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.01"
+                    }
+                }
+            },
+            "redis": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "repository": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    },
+                    "limits": {
+                        "memory": "0.024"
+                    }
+                }
+            },
+            "zookeeper": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "cloudConnector": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "communityConnectors": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "clusterStateService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "searchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "elasticsearchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.008"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            }
+        }
+    },
+    "512": {
+        "services": {
+            "mstrMobile": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.020"
+                    },
+                    "limits": {
+                        "memory": "0.043"
+                    }
+                }
+            },
+            "biweb": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.024"
+                    },
+                    "limits": {
+                        "memory": "0.045"
+                    }
+                }
+            },
+            "pythonHub": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.004",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "pythonProxy": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.004",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "collabServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "insightService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "iserver": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.704"
+                    },
+                    "limits": {
+                        "memory": "0.704"
+                    }
+                }
+            },
+            "kafka": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "library": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.024"
+                    },
+                    "limits": {
+                        "memory": "0.045"
+                    }
+                }
+            },
+            "modelingServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "newExportEngine": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.094"
+                    }
+                }
+            },
+            "paconsumer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.005"
+                    }
+                }
+            },
+            "redis": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "repository": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.024"
+                    }
+                }
+            },
+            "zookeeper": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "cloudConnector": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "communityConnectors": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "clusterStateService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "searchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            },
+            "elasticsearchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.004"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            }
+        }
+    },
+    "1024": {
+        "services": {
+            "mstrMobile": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.020"
+                    },
+                    "limits": {
+                        "memory": "0.043"
+                    }
+                }
+            },
+            "biweb": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.024"
+                    },
+                    "limits": {
+                        "memory": "0.045"
+                    }
+                }
+            },
+            "pythonHub": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.002",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "pythonProxy": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.002",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "collabServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "insightService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "iserver": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.792"
+                    },
+                    "limits": {
+                        "memory": "0.792"
+                    }
+                }
+            },
+            "kafka": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "library": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.024"
+                    },
+                    "limits": {
+                        "memory": "0.045"
+                    }
+                }
+            },
+            "modelingServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "newExportEngine": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    },
+                    "limits": {
+                        "memory": "0.094"
+                    }
+                }
+            },
+            "paconsumer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.0025"
+                    }
+                }
+            },
+            "redis": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "repository": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    },
+                    "limits": {
+                        "memory": "0.024"
+                    }
+                }
+            },
+            "zookeeper": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "cloudConnector": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "communityConnectors": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "clusterStateService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    },
+                    "limits": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "searchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.008"
+                    }
+                }
+            },
+            "elasticsearchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.002"
+                    },
+                    "limits": {
+                        "memory": "0.016"
+                    }
+                }
+            }
+        }
+    },
+    "2048": {
+        "services": {
+            "mstrMobile": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.012"
+                    },
+                    "limits": {
+                        "memory": "0.022"
+                    }
+                }
+            },
+            "biweb": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.012"
+                    },
+                    "limits": {
+                        "memory": "0.023"
+                    }
+                }
+            },
+            "pythonHub": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.0005",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.001",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "pythonProxy": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.0005",
+                        "cpu": "200m"
+                    },
+                    "limits": {
+                        "memory": "0.001",
+                        "cpu": "1000m"
+                    }
+                }
+            },
+            "collabServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "insightService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "iserver": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.831"
+                    },
+                    "limits": {
+                        "memory": "0.831"
+                    }
+                }
+            },
+            "kafka": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "library": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.012"
+                    },
+                    "limits": {
+                        "memory": "0.023"
+                    }
+                }
+            },
+            "modelingServer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.047"
+                    },
+                    "limits": {
+                        "memory": "0.047"
+                    }
+                }
+            },
+            "newExportEngine": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.094"
+                    }
+                }
+            },
+            "paconsumer": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.00125"
+                    }
+                }
+            },
+            "redis": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "repository": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.024"
+                    }
+                }
+            },
+            "zookeeper": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "cloudConnector": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "communityConnectors": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    }
+                }
+            },
+            "clusterStateService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.002"
+                    }
+                }
+            },
+            "searchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.004"
+                    }
+                }
+            },
+            "elasticsearchService": {
+                "resources": {
+                    "requests": {
+                        "memory": "0.001"
+                    },
+                    "limits": {
+                        "memory": "0.008"
+                    }
+                }
+            }
+        }
+    }
+}

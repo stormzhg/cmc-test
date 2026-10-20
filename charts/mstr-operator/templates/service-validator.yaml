@@ -1,0 +1,25 @@
+{{- if .Values.validator.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: mstr-validator-service
+spec:
+  selector:
+    app: mstr-validator
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: ClusterIP
+{{ if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: mstr-validator-service
+spec:
+  localRequestTimeoutMs: {{ .Values.consul.localRequestTimeoutMs | default 4000000 }}
+  protocol: http
+  mutualTLSMode: {{ .Values.consul.mutualTLSMode | default "permissive" }}
+{{- end }}
+{{- end }}

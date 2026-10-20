@@ -1,0 +1,12 @@
+{{- if and .Values.customizations (eq (.Values.customizations.enableWebhookNetworkPolicy | toString) "true") }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mstr-operator-webhook-allow
+spec:
+  podSelector: {} # Targets ALL pods in the namespace
+  ingress:
+  - {} # Allows ALL sources
+  policyTypes:
+  - Ingress
+{{- end }}

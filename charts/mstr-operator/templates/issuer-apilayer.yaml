@@ -1,0 +1,10 @@
+{{- if (and (not .Values.apilayer.tlsCert.useCustom) (not .Values.global.certificate.useCustomIssuer)) }}
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: mstr-api-layer-issuer
+  labels:
+    app.kubernetes.io/name: api-layer
+spec:
+  selfSigned: {}
+{{- end }}

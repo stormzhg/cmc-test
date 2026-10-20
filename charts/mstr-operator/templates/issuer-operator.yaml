@@ -1,0 +1,10 @@
+{{- if not .Values.global.certificate.useCustomIssuer }}
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: mstr-operator-issuer
+  labels:
+    app.kubernetes.io/name: mstr-operator
+spec:
+  selfSigned: {}
+{{- end }}

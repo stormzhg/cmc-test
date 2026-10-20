@@ -1,0 +1,20 @@
+{{- if and .Values.validator.enabled (or (.Capabilities.APIVersions.Has "networking.istio.io/v1") (.Capabilities.APIVersions.Has "networking.istio.io/v1beta1") (.Capabilities.APIVersions.Has "networking.istio.io/v1alpha3")) }}
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1/DestinationRule" }}
+apiVersion: networking.istio.io/v1
+{{- else if .Capabilities.APIVersions.Has "networking.istio.io/v1beta1/DestinationRule" }}
+apiVersion: networking.istio.io/v1beta1
+{{- else }}
+apiVersion: networking.istio.io/v1alpha3
+{{- end }}
+kind: DestinationRule
+metadata:
+  name: mstr-validator-destination
+spec:
+  exportTo:
+    - {{ .Release.Namespace }}
+  host: mstr-validator-service
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: "x-request-id"
+{{- end }}

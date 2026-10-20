@@ -1,0 +1,184 @@
+apilayer:
+  connection:
+    execTimeout: '3600000'
+  container:
+    ports:
+      http: 8080
+      https: 8443
+  enabled: true
+  image:
+    imagePullPolicy: null
+    registry: null
+    tag: null
+  jwt:
+    expirationMs: '3600000'
+    refreshExpirationMs: '86400000'
+  networkDiagnose:
+    enabled: false
+    extraEnv: {}
+    hostNetworkEnabled: null
+    privilegedEnabled: null
+    serviceAccountName: mstr-network-diagnose-sa
+  service:
+    ports:
+      http: 8080
+      https: 443
+    type: ClusterIP
+  shutdown:
+    gracefulShutdownTimeoutMs: '100000'
+  tlsCert:
+    sslKeyStoreSecretName: mstr-api-layer-tls
+    useCustom: false
+azureServiceMesh:
+  enabled: false
+consul:
+  localRequestTimeoutMs: 4000000
+  mutualTLSMode: permissive
+  namespace: consul
+customizations:
+  dbPrecheckEnabled: true
+  enableWebhookNetworkPolicy: false
+  nodeLocalStorageDisabled: false
+global:
+  certificate:
+    duration: 17520h
+    issuerKind: Issuer
+    issuerName: mstr-operator-issuer
+    useCustomIssuer: false
+  enableIPv6: false
+  enableStrictMTLS: false
+  hardenedSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
+  image:
+    imagePullPolicy: Always
+    registry: ''
+    tag: 26.10.181
+  imagePullSecrets: []
+  istio:
+    enabled: false
+  mstrUtilboxTag: cgr-m2610-.-11.6.1000.00046
+  nodeSelector: {}
+  openshift:
+    enabled: false
+  openshiftServiceMesh:
+    enabled: false
+  podSecurityContext:
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    runAsGroup: 1000
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups:
+    - 1000
+    - 999
+    - 1337
+  resources:
+    limits:
+      cpu: 500m
+      memory: 3Gi
+    requests:
+      cpu: 100m
+      memory: 1Gi
+  rootUserHardenedSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      add:
+      - CHOWN
+      drop:
+      - ALL
+    runAsUser: 0
+    seccompProfile:
+      type: RuntimeDefault
+  storageClassName: null
+  tolerations: []
+  version: '26.10'
+  volumeName: null
+  volumePermissions:
+    enabled: true
+  watchedNamespaces: null
+mstrCustomer:
+  profile: null
+nodeConfigure:
+  enabled: true
+  kernelCorePattern: /opt/mstr/cores/core.%p.%e.%t
+  kernelSem: 250 1024000 250 4096
+  kernelShmmni: '8192'
+  maxUserInstances: '1500'
+  memlock: '8192'
+  nodeSelector: {}
+  nofile: '1048576'
+  sigpending: '1000000'
+  vmMaxMapCount: '5242880'
+openshift:
+  nodeConfigure:
+    SCCName: null
+    autoCreateRole: true
+    autoCreateSCC: true
+    roleName: null
+  operator:
+    SCCName: null
+    autoCreateClusterRole: true
+    autoCreateSCC: true
+    clusterRoleName: null
+    useSELinuxOptionTypeSPCT: false
+openshiftServiceMesh3:
+  enabled: false
+operator:
+  image:
+    imagePullPolicy: null
+    registry: null
+    tag: null
+  port: 7443
+telemetry:
+  enabled: true
+  image:
+    imagePullPolicy: null
+    registry: null
+    tag: '26.10'
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1536Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  schedule: null
+  serverUrl: https://cmc-portal.microstrategy.com
+validator:
+  enabled: true
+  image:
+    registry: null
+    tag: 26.10.30
+  logs:
+    config:
+      compress: true
+      maxAge: 30
+      maxBackups: 5
+      maxSize: 100
+    level: info
+  replicas: 1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 3Gi
+    requests:
+      cpu: 100m
+      memory: 1Gi
+weblayer:
+  connection:
+    request:
+      timeout: '600000'
+  enabled: true
+  httpPort: 8088
+  image:
+    imagePullPolicy: null
+    registry: null
+    tag: null
+  port: 8443
+  serviceType: ClusterIP

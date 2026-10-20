@@ -1,0 +1,23 @@
+{{- if and (eq (include "common.isOpenshiftCluster" .) "true") (or (.Values.openshift.operator.autoCreateClusterRole) (not (empty .Values.openshift.operator.clusterRoleName))) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mstr-management-scc-use-rolebinding
+subjects:
+  - kind: ServiceAccount
+    name: mstr-api-layer-service
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: mstr-telemetry
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: mstr-web-layer-service
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
+    name: mstr-validator-service
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.openshift.operator.clusterRoleName | default "mstr-operator-scc-use-clusterrole" }}
+{{- end }}

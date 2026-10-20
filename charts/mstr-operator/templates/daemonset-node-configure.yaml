@@ -1,0 +1,56 @@
+{{- if .Values.nodeConfigure.enabled }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: mstr-node-configure
+spec:
+  selector:
+    matchLabels:
+      name: mstr-node-configure
+  template:
+    metadata:
+      labels:
+        name: mstr-node-configure
+    spec:
+      serviceAccountName: mstr-node-configure-sa
+      restartPolicy: Always
+      nodeSelector: {{- toYaml .Values.nodeConfigure.nodeSelector | nindent 8 }}
+      {{- if .Values.global.tolerations }}
+      tolerations: {{- toYaml .Values.global.tolerations | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: node-configure-container
+          image: {{ .Values.global.image.registry }}/mstr-utilbox:{{ .Values.global.mstrUtilboxTag }}
+          command: [ "/bin/sh", "-c", "/host-install-files/entrypoint.sh" ]
+          resources:
+            requests:
+              memory: 128Mi
+              {{- if .Values.customizations.cpuResourcesEnabled }}
+              cpu: 50m
+              {{- end }}
+            limits:
+              memory: 256Mi
+              {{- if .Values.customizations.cpuResourcesEnabled }}
+              cpu: 200m
+              {{- end }}
+          volumeMounts:
+            - name: install-script
+              mountPath: /host-install-files
+            - name: host-mount
+              mountPath: /host
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            privileged: true
+            runAsUser: 0
+      volumes:
+        - name: install-script
+          configMap:
+            name: mstr-node-configure-scripts
+            defaultMode: 0777
+        - name: host-mount
+          hostPath:
+            path: /tmp/install
+            type: ''
+      dnsPolicy: ClusterFirst
+      hostPID: true
+{{- end }}

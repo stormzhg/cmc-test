@@ -1,0 +1,9 @@
+{{- if .Values.autoScalingEnabled }}
+apiVersion: mstr.com/v1
+kind: RedisCluster
+metadata:
+  name: {{ include "common.names.fullname" . }}
+  namespace: {{ include "common.names.namespace" . | quote }}
+spec:
+  replicas: {{ .Values.cluster.nodes }}
+{{- end }}

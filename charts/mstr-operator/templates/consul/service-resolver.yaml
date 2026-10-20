@@ -1,0 +1,12 @@
+{{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceResolver
+metadata:
+  name: mstr-validator-service
+spec:
+  loadBalancer:
+    policy: ring_hash
+    hashPolicies:
+      - field: header
+        fieldValue: "x-request-id"
+{{- end }}

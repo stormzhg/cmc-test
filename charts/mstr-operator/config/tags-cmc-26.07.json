@@ -1,0 +1,254 @@
+{
+    "GAName": "26.07",
+    "BuildNumber": "11.6.0700.0250",
+    "DisplayName": "Strategy One - Jul 2026",
+    "Certified": true,
+    "GA": true,
+    "HelmChartVersion": "26.07",
+    "Services": [
+        {
+            "name": "architect-service",
+            "tag": "m2607-.-11.6.0700.00431"
+        },
+        {
+            "name": "biweb",
+            "tag": "m2607-.-11.6.0700.00308"
+        },
+        {
+            "name": "cluster-state-service",
+            "tag": "m2607-.-11.6.0700.00037"
+        },
+        {
+            "name": "cloud-connector-server",
+            "tag": "m2607-.-11.6.0700.00052"
+        },
+        {
+            "name": "collabservice",
+            "tag": "m2607-.-11.6.0700.00121"
+        },
+        {
+            "name": "community-connectors",
+            "tag": "m2607-.-11.6.0700.00725"
+        },
+        {
+            "name": "configurable-http-proxy",
+            "tag": "m2607-.-11.6.0700.00025"
+        },
+        {
+            "name": "dgserver",
+            "tag": "m2607-.-11.6.0700.00027"
+        },
+        {
+            "name": "elasticsearch-service",
+            "tag": "m2607-.-11.6.0700.00046-2026082322-2026083022"
+        },
+        {
+            "name": "gateway-drivers-mcp",
+            "tag": "m2607-.-11.6.0700.00048"
+        },
+        {
+            "name": "image-awaiter",
+            "tag": "m2607-.-11.6.0700.00082"
+        },
+        {
+            "name": "insight-service",
+            "tag": "m2607-.-11.6.0700.00062"
+        },
+        {
+            "name": "integrity-service",
+            "tag": "m2607-.-11.6.0700.00079"
+        },
+        {
+            "name": "iserver",
+            "tag": "m2607-.-11.6.0700.00414"
+        },
+        {
+            "name": "iserver-post-upgrade",
+            "tag": "m2607-.-11.6.0700.00414"
+        },
+        {
+            "name": "kafka",
+            "tag": "m2607-.-11.6.0700.00034"
+        },
+        {
+            "name": "mstrbak",
+            "tag": "m2607-.-11.6.0700.00929"
+        },
+        {
+            "name": "mstrbak-service",
+            "tag": "m2607-.-11.6.0700.00929"
+        },
+        {
+            "name": "nee",
+            "tag": "m2607-.-11.6.0700.00558"
+        },
+        {
+            "name": "platform-analytics-consumer",
+            "tag": "m2607-.-11.6.0700.00079"
+        },
+        {
+            "name": "pl-microstrategy-diagnostics",
+            "tag": "m2607-.-11.6.0700.00037"
+        },
+        {
+            "name": "podmanager",
+            "tag": "m2607-.-11.6.0700.00103"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2607-.-11.6.0700.00047"
+        },
+        {
+            "name": "python-executor",
+            "tag": "m2607-.-11.6.0700.00103"
+        },
+        {
+            "name": "redis",
+            "tag": "m2607-.-11.6.0700.00040"
+        },
+        {
+            "name": "search-service",
+            "tag": "m2607-.-11.6.0700.00040"
+        },
+        {
+            "name": "universal-semantic",
+            "tag": "m2607-.-11.6.0700.00449"
+        },
+        {
+            "name": "web-dossier",
+            "tag": "m2607-.-11.6.0700.01628"
+        },
+        {
+            "name": "environment-agent",
+            "tag": "m2607-.-11.6.0700.00042"
+        },
+        {
+            "name": "cmc-assistant",
+            "tag": "26.07.5"
+        },
+        {
+            "name": "fluent-bit",
+            "tag": "5.0.8"
+        },
+        {
+            "name": "mstr-md",
+            "tag": "26.07"
+        },
+        {
+            "name": "mstr-operator",
+            "tag": "26.07.320"
+        },
+        {
+            "name": "mstr-orchestrator/api-layer",
+            "tag": "26.07.320"
+        },
+        {
+            "name": "mstr-orchestrator/web-layer",
+            "tag": "26.07.320"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "m2021-.-11.6.0700.00027"
+        },
+        {
+            "name": "pause",
+            "tag": "1.36.2"
+        },
+        {
+            "name": "mstr-telemetry-client",
+            "tag": "26.07"
+        },
+        {
+            "name": "mstr-cleanup",
+            "tag": "26.07.13"
+        },
+        {
+            "name": "mstr-validator",
+            "tag": "26.07.22"
+        },
+        {
+            "name": "mstr-troubleshoot",
+            "tag": "26.07.112"
+        },
+        {
+            "name": "kedacore/keda-admission-webhooks",
+            "tag": "2.20.1"
+        },
+        {
+            "name": "kedacore/keda",
+            "tag": "2.20.1"
+        },
+        {
+            "name": "kedacore/keda-metrics-apiserver",
+            "tag": "2.20.1"
+        },
+        {
+            "name": "prometheus-operator/prometheus-config-reloader",
+            "tag": "0.92.0"
+        },
+        {
+            "name": "prometheus-operator/prometheus-operator",
+            "tag": "0.92.0"
+        },
+        {
+            "name": "prometheus/prometheus",
+            "tag": "3.12.0"
+        },
+        {
+            "name": "prometheus/node-exporter",
+            "tag": "1.11.1"
+        },
+        {
+            "name": "kube-state-metrics",
+            "tag": "2.19.1"
+        },
+        {
+            "name": "ingress-nginx/kube-webhook-certgen",
+            "tag": "v1.15.8"
+        },
+        {
+            "name": "rclone",
+            "tag": "1.74.3"
+        },
+        {
+            "name": "redis-cluster",
+            "tag": "26.07.12"
+        },
+        {
+            "name": "redis-exporter",
+            "tag": "26.07.12"
+        },
+        {
+            "name": "cnpg-operator",
+            "tag": "1.29.1"
+        },
+        {
+            "name": "cnpg-postgres",
+            "tag": "16.14"
+        },
+        {
+            "name": "cert-manager-controller",
+            "tag": "1.20.3"
+        },
+        {
+            "name": "cert-manager-webhook",
+            "tag": "1.20.3"
+        },
+        {
+            "name": "cert-manager-cainjector",
+            "tag": "1.20.3"
+        },
+        {
+            "name": "pilot",
+            "tag": "1.29.5"
+        },
+        {
+            "name": "proxyv2",
+            "tag": "1.29.5"
+        },
+        {
+            "name": "mstr-mobile",
+            "tag": "m2607-.-11.6.0700.00308"
+        }
+    ]
+}

@@ -1,0 +1,504 @@
+---
+clusterName: "elasticsearch"
+nodeGroup: "master"
+
+# The service that non master groups will try to connect to when joining the cluster
+# This should be set to clusterName + "-" + nodeGroup for your master group
+masterService: ""
+
+# Elasticsearch roles that will be applied to this nodeGroup
+# These will be set as environment variables. E.g. node.roles=master
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+roles:
+  - master
+  - data
+  - data_content
+  - data_hot
+  - data_warm
+  - data_cold
+  - ingest
+  - ml
+  - remote_cluster_client
+  - transform
+
+machineLearning:
+  enabled: false
+
+replicas:
+  min: 3
+  max: 3
+minimumMasterNodes: 1
+
+esMajorVersion: 9
+
+# Allows you to add any config files in /usr/share/elasticsearch/config/
+# such as elasticsearch.yml and log4j2.properties
+esConfig: {}
+#  elasticsearch.yml: |
+#    key:
+#      nestedkey: value
+#  log4j2.properties: |
+#    key = value
+
+createCert: false
+
+security:
+  enabled: false
+  transport:
+    enabled: false
+  https:
+    enabled: false
+
+protocol: http
+httpPort: 9200
+transportPort: 9300
+
+esJvmOptions: {}
+#  processors.options: |
+#    -XX:ActiveProcessorCount=3
+
+# Extra environment variables to append to this nodeGroup
+# This will be appended to the current 'env:' key. You can use any of the kubernetes env
+# syntax here
+extraEnvs: []
+#  - name: MY_ENVIRONMENT_VAR
+#    value: the_value_goes_here
+
+# Allows you to load environment variables from kubernetes secret or config map
+envFrom: []
+# - secretRef:
+#     name: env-secret
+# - configMapRef:
+#     name: config-map
+
+
+# Disable it to use your own elastic-credential Secret.
+secret:
+  enabled: true
+  password: "elastic" # generated randomly if not defined
+  transport:
+    # ONLY PKCS12 is supported for now
+    type: PKCS12
+    keystore: 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
+    keystorePassword: mstr
+    keystoreKeyPassword: mstr
+    truststore: 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
+    truststorePassword: mstr
+
+  html:
+    keystore:
+    truststore: 
+
+# A list of secrets and their paths to mount inside the pod
+# This is useful for mounting certificates for security and for mounting
+# the X-Pack license
+secretMounts: []
+#  - name: secret-cert
+#    secretNameSuffix: secret
+#    items:
+#    - key: trans-keystore-cert
+#      path: /usr/share/elasticsearch/config/certs/trans-keystore-cert.p12
+#      defaultMode: 0755
+#    - key: trans-truststore-cert
+#      path: /usr/share/elasticsearch/config/certs/trans-truststore-cert.p12
+#      defaultMode: 0755
+
+hostAliases: []
+#- ip: "127.0.0.1"
+#  hostnames:
+#  - "foo.local"
+#  - "bar.local"
+
+# image for Elasticsearch Service image details
+image:
+  registry: jfrog.internal.microstrategy.com/mstr-docker-ci-virtual
+  repository: elasticsearch-service
+  tag: m2021-.-latest
+  pullPolicy: IfNotPresent
+
+utilbox:
+  image:
+    repository: mstr-utilbox
+    tag: m2021-.-latest
+    pullPolicy: IfNotPresent
+
+podAnnotations: {}
+# iam.amazonaws.com/role: es-cluster
+
+# additionals labels
+labels: {}
+
+esJavaOpts: "" # example: "-Xmx1g -Xms1g"
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: "4Gi"
+  limits:
+    cpu: "2000m"
+    memory: "8Gi"
+
+initResources: {}
+# limits:
+#   cpu: "25m"
+#   # memory: "128Mi"
+# requests:
+#   cpu: "25m"
+#   memory: "128Mi"
+
+## Init container to adjust the PVC ownership when the storage backend does not honor fsGroup.
+## This resolves "permission denied" errors on the Elasticsearch data directory.
+## @param volumePermissions.enabled Enable init container that changes the owner and group of the persistent volume mountpoint to runAsUser:fsGroup
+## @param volumePermissions.resources Set container requests and limits for different resources like CPU or memory
+## @param volumePermissions.containerSecurityContext.enabled Enable init container's Security Context
+## @param volumePermissions.containerSecurityContext.runAsUser User ID for the init container (must be 0/root to run chown)
+## @param volumePermissions.containerSecurityContext.runAsGroup Group ID for the init container
+## @param volumePermissions.containerSecurityContext.runAsNonRoot Set init container's Security Context runAsNonRoot
+## @param volumePermissions.containerSecurityContext.privileged Set init container's Security Context privileged
+## @param volumePermissions.containerSecurityContext.allowPrivilegeEscalation Set init container's Security Context allowPrivilegeEscalation
+## @param volumePermissions.containerSecurityContext.capabilities.drop List of capabilities to be dropped
+## @param volumePermissions.containerSecurityContext.capabilities.add List of capabilities to be added
+## @param volumePermissions.containerSecurityContext.seccompProfile.type Set init container's Security Context seccomp profile
+##
+volumePermissions:
+  enabled: true
+  resources:
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 0
+    runAsGroup: 0
+    runAsNonRoot: false
+    privileged: false
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+      add: ["CHOWN"]
+    seccompProfile:
+      type: "RuntimeDefault"
+
+# Bind and publish the primary Kubernetes pod IP. The StatefulSet defines POD_IP
+# before network.host, allowing Kubernetes to expand this for IPv4 or IPv6 pods.
+networkHost: "$(POD_IP)"
+
+volumeClaimTemplate:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 300Gi
+
+rbac:
+  create: false
+  serviceAccountAnnotations: {}
+  serviceAccountName: ""
+  automountToken: true
+
+podSecurityPolicy:
+  create: false
+  name: ""
+  spec:
+    privileged: true
+    fsGroup:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    volumes:
+      - secret
+      - configMap
+      - persistentVolumeClaim
+      - emptyDir
+
+persistence:
+  enabled: true
+  labels:
+    # Add default labels for the volumeClaimTemplate of the StatefulSet
+    enabled: false
+  annotations: {}
+
+# Node-local storage configuration for environments where NFS PV has performance issues
+# When enabled, Elasticsearch data is stored on node-local disk (local PV) for better I/O performance
+# Data is synchronized with NFS PV on pod startup (restore) and shutdown (backup)
+nodeLocalStorage:
+  enabled: false
+  # Size of the node-local PersistentVolume for each pod
+  storageSize: "100Gi"
+  # Enable backup to NFS PV on pod shutdown and restore from NFS PV on pod startup
+  # When false, node-local storage is used without data synchronization to NFS
+  backupRestoreEnabled: false
+  # Path inside the container where NFS PV will be mounted for backup/restore
+  backupPath: "/backup-data"
+  # Storage class name 
+  storageClassName: local-path
+
+extraVolumes: []
+# - name: extras
+#   emptyDir: {}
+
+extraVolumeMounts: []
+# - name: extras
+#   mountPath: /usr/share/extras
+#   readOnly: true
+
+extraContainers: []
+# - name: do-something
+#   image: busybox
+#   command: ['do', 'something']
+
+extraInitContainers: []
+# - name: do-something
+#   image: busybox
+#   command: ['do', 'something']
+
+# This is the PriorityClass settings as defined in
+# https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
+priorityClassName: ""
+
+# By default this will make sure two pods don't end up on the same node
+# Changing this to a region would allow you to spread pods across regions
+antiAffinityTopologyKey: "kubernetes.io/hostname"
+
+# Hard means that by default pods will only be scheduled if there are enough nodes for them
+# and that they will never end up on the same node. Setting this to soft will do this "best effort"
+# We will use "soft" affinity setting since we may not have enough nodes to deploy 3 replicas
+# on individual 3 nodes.
+antiAffinity: "soft"
+
+# This is the node affinity settings as defined in
+# https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature
+nodeAffinity: {}
+
+# The default is to deploy all pods serially. By setting this to parallel all pods are started at
+# the same time when bootstrapping the cluster
+podManagementPolicy: "Parallel"
+
+# The environment variables injected by service links are not used, but can lead to slow Elasticsearch boot times when
+# there are many services in the current namespace.
+# If you experience slow pod startups you probably want to set this to `false`.
+enableServiceLinks: true
+
+service:
+  enabled: true
+  labels: {}
+  labelsHeadless: {}
+  type: ClusterIP
+  # Consider that all endpoints are considered "ready" even if the Pods themselves are not
+  # https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec
+  publishNotReadyAddresses: false
+  nodePort: ""
+  annotations: {}
+  httpPortName: http
+  transportPortName: transport
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  externalTrafficPolicy: ""
+
+updateStrategy: RollingUpdate
+
+# This is the max unavailable setting for the pod disruption budget
+# The default value of 1 will make sure that kubernetes won't allow more than 1
+# of your pods to be unavailable during maintenance
+maxUnavailable: 1
+
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
+  runAsGroup: 1000
+  # 1000 - mstr user
+  # 999 - calico dikastes user
+  # 1337 - istio user
+  supplementalGroups:
+    - 1000
+    - 999
+    - 1337
+  runAsNonRoot: true
+
+securityContext:
+  allowPrivilegeEscalation: false
+  runAsUser: 1000
+  runAsGroup: 1000
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+  capabilities:
+    drop:
+      - ALL
+
+# How long to wait for elasticsearch to stop gracefully
+terminationGracePeriod: 180
+
+# Enlarge the vm.max_map_count setting to 262144, otherwise, ES could not be startup
+sysctlInitContainer:
+  enabled: false
+
+sysctlVmMaxMapCount: 262144
+
+readinessProbe:
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 3
+  timeoutSeconds: 5
+
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#request-params wait_for_status
+clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
+
+## Use an alternate scheduler.
+## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
+##
+schedulerName: ""
+
+imagePullSecrets: []
+nodeSelector: {}
+tolerations: []
+
+# Enabling this will publicly expose your Elasticsearch instance.
+# Only enable this if you have security enabled on your cluster
+ingress:
+  enabled: false
+  annotations: {}
+  # kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
+  className: "nginx"
+  pathtype: Prefix
+  hosts:
+    - host: elasticsearch.example.com
+      paths:
+        - path: "/"
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+nameOverride: ""
+fullnameOverride: ""
+healthNameOverride: ""
+
+lifecycle: {}
+# preStop:
+#   exec:
+#     command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+# postStart:
+#   exec:
+#     command:
+#       - bash
+#       - -c
+#       - |
+#         #!/bin/bash
+#         # Add a template to adjust number of shards/replicas
+#         TEMPLATE_NAME=my_template
+#         INDEX_PATTERN="logstash-*"
+#         SHARD_COUNT=8
+#         REPLICA_COUNT=1
+#         ES_URL=http://localhost:9200
+#         while [[ "$(curl -s -o /dev/null -w '%{http_code}\n' $ES_URL)" != "200" ]]; do sleep 1; done
+#         curl -XPUT "$ES_URL/_template/$TEMPLATE_NAME" -H 'Content-Type: application/json' -d'{"index_patterns":['\""$INDEX_PATTERN"\"'],"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
+
+keystore: []
+
+networkPolicy:
+  ## Enable creation of NetworkPolicy resources. Only Ingress traffic is filtered for now.
+  ## In order for a Pod to access Elasticsearch, it needs to have the following label:
+  ## {{ template "uname" . }}-client: "true"
+  ## Example for default configuration to access HTTP port:
+  ## elasticsearch-master-http-client: "true"
+  ## Example for default configuration to access transport port:
+  ## elasticsearch-master-transport-client: "true"
+
+  http:
+    enabled: true
+    explicitNamespacesSelector: {}
+    additionalRules:
+      - podSelector:
+          matchLabels:
+            service: "search-service"
+        namespaceSelector: {}
+      - podSelector:
+          matchLabels:
+            app: "mstr-cleanup"
+        namespaceSelector: {}
+      - podSelector:
+          matchLabels:
+            app: "mstr-validator"
+        namespaceSelector: {}
+    ## if explicitNamespacesSelector is not set or set to {}, only client Pods being in the networkPolicy's namespace
+    ## and matching all criteria can reach the DB.
+    ## But sometimes, we want the Pods to be accessible to clients from other namespaces, in this case, we can use this
+    ## parameter to select these namespaces
+    ##
+    # explicitNamespacesSelector:
+    #   # Accept from namespaces with all those different rules (only from whitelisted Pods)
+    #   matchLabels:
+    #     role: frontend
+    #   matchExpressions:
+    #     - {key: role, operator: In, values: [frontend]}
+
+    ## Additional NetworkPolicy Ingress "from" rules to set. Note that all rules are OR-ed.
+    ##
+    # additionalRules:
+    #   - podSelector:
+    #       matchLabels:
+    #         role: frontend
+    #   - podSelector:
+    #       matchExpressions:
+    #         - key: role
+    #           operator: In
+    #           values:
+    #             - frontend
+
+  transport:
+    ## Note that all Elasticsearch Pods can talk to themselves using transport port even if enabled.
+    enabled: true
+    explicitNamespacesSelector: {}
+    additionalRules: []
+    # explicitNamespacesSelector:
+    #   matchLabels:
+    #     role: frontend
+    #   matchExpressions:
+    #     - {key: role, operator: In, values: [frontend]}
+    # additionalRules:
+    #   - podSelector:
+    #       matchLabels:
+    #         role: frontend
+    #   - podSelector:
+    #       matchExpressions:
+    #         - key: role
+    #           operator: In
+    #           values:
+    #             - frontend
+
+mount:
+  pvcName: "localstoragevolume"
+
+tests:
+  enabled: true
+
+istioEnabled: true
+
+# Set to true ONLY for `helm upgrade` of an already-bootstrapped cluster: it omits
+# cluster.initial_master_nodes so the existing cluster state drives master election.
+# Must be false for any fresh install — otherwise the new cluster can never bootstrap.
+upgrading: false
+
+consul:
+  mutualTLSMode: "strict"
+  localRequestTimeoutMs: 4000000
+
+virtualService:
+  enabled: false
+  gateway: istio-system/environment-gateway
+  hosts:
+    - "elasticsearch.example.com"
+
+## @param openshiftSccClusterRoleName Existing OpenShift ClusterRole that grants use of an SCC allowing the volumePermissions init container to run as root and add CHOWN.
+openshiftSccClusterRoleName: "mstr-operator-scc-use-clusterrole"
+
+useSeLinuxOptionTypeSpcT: false

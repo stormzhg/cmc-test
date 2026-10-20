@@ -1,0 +1,131 @@
+{{- if .Values.weblayer.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mstr-web-layer-deployment
+  labels:
+    app.kubernetes.io/name: web-layer
+    app: web-layer
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web-layer
+      app: web-layer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: web-layer
+        app: web-layer
+        {{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+        sidecar.istio.io/inject: "true"
+        maistra.io/expose-route: "true"
+        {{- end }}
+      {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+      annotations:
+        consul.hashicorp.com/connect-inject: 'true'
+        consul.hashicorp.com/transparent-proxy: 'true'
+        consul.hashicorp.com/transparent-proxy-overwrite-probes: 'false'
+      {{- end }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - web-layer
+                topologyKey: kubernetes.io/hostname
+      serviceAccountName: mstr-web-layer-service
+      restartPolicy: Always
+      securityContext: {{- .Values.global.podSecurityContext | toYaml | nindent 8 }}
+      {{- if .Values.global.nodeSelector }}
+      nodeSelector: {{- toYaml .Values.global.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.global.tolerations }}
+      tolerations: {{- toYaml .Values.global.tolerations | nindent 8 }}
+      {{- end }}
+      containers:
+        - env:
+            {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+            - name: SERVICE_MESH_TYPE
+              value: "consul"
+            {{- else if or (.Values.global.istio.enabled) (.Capabilities.APIVersions.Has "networking.istio.io/v1") (.Capabilities.APIVersions.Has "networking.istio.io/v1beta1") }}
+            - name: SERVICE_MESH_TYPE
+              value: "istio"
+            {{- end }}
+            - name: RELEASE_VERSION
+              value: {{ .Values.global.version | quote }}
+            - name: SERVER_SSL_KEYSTORE_CERTIFICATE
+              value: /etc/certs/tls.crt
+            - name: SERVER_SSL_KEYSTORE_PRIVATE_KEY
+              value: /etc/certs/tls.key
+            - name: API_LAYER_HOST
+              value: mstr-api-layer-service
+            - name: API_LAYER_PORT
+              value: '8080'
+            - name: API_LAYER_CONNECTION_TIMEOUT
+              value: {{ .Values.weblayer.connection.request.timeout | quote }}
+            - name: WEB_LAYER_AUDIT_LOG_ENABLED
+              value: "false"
+            {{- if .Values.global.enableIPv6 }}
+            - name: ENABLE_IPV6
+              value: "true"
+            {{- end }}
+          image: {{ .Values.weblayer.image.registry | default .Values.global.image.registry }}/{{ .Values.weblayer.image.repository | default "mstr-orchestrator/web-layer" }}:{{ .Values.weblayer.image.tag | default .Values.global.image.tag }}
+          imagePullPolicy: {{ .Values.weblayer.image.imagePullPolicy | default .Values.global.image.imagePullPolicy }}
+          resources: {{ toYaml .Values.global.resources | nindent 12 }}
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/liveness
+              port: {{ .Values.weblayer.port }}
+              scheme: HTTPS
+            initialDelaySeconds: 40
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: web-layer
+          ports:
+            - containerPort: {{ .Values.weblayer.port }}
+              name: https
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /actuator/health/readiness
+              port: {{ .Values.weblayer.port }}
+              scheme: HTTPS
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          volumeMounts:
+            - mountPath: /etc/certs
+              name: cert
+              readOnly: true
+            - mountPath: /tmp
+              name: tmp-folder
+            - mountPath: /etc/secrets/mstr-web-layer-secret
+              name: mstr-web-layer-secret
+              readOnly: true
+          securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+      volumes:
+        - name: tmp-folder
+          emptyDir: { }
+        - name: cert
+          secret:
+            secretName: {{ .Values.apilayer.tlsCert.sslKeyStoreSecretName }}
+        - name: mstr-web-layer-secret
+          secret:
+            secretName: mstr-web-layer-secret
+{{- end }}

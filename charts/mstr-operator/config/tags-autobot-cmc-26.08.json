@@ -1,0 +1,34 @@
+{
+    "GAName": "26.08",
+    "BuildNumber": "11.6.0800.0230",
+    "DisplayName": "Strategy One - Aug 2026",
+    "Certified": true,
+    "GA": true,
+    "HelmChartVersion": "26.08",
+    "Services": [
+        {
+            "name": "ai-engine-chat-service",
+            "tag": "m2608-.-11.6.0800.00483"
+        },
+        {
+            "name": "ai-engine-ingestion-service",
+            "tag": "m2608-.-11.6.0800.00092"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2608-.-11.6.0800.00044"
+        },
+        {
+            "name": "redis-stack-server",
+            "tag": "m2608-.-11.6.0800.00034"
+        },
+        {
+            "name": "clickhouse",
+            "tag": "m2608-.-11.6.0800.00041"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "m2021-.-11.6.0800.00015"
+        }
+    ]
+}

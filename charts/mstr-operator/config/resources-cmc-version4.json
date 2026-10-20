@@ -1,0 +1,1754 @@
+{
+  "64": {
+    "services": {
+      "universalSemantic": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "600m"
+          }
+        }
+      },
+      "mstrMobile": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.063",
+            "cpu": "4800m"
+          }
+        }
+      },
+      "biweb": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "4800m"
+          }
+        }
+      },
+      "pythonHub": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "100m"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "300m"
+          }
+        }
+      },
+      "pythonProxy": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "100m"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "300m"
+          }
+        }
+      },
+      "collabServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "600m"
+          }
+        }
+      },
+      "insightService": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "600m"
+          }
+        }
+      },
+      "iserver": {
+        "resources": {
+          "requests": {
+            "memory": "0.281",
+            "cpu": "0.281"
+          },
+          "limits": {
+            "memory": "0.281",
+            "cpu": "4800m"
+          }
+        }
+      },
+      "mstrbak": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "refresh": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "kafka": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "150m"
+          }
+        }
+      },
+      "library": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "4800m"
+          }
+        }
+      },
+      "modelingServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "2400m"
+          }
+        }
+      },
+      "newExportEngine": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "1200m"
+          }
+        }
+      },
+      "paconsumer": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "800m"
+          }
+        }
+      },
+      "redis": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "150m"
+          }
+        }
+      },
+      "repository": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "2400m"
+          }
+        }
+      },
+      "zookeeper": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "0.02"
+          }
+        }
+      },
+      "cloudConnector": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "600m"
+          }
+        }
+      },
+      "communityConnectors": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "600m"
+          }
+        }
+      },
+      "clusterStateService": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "600m"
+          }
+        }
+      },
+      "searchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "1200m"
+          }
+        }
+      },
+      "elasticsearchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.063",
+            "cpu": "1200m"
+          }
+        }
+      },
+      "integrityService": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "1200m"
+          }
+        }
+      }
+    }
+  },
+  "128": {
+    "services": {
+      "universalSemantic": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.25",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "mstrMobile": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.055",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "biweb": {
+        "resources": {
+          "requests": {
+            "memory": "0.040",
+            "cpu": "0.040"
+          },
+          "limits": {
+            "memory": "0.063",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "pythonHub": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "pythonProxy": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "collabServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "insightService": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "iserver": {
+        "resources": {
+          "requests": {
+            "memory": "0.547",
+            "cpu": "0.547"
+          },
+          "limits": {
+            "memory": "0.547",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "mstrbak": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "refresh": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "kafka": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "500m"
+          }
+        }
+      },
+      "library": {
+        "resources": {
+          "requests": {
+            "memory": "0.040",
+            "cpu": "0.040"
+          },
+          "limits": {
+            "memory": "0.063",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "modelingServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "newExportEngine": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "paconsumer": {
+        "resources": {
+          "requests": {
+            "memory": "0.012",
+            "cpu": "0.012"
+          },
+          "limits": {
+            "memory": "0.024",
+            "cpu": "800m"
+          }
+        }
+      },
+      "redis": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "500m"
+          }
+        }
+      },
+      "repository": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "zookeeper": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          }
+        }
+      },
+      "cloudConnector": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "communityConnectors": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "clusterStateService": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "searchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "elasticsearchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "integrityService": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "4000m"
+          }
+        }
+      }
+    }
+  },
+  "256": {
+    "services": {
+      "universalSemantic": {
+        "resources": {
+          "requests": {
+            "memory": "0.063",
+            "cpu": "0.063"
+          },
+          "limits": {
+            "memory": "0.25",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "mstrMobile": {
+        "resources": {
+          "requests": {
+            "memory": "0.024",
+            "cpu": "0.024"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "biweb": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.051",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "pythonHub": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "pythonProxy": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "collabServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "insightService": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "iserver": {
+        "resources": {
+          "requests": {
+            "memory": "0.625",
+            "cpu": "0.625"
+          },
+          "limits": {
+            "memory": "0.625",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "mstrbak": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "refresh": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "kafka": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "500m"
+          }
+        }
+      },
+      "library": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.051",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "modelingServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "newExportEngine": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "paconsumer": {
+        "resources": {
+          "requests": {
+            "memory": "0.01",
+            "cpu": "0.01"
+          },
+          "limits": {
+            "memory": "0.02",
+            "cpu": "800m"
+          }
+        }
+      },
+      "redis": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "500m"
+          }
+        }
+      },
+      "repository": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.024",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "zookeeper": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          }
+        }
+      },
+      "cloudConnector": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "communityConnectors": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "clusterStateService": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "searchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "elasticsearchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.008",
+            "cpu": "0.008"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "integrityService": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.032",
+            "cpu": "4000m"
+          }
+        }
+      }
+    }
+  },
+  "512": {
+    "services": {
+      "universalSemantic": {
+        "resources": {
+          "requests": {
+            "memory": "0.063",
+            "cpu": "0.063"
+          },
+          "limits": {
+            "memory": "0.25",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "mstrMobile": {
+        "resources": {
+          "requests": {
+            "memory": "0.020",
+            "cpu": "0.020"
+          },
+          "limits": {
+            "memory": "0.043",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "biweb": {
+        "resources": {
+          "requests": {
+            "memory": "0.024",
+            "cpu": "0.024"
+          },
+          "limits": {
+            "memory": "0.045",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "pythonHub": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "pythonProxy": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "collabServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "insightService": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "iserver": {
+        "resources": {
+          "requests": {
+            "memory": "0.704",
+            "cpu": "0.704"
+          },
+          "limits": {
+            "memory": "0.704",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "mstrbak": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "refresh": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "kafka": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "500m"
+          }
+        }
+      },
+      "library": {
+        "resources": {
+          "requests": {
+            "memory": "0.024",
+            "cpu": "0.024"
+          },
+          "limits": {
+            "memory": "0.045",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "modelingServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "newExportEngine": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "paconsumer": {
+        "resources": {
+          "requests": {
+            "memory": "0.005",
+            "cpu": "0.005"
+          },
+          "limits": {
+            "memory": "0.01",
+            "cpu": "800m"
+          }
+        }
+      },
+      "redis": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "500m"
+          }
+        }
+      },
+      "repository": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.024",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "zookeeper": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          }
+        }
+      },
+      "cloudConnector": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "communityConnectors": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "clusterStateService": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "searchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "elasticsearchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.004",
+            "cpu": "0.004"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "integrityService": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      }
+    }
+  },
+  "1024": {
+    "services": {
+      "universalSemantic": {
+        "resources": {
+          "requests": {
+            "memory": "0.032",
+            "cpu": "0.032"
+          },
+          "limits": {
+            "memory": "0.25",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "mstrMobile": {
+        "resources": {
+          "requests": {
+            "memory": "0.020",
+            "cpu": "0.020"
+          },
+          "limits": {
+            "memory": "0.043",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "biweb": {
+        "resources": {
+          "requests": {
+            "memory": "0.024",
+            "cpu": "0.024"
+          },
+          "limits": {
+            "memory": "0.045",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "pythonHub": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "pythonProxy": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "collabServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "insightService": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "iserver": {
+        "resources": {
+          "requests": {
+            "memory": "0.792",
+            "cpu": "0.792"
+          },
+          "limits": {
+            "memory": "0.792",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "mstrbak": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "refresh": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "kafka": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "500m"
+          }
+        }
+      },
+      "library": {
+        "resources": {
+          "requests": {
+            "memory": "0.024",
+            "cpu": "0.024"
+          },
+          "limits": {
+            "memory": "0.045",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "modelingServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "newExportEngine": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "paconsumer": {
+        "resources": {
+          "requests": {
+            "memory": "0.0025",
+            "cpu": "0.0025"
+          },
+          "limits": {
+            "memory": "0.005",
+            "cpu": "800m"
+          }
+        }
+      },
+      "redis": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "500m"
+          }
+        }
+      },
+      "repository": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.024",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "zookeeper": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          }
+        }
+      },
+      "cloudConnector": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "communityConnectors": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "clusterStateService": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "searchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "elasticsearchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          },
+          "limits": {
+            "memory": "0.016",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "integrityService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "4000m"
+          }
+        }
+      }
+    }
+  },
+  "2048": {
+    "services": {
+      "universalSemantic": {
+        "resources": {
+          "requests": {
+            "memory": "0.016",
+            "cpu": "0.016"
+          },
+          "limits": {
+            "memory": "0.25",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "mstrMobile": {
+        "resources": {
+          "requests": {
+            "memory": "0.012",
+            "cpu": "0.012"
+          },
+          "limits": {
+            "memory": "0.022",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "biweb": {
+        "resources": {
+          "requests": {
+            "memory": "0.012",
+            "cpu": "0.012"
+          },
+          "limits": {
+            "memory": "0.023",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "pythonHub": {
+        "resources": {
+          "requests": {
+            "memory": "0.0005",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.001",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "pythonProxy": {
+        "resources": {
+          "requests": {
+            "memory": "0.0005",
+            "cpu": "200m"
+          },
+          "limits": {
+            "memory": "0.001",
+            "cpu": "1000m"
+          }
+        }
+      },
+      "collabServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "insightService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "iserver": {
+        "resources": {
+          "requests": {
+            "memory": "0.831",
+            "cpu": "0.831"
+          },
+          "limits": {
+            "memory": "0.831",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "mstrbak": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "refresh": {
+        "resources": {
+          "requests": {
+            "memory": "0.125",
+            "cpu": "1000m"
+          },
+          "limits": {
+            "memory": "0.125",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "kafka": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "500m"
+          }
+        }
+      },
+      "library": {
+        "resources": {
+          "requests": {
+            "memory": "0.012",
+            "cpu": "0.012"
+          },
+          "limits": {
+            "memory": "0.023",
+            "cpu": "16000m"
+          }
+        }
+      },
+      "modelingServer": {
+        "resources": {
+          "requests": {
+            "memory": "0.047",
+            "cpu": "0.047"
+          },
+          "limits": {
+            "memory": "0.047",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "newExportEngine": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.094",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "paconsumer": {
+        "resources": {
+          "requests": {
+            "memory": "0.00125",
+            "cpu": "0.00125"
+          },
+          "limits": {
+            "memory": "0.0025",
+            "cpu": "800m"
+          }
+        }
+      },
+      "redis": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "500m"
+          }
+        }
+      },
+      "repository": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.024",
+            "cpu": "8000m"
+          }
+        }
+      },
+      "zookeeper": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "0.002"
+          }
+        }
+      },
+      "cloudConnector": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "communityConnectors": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "clusterStateService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.002",
+            "cpu": "2000m"
+          }
+        }
+      },
+      "searchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.004",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "elasticsearchService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "4000m"
+          }
+        }
+      },
+      "integrityService": {
+        "resources": {
+          "requests": {
+            "memory": "0.001",
+            "cpu": "0.001"
+          },
+          "limits": {
+            "memory": "0.008",
+            "cpu": "4000m"
+          }
+        }
+      }
+    }
+  }
+}

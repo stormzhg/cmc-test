@@ -1,0 +1,34 @@
+{
+    "GAName": "26.09",
+    "BuildNumber": "11.6.0900.0221",
+    "DisplayName": "Strategy One - Sep 2026",
+    "Certified": true,
+    "GA": true,
+    "HelmChartVersion": "26.09",
+    "Services": [
+        {
+            "name": "ai-engine-chat-service",
+            "tag": "cgr-m2609-.-11.6.0900.00571"
+        },
+        {
+            "name": "ai-engine-ingestion-service",
+            "tag": "cgr-m2609-.-11.6.0900.00097"
+        },
+        {
+            "name": "postgres",
+            "tag": "m2609-.-11.6.0900.00034"
+        },
+        {
+            "name": "redis-stack-server",
+            "tag": "m2609-.-11.6.0900.00025"
+        },
+        {
+            "name": "clickhouse",
+            "tag": "m2609-.-11.6.0900.00032"
+        },
+        {
+            "name": "mstr-utilbox",
+            "tag": "cgr-m2609-.-11.6.0900.00037"
+        }
+    ]
+}

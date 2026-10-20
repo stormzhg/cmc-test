@@ -1,0 +1,5 @@
+apiVersion: v2
+appVersion: "26.10"
+home: https://github.com/mstr-kiai/mstr-operator
+name: mstr-operator
+version: "26.10"

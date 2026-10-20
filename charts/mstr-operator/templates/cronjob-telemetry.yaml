@@ -1,0 +1,134 @@
+{{- if .Values.telemetry.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mstr-telemetry-cronjob
+spec:
+  {{- if .Values.telemetry.schedule }}
+  schedule: {{ .Values.telemetry.schedule | quote }}
+  {{- else }}
+  {{- $cronJob := (lookup "batch/v1" "CronJob" .Release.Namespace "mstr-telemetry-cronjob") | default dict }}
+  {{- $cronJobSpec := (get $cronJob "spec") | default dict }}
+  {{- $schedule := (get $cronJobSpec "schedule") | default (include "common.generateRandomCron" .) }}
+  schedule: {{ $schedule | quote }}
+  {{- end }}
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: mstr-telemetry-client
+            {{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+            sidecar.istio.io/inject: "true"
+            {{- end }}
+          {{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+          annotations:
+            proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+          {{- else if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+          annotations:
+            'consul.hashicorp.com/connect-inject': 'true'
+            'consul.hashicorp.com/transparent-proxy': 'true'
+          {{- end }}
+        spec:
+          securityContext: {{- .Values.global.podSecurityContext | toYaml | nindent 12 }}
+          {{- with .Values.global.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.global.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: mstr-telemetry
+          containers:
+            - name: telemetry-client
+              image: {{ .Values.telemetry.image.registry | default .Values.global.image.registry }}/mstr-telemetry-client:{{ .Values.telemetry.image.tag | default .Values.global.image.tag }}
+              imagePullPolicy: {{ .Values.operator.image.imagePullPolicy | default .Values.global.image.imagePullPolicy }}
+              resources:
+                requests:
+                  memory: {{ .Values.telemetry.resources.requests.memory | default "256Mi" | quote }}
+                  cpu: {{ .Values.telemetry.resources.requests.cpu | default "250m" | quote }}
+                limits:
+                  memory: {{ .Values.telemetry.resources.limits.memory | default "1536Mi" | quote }}
+                  cpu: {{ .Values.telemetry.resources.limits.cpu | default "500m" | quote }}
+              env:
+                - name: CLUSTER_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: name
+                      name: mstr-operator-config
+                - name: ORCHESTRATOR_NAMESPACE
+                  value: {{ .Release.Namespace }}
+                - name: HELM_RELEASE_NAME
+                  value: {{ .Release.Name }}
+                - name: ENVIRONMENT_ACTIVITIES_PATH
+                  value: /home/mstr/operator/logs
+                - name: MSTR_PROFILE_PATH
+                  value: /home/mstr/profile/mstr_customer.profile
+                - name: TELEMETRY_SERVER_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: server
+                      name: mstr-operator-config
+                # Reuse the same proxy ConfigMap api-layer reads (mstr-api-layer-proxy-config), so a
+                - name: _HTTP_PROXY
+                  valueFrom:
+                    configMapKeyRef:
+                      name: mstr-api-layer-proxy-config
+                      key: http-proxy
+                      optional: true
+                - name: _HTTPS_PROXY
+                  valueFrom:
+                    configMapKeyRef:
+                      name: mstr-api-layer-proxy-config
+                      key: https-proxy
+                      optional: true
+                - name: _NO_PROXY
+                  valueFrom:
+                    configMapKeyRef:
+                      name: mstr-api-layer-proxy-config
+                      key: no-proxy
+                      optional: true
+              volumeMounts:
+                - mountPath: /home/mstr/operator/logs
+                  subPathExpr: $(CLUSTER_NAME)/operator/logs
+                  name: log
+                - mountPath: /home/mstr/profile
+                  name: profile
+                  readOnly: true
+                - name: temp-logs
+                  mountPath: /tmp
+              securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 16 }}
+          restartPolicy: OnFailure
+          volumes:
+            - name: log
+              persistentVolumeClaim:
+                claimName: mstr-operator-persistent-storage
+            - name: profile
+              secret:
+                secretName: mstr-customer-profile
+            - name: temp-logs
+              emptyDir: {}
+{{- end }}
+{{- if and .Values.telemetry.enabled (.Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1") }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mstr-telemetry
+  labels:
+    app: mstr-telemetry-client
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app: mstr-telemetry-client
+  ports:
+    - name: virtual-port
+      port: 8080
+{{- end }}

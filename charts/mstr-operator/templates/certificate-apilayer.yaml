@@ -1,0 +1,40 @@
+{{- if not .Values.apilayer.tlsCert.useCustom }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mstr-api-layer-cert
+  labels:
+    app.kubernetes.io/name: api-layer
+spec:
+  commonName: mstr-api-layer-service.{{ .Release.Namespace }}.svc
+  dnsNames:
+  - mstr-api-layer-service.{{ .Release.Namespace }}.svc
+  {{- if not .Values.global.certificate.useCustomIssuer }}
+  isCA: false
+  encodeUsagesInRequest: false
+  subject:
+    organizations:
+      - mstr
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS8
+    size: 2048
+  issuerRef:
+    name: mstr-api-layer-issuer
+    kind: Issuer
+  {{- else }}
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  issuerRef:
+    name: {{ .Values.global.certificate.issuerName }}
+    kind: {{ .Values.global.certificate.issuerKind }}
+  {{- end }}
+  secretName: {{ .Values.apilayer.tlsCert.sslKeyStoreSecretName }}
+  renewBefore: 2880h #120d
+  duration: {{ .Values.global.certificate.duration }}
+{{- end }}

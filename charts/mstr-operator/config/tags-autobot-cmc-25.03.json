@@ -1,0 +1,34 @@
+{
+  "GAName": "25.03",
+  "BuildNumber": "11.5.0300.0239",
+  "DisplayName": "Strategy One - Mar 2025",
+  "Certified": true,
+  "GA": false,
+  "HelmChartVersion": "25.03",
+  "Services": [
+    {
+      "name": "ai-engine-chat-service",
+      "tag": "m2503-.-11.5.0300.02539"
+    },
+    {
+      "name": "ai-engine-ingestion-service",
+      "tag": "m2503-.-11.5.0300.00439"
+    },
+    {
+      "name": "postgres",
+      "tag": "m2503-.-11.5.0300.00020"
+    },
+    {
+      "name": "secops/clickhouse",
+      "tag": "latest"
+    },
+    {
+      "name": "redis/redis-stack-server",
+      "tag": "7.4.0-v3"
+    },
+    {
+      "name": "bitnami/os-shell",
+      "tag": "latest"
+    }
+  ]
+}

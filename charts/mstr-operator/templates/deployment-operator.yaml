@@ -1,0 +1,255 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mstr-operator-deployment
+  labels:
+    app.kubernetes.io/name: mstr-operator
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mstr-operator
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mstr-operator
+        {{- if .Values.global.enableStrictMTLS }}
+        sidecar.istio.io/inject: "false"
+        {{- else if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+        sidecar.istio.io/inject: "true"
+        {{- end }}
+      {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+      annotations:
+        consul.hashicorp.com/connect-inject: 'true'
+        consul.hashicorp.com/transparent-proxy: 'true'
+        consul.hashicorp.com/transparent-proxy-overwrite-probes: 'false'
+      {{- end }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - mstr-operator
+                topologyKey: kubernetes.io/hostname
+      terminationGracePeriodSeconds: 60
+      serviceAccountName: mstr-operator-webhook
+      restartPolicy: Always
+      securityContext: {{- .Values.global.podSecurityContext | toYaml | nindent 8 }}
+      {{- if .Values.global.nodeSelector }}
+      nodeSelector: {{- toYaml .Values.global.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.global.tolerations }}
+      tolerations: {{- toYaml .Values.global.tolerations | nindent 8 }}
+      {{- end }}
+      initContainers:
+      {{- if .Values.global.volumePermissions.enabled }}
+        {{- include "common.volumePermissions" . | nindent 6 }}
+      {{- end }}
+      - args:
+          - mkdir -p /tmp/operator/helm;
+            mkdir -p /tmp/operator/config;
+            mkdir -p /tmp/operator/logs;
+            cp -ru /helm/* /tmp/operator/helm/;
+            cp -ru --dereference /etc/config/* /tmp/operator/config/;
+            if [ -d /old/operator ] && [ "$(ls -A /old/operator)" ]; then
+              echo "Moving files from /old/operator to /tmp/operator...";
+              cp -r /old/operator/* /tmp/operator/ 2>/dev/null || true;
+              echo "move completed successfully. and removing old operator files...";
+              rm -rf /old/operator/* 2>/dev/null || true;
+            else
+              echo "No old operator files found, skipping move.";
+            fi;
+        command:
+          - /bin/sh
+          - -c
+        image: {{ .Values.operator.image.registry | default .Values.global.image.registry }}/mstr-operator:{{ .Values.operator.image.tag | default .Values.global.image.tag }}
+        imagePullPolicy: {{ .Values.operator.image.imagePullPolicy | default .Values.global.image.imagePullPolicy }}
+        name: file-initializer
+        securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+        {{- include "common.initContainerResources" . | nindent 8 }}
+        env:
+        - name: CLUSTER_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: name
+              name: mstr-operator-config
+        volumeMounts:
+          - mountPath: /etc/config
+            name: config
+          - mountPath: /tmp
+            name: operator-volume
+            subPathExpr: $(CLUSTER_NAME)
+          - mountPath: /old
+            name: operator-volume
+      containers:
+        - env:
+            {{- if .Capabilities.APIVersions.Has "consul.hashicorp.com/v1alpha1" }}
+            - name: SERVICE_MESH_TYPE
+              value: "consul"
+            - name: SERVICE_MESH_NAMESPACE
+              value: {{ .Values.consul.namespace | quote }}
+            {{- else if or (.Values.global.istio.enabled) (.Capabilities.APIVersions.Has "networking.istio.io/v1") (.Capabilities.APIVersions.Has "networking.istio.io/v1beta1") }}
+            - name: SERVICE_MESH_TYPE
+              value: "istio"
+            {{- end }}
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: name
+                  name: mstr-operator-config
+            - name: WATCHED_NAMESPACES
+              valueFrom:
+                configMapKeyRef:
+                  key: namespaces
+                  name: mstr-operator-config
+                  optional: true
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            {{- if .Values.telemetry.enabled }}
+            - name: LOGGING_PATH
+              value: /home/mstr/operator/logs/
+            {{- end }}
+            - name: OPERATOR_NAMESPACE
+              value: {{ .Release.Namespace }}
+            - name: OPERATOR_SERVICE_ACCOUNT
+              value: mstr-operator-webhook
+            - name: SERVER_SSL_KEY_STORE
+              value: /etc/certs/keystore.p12
+            - name: RELEASE_VERSION
+              value: {{ .Values.global.version | quote }}
+            - name: NODE_LOCAL_STORAGE_DISABLED
+              value: {{ .Values.customizations.nodeLocalStorageDisabled | default false | quote }}
+            {{- if eq (include "common.isOpenshiftServiceMesh" .) "true" }}
+            - name: OPENSHIFT_SERVICE_MESH
+              value: "true"
+            {{- end }}
+            {{- if eq (include "common.isOpenshiftCluster" .) "true" }}
+            - name: PLATFORM
+              value: openshift
+            - name: ENVIRONMENT_SCC_CLUSTER_ROLE
+              value: {{ .Values.openshift.operator.clusterRoleName | default "mstr-operator-scc-use-clusterrole" | quote }}
+            {{- if .Values.openshift.operator.useSELinuxOptionTypeSPCT }}
+            - name: USE_SELINUX_OPTION_TYPE_SPC_T
+              value: "true"
+            {{- end }}
+            {{- end }}
+            {{- if .Values.azureServiceMesh }}
+            {{- if .Values.azureServiceMesh.enabled }}
+            - name: ASM_ENABLED
+              value: "true"
+            {{- end}}
+            {{- end}}
+            {{- if .Values.openshiftServiceMesh3 }}
+            {{- if .Values.openshiftServiceMesh3.enabled }}
+            - name: OSSM3_ENABLED
+              value: "true"
+            {{- end}}
+            {{- end}}
+            {{- if .Values.global.enableIPv6 }}
+            - name: ENABLE_IPV6
+              value: "true"
+            # In IPv6-only pods there is no IPv4 route; make the JVM prefer AAAA so outbound
+            # connections (e.g. the RDS JDBC precheck) do not pick an unroutable IPv4 address.
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Djava.net.preferIPv6Addresses=true"
+            {{- end}}
+            - name: CPU_RESOURCES_ENABLED
+              value: {{ .Values.customizations.cpuResourcesEnabled | default false | quote }}
+            - name: DB_PRECHECK_ENABLED
+              value: {{ .Values.customizations.dbPrecheckEnabled | quote }}
+          image: {{ .Values.operator.image.registry | default .Values.global.image.registry }}/mstr-operator:{{ .Values.operator.image.tag | default .Values.global.image.tag }}
+          imagePullPolicy: {{ .Values.operator.image.imagePullPolicy | default .Values.global.image.imagePullPolicy }}
+          resources: {{ toYaml .Values.global.resources | nindent 12 }}
+          lifecycle:
+            preStop:
+              httpGet:
+                path: preStop
+                port: {{ .Values.operator.port }}
+                scheme: HTTPS
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/liveness
+              port: {{ .Values.operator.port }}
+              scheme: HTTPS
+            initialDelaySeconds: 40
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: mstr-operator
+          ports:
+            - containerPort: {{ .Values.operator.port }}
+              name: https
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 60
+            httpGet:
+              path: readiness
+              port: {{ .Values.operator.port }}
+              scheme: HTTPS
+            initialDelaySeconds: 1
+            periodSeconds: 1
+            successThreshold: 1
+            timeoutSeconds: 10
+          volumeMounts:
+            - mountPath: /etc/secrets/third-party-config
+              name: third-party-config
+              readOnly: true
+            - mountPath: /etc/secrets/mstr-operator-cluster
+              name: mstr-operator-cluster
+              readOnly: true
+            - mountPath: /etc/secrets/pkcs12-pass
+              name: pkcs12-pass
+              readOnly: true
+            - mountPath: /etc/certs
+              name: cert
+              readOnly: true
+            - mountPath: /etc/config
+              subPathExpr: $(CLUSTER_NAME)/operator/config
+              name: operator-volume
+            - mountPath: /tmp
+              name: tmp-folder
+            - mountPath: /home/mstr/operator/helm
+              subPathExpr: $(CLUSTER_NAME)/operator/helm
+              name: operator-volume
+            {{- if .Values.telemetry.enabled }}
+            - mountPath: /home/mstr/operator/logs
+              subPathExpr: $(CLUSTER_NAME)/operator/logs
+              name: operator-volume
+            {{- end }}
+          securityContext: {{- .Values.global.hardenedSecurityContext | toYaml | nindent 12 }}
+      volumes:
+        - name: tmp-folder
+          emptyDir: {}
+        - name: cert
+          secret:
+            secretName: mstr-operator-tls
+        - name: config
+          configMap:
+            name: mstr-env-config
+        - name: operator-volume
+          persistentVolumeClaim:
+            claimName: mstr-operator-persistent-storage
+        - name: third-party-config
+          secret:
+            secretName: mstr-3rd-party-config
+            optional: true
+        - name: mstr-operator-cluster
+          secret:
+            secretName: mstr-operator-cluster
+        - name: pkcs12-pass
+          secret:
+            secretName: pkcs12-pass

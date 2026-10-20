@@ -1,0 +1,134 @@
+{
+  "GAName": "11.4.0900.0173",
+  "BuildNumber": "11.4.0900.0173",
+  "DisplayName": "Microstrategy One - Sep 2024",
+  "Certified": false,
+  "GA": false,
+  "HelmChartVersion": "24.09",
+  "Services": [
+    {
+      "name": "architect-service",
+      "tag": "m2024_2409-.-11.4.0900.00662"
+    },
+    {
+      "name": "biweb",
+      "tag": "m2024_2409-.-11.4.0900.00652"
+    },
+    {
+      "name": "cloud-connector-server",
+      "tag": "m2024_2409-.-11.4.0900.00113"
+    },
+    {
+      "name": "cluster-state-service",
+      "tag": "m2024_2409-.-11.4.0900.00032"
+    },
+    {
+      "name": "collabservice",
+      "tag": "m2024_2409-.-11.4.0900.00602"
+    },
+    {
+      "name": "community-connectors",
+      "tag": "m2024_2409-.-11.4.0900.00416"
+    },
+    {
+      "name": "configurable-http-proxy",
+      "tag": "m2024_2409-.-11.4.0900.00019"
+    },
+    {
+      "name": "elasticsearch-service",
+      "tag": "m2024_2409-.-11.4.0900.00015"
+    },
+    {
+      "name": "gateway-drivers-mcp",
+      "tag": "m2024_2409-.-11.4.0900.00031"
+    },
+    {
+      "name": "image-awaiter",
+      "tag": "m2024_2409-.-11.4.0900.00115"
+    },
+    {
+      "name": "insight-service",
+      "tag": "m2024_2409-.-11.4.0900.00031"
+    },
+    {
+      "name": "iserver",
+      "tag": "m2024_2409-.-11.4.0900.00535"
+    },
+    {
+      "name": "kafka",
+      "tag": "m2024_2409-.-11.4.0900.00017"
+    },
+    {
+      "name": "mstrbak",
+      "tag": "m2024_2409-.-11.4.0900.00584"
+    },
+    {
+      "name": "mstrbak-service",
+      "tag": "m2024_2409-.-11.4.0900.00584"
+    },
+    {
+      "name": "nee",
+      "tag": "m2024_2409-.-11.4.0900.01813"
+    },
+    {
+      "name": "platform-analytics-consumer",
+      "tag": "m2024_2409-.-11.4.0900.00062"
+    },
+    {
+      "name": "postgres",
+      "tag": "m2024_2409-.-11.4.0900.00015"
+    },
+    {
+      "name": "python-executor",
+      "tag": "m2024_2409-.-11.4.0900.00095"
+    },
+    {
+      "name": "redis",
+      "tag": "m2024_2409-.-11.4.0900.00016"
+    },
+    {
+      "name": "search-service",
+      "tag": "m2024_2409-.-11.4.0900.00073"
+    },
+    {
+      "name": "web-dossier",
+      "tag": "m2024_2409-.-11.4.0900.01837"
+    },
+    {
+      "name": "zero-to-jupyterhub-k8s",
+      "tag": "m2024_2409-.-11.4.0900.00115"
+    },
+    {
+      "name": "zookeeper",
+      "tag": "m2024_2409-.-11.4.0900.00016"
+    },
+    {
+      "name": "mstr-mobile",
+      "tag": "m2024_2409-.-11.4.0900.00652"
+    },
+    {
+      "name": "fluent-bit",
+      "tag": "3.1.6"
+    },
+    {
+      "name": "mstr-md",
+      "tag": "latest"
+    },
+    {
+      "name": "mstr-operator",
+      "tag": "24.09.94"
+    },
+    {
+      "name": "mstr-orchestrator/api-layer",
+      "tag": "24.09.94"
+    },
+    {
+      "name": "mstr-utilbox",
+      "tag": "m2024_2409-.-11.4.0900.00008"
+    },
+    {
+      "name": "pause",
+      "tag": "3.2"
+    }
+  ]
+}

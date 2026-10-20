@@ -1,0 +1,14 @@
+{{- if and (.Values.nodeConfigure.enabled) (eq (include "common.isOpenshiftCluster" .) "true") (or (.Values.openshift.nodeConfigure.autoCreateRole) (not (empty .Values.openshift.nodeConfigure.roleName))) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mstr-node-configure-scc-use-rolebinding
+subjects:
+  - kind: ServiceAccount
+    name: mstr-node-configure-sa
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Values.openshift.nodeConfigure.roleName | default "mstr-node-configure-scc-use-role" }}
+{{- end }}
