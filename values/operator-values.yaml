@@ -1,6 +1,6 @@
 global:
   image:
-    registry: "mstrcmcdev.azurecr.io"
+    registry: "mstrcmcprod.azurecr.io"
   storageClassName: "nfs-client-provisioner-storage-class"
   imagePullSecrets:
     - mstr-image-pull-secret
