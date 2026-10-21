@@ -6,3 +6,5 @@ global:
     - mstr-image-pull-secret
 telemetry:
   serverUrl: "https://cmc-portal.microstrategy.com/"
+mstrCustomer:
+  profile: "a74f297cf05acf4e2fa9967b02b897ebf775a696980105bfd1976b150552ce70fb4e71b442550ce75bea6aac702fa2b8f0092f2b8eaa9c96d374fdc22061192670419f26b67fb18165355e42d9bd7d6ba25e52b092da453afcb08f3b91555f61a6038f72365d6cbcffaca04123ef03d2d8b0b872209617f012460ce450b16b3"
