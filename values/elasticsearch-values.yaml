@@ -1,5 +1,5 @@
 image:
-  registry: "mstrcmcdev.azurecr.io"
+  registry: "mstrcmcprod.azurecr.io"
   repository: "elasticsearch-service"
   tag: "cgr-m2610-.-11.6.1000.00055-2026101122"
 utilbox:
