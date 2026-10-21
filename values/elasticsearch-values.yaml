@@ -8,6 +8,6 @@ utilbox:
     tag: "cgr-m2610-.-11.6.1000.00046"
 istioEnabled: true
 volumeClaimTemplate:
-  storageClassName: "nfs-subdir-external-provisioner"
+  storageClassName: "nfs-client-provisioner-storage-class"
 imagePullSecrets:
   - name: mstr-elasticsearch-image-pull-secret
