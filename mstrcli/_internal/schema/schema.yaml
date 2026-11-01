@@ -1,0 +1,1754 @@
+# Constants section for reusable values
+constants:
+  patterns:
+    namespace: "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
+    namespace_loose: "^[a-z0-9-]*$"
+    version: "^[0-9]{2}\\.[0-9]{2}$"
+    helm_operator_package: "^(|.*mstr-operator\\.tgz)$"
+    ai_artifacts: "^(|.*AI-Artifacts-[0-9.]+\\.zip)$"
+    patch_package: "(?i)^(|.*\\.zip)$"
+    security_patch: "^(|.*Patch-[0-9]{2}\\.[0-9]{2}-[0-9.]+\\.zip)$"
+    # NOTE: Keep this pattern in sync with IMAGE_REGISTRY_PATTERN in common/constants.py
+    image_registry: "^[a-z0-9]([a-z0-9]*(-[a-z0-9]+)*)?(\\.([a-z0-9]([a-z0-9]*(-[a-z0-9]+)*)?))*(:[0-9]+)?(/[a-z0-9._-]+(/[a-z0-9._-]+)*)?$"
+    watched_namespaces: "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(,[a-z0-9]([-a-z0-9]*[a-z0-9])?)*)?$"
+  
+  defaults:
+    namespace: "mstr-operator"
+    tls_secret_name: "mstr-tls-secret"
+    service_type: "LoadBalancer"
+    expose_option: "Expose GUI (GUI only external access)"
+  
+  renderers:
+    namespace_input: "namespace_input"
+    namespace_for_install_input: "namespace_for_install_input"
+    namespace_for_consul: "namespace_for_consul"
+    image_registry_input: "image_registry_input"
+    file_path_input: "file_path_input"
+    yaml_file_input: "yaml_file_input"
+    services_json_input: "services_json_input"
+    input: "input"
+    profile_input: "profile_input"
+    password_input: "password_input"
+    confirm: "confirm"
+    selector: "selector"
+    expose_selector: "expose_selector"
+    directory_path_input: "directory_path_input"
+    strategyone_directory_input: "strategyone_directory_input"
+    secret_selector: "secret_selector"
+    secret_name_input: "secret_name_input"
+    secret_data_input: "secret_data_input"
+    update_secret_data_input: "update_secret_data_input"
+    secret_type_selector: "secret_type_selector"
+    managed_services_checkbox: "managed_services_checkbox"
+    managed_services_update_checkbox: "managed_services_update_checkbox"
+    ns_in_cr_file_getter: "ns_in_cr_file_getter"
+    image_pull_secrets_checkbox: "image_pull_secrets_checkbox"
+    image_pull_secret_option_selector: "image_pull_secret_option_selector"
+    existing_secret_name_input: "input"
+    existing_image_pull_secret_input: "existing_image_pull_secret_input"
+    validation_secret_selector: "validation_secret_selector"
+    storage_class_selector: "storage_class_selector"
+    storage_class_validation_selector: "storage_class_validation_selector"
+    static_pv_selector: "static_pv_selector"
+    version_input: "version_input"
+    profile_update_confirm: "profile_update_confirm"
+    issuer_selector: "issuer_selector"
+    cert_duration_input: "cert_duration_input"
+    update_options_checkbox: "update_options_checkbox"
+    web_layer_variant_selector: "web_layer_variant_selector"
+    network_diagnose_selector: "network_diagnose_selector"
+    default_value: "default_value"
+  
+  titles:
+    namespace_install: "Please enter the namespace to install:"
+    namespace_consul: "Your cluster uses Consul as the service mesh. Please enter the namespace where Consul is installed"
+    namespace_upgrade: "Please enter the namespace to upgrade:"
+    namespace_update: "Please enter the namespace of the installed management service:"
+    namespace_expose: "Please enter the namespace to expose:"
+    namespace_unexpose: "Please enter the namespace to unexpose:"
+    namespace_secret: "Please enter the namespace for the secret"
+    namespace_environment: "Please enter the namespace which your environment is in"
+    namespace_ai_import: "Please enter the namespace to import AI artifact:"
+    namespace_security_patch: "Please enter the namespace to import the patch:"
+    namespace_uninstall: "Please enter the namespace to uninstall:"
+    namespace_network_diagnose: "Please enter the namespace the management service runs in:"
+    image_registry: "Please enter the image registry:"
+    image_registry_new: "Please enter the new image registry (leave empty to keep current):"
+    cert_file_path: "Please input your certificate file path:"
+    cert_key_path: "Please input your certificate key file path:"
+    helm_package_path: "Please input the helm package path (Keep empty to download from CMC portal):"
+    tls_secret_name: "Please input a secret name to store the cert:"
+    self_signed_cert: "Would you prefer to use certificates issued by Kubernetes cert-manager for API and GUI?"
+    issuer_name: "Please select issuer for Strategy Services:"
+    service_type: "Please select the type of service:"
+    expose_service: "Please select the service you want to expose:"
+    secret_name: "Please enter the name of the secret"
+    cr_file_path: "Please enter the file name of custom resource to validate"
+    cr_namespace: "Please enter the namespace which you want your environment to be in"
+    profile_update_confirm: "A new profile has been detected. Do you want to update the profile?"
+    image_pull_secret_option: "Please select an image pull secret option:"
+    existing_secret_name: "Please enter the name of the existing image pull secret:"
+    watched_namespaces: "Please enter the namespace(s) for management service to monitor (Keep empty to monitor all namespaces. Format: ns1,ns2,ns3):"
+    update_options: "Which fields would you like to update?"
+
+commands:
+  - name: login
+    module: login
+    description: "Login to the portal server"
+    options:
+      - name: profile
+        type: string
+        prompt:
+          renderer: "{$constants.renderers.profile_input}"
+          title: "Please paste your profile here\n"
+        required: true
+        help: "Login profile"
+    function: login
+
+  - name: version
+    module: version
+    description: "Show version information"
+    function: version
+
+  - name: download
+    module: download
+    description: "Download the artifact resources"
+    function: download
+    options:
+      - name: platform-type
+        short: p
+        type: string
+        required: false
+        help: "Platform type: linux, windows, macos"
+        prompt:
+          renderer: "{$constants.renderers.selector}"
+          title: "Select platform:"
+          choices: ["linux", "windows", "macos"]
+      - name: version
+        type: string
+        required: false
+        help: "Release version to download (keep empty for the latest release)"
+        prompt:
+          conditions:
+            equals:
+              - "True"
+              - "False"
+      - name: print-url
+        type: boolean
+        required: false
+        help: "Print the presigned download URL instead of downloading the artifact"
+        prompt:
+          conditions:
+            equals:
+              - "True"
+              - "False"
+
+  - name: mgmt-svc
+    module: mgmt_svc
+    description: "Operate management service"
+    subCommands:
+      - name: privilege-check
+        description: "Check Kubernetes user privileges"
+        function: privilege_check
+        doubleConfirm: false
+        options: []
+      - name: install
+        description: "Install the management service"
+        function: install
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to install"
+            prompt:
+              renderer: "{$constants.renderers.namespace_for_install_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_install}"
+          - name: image-pull-secrets
+            type: list
+            items:
+              type: string
+            required: false
+            help: "Image pull secrets to pull the image"
+            prompt:
+              renderer: "{$constants.renderers.image_pull_secrets_checkbox}"
+          - name: image-registry
+            type: string
+            required: true
+            help: "Image registry to pull the image from"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "{$constants.titles.image_registry}"
+          - name: storage-class
+            type: string
+            required: false
+            help: "Storage class to use"
+            prompt:
+              renderer: "{$constants.renderers.storage_class_selector}"
+          - name: pv-name
+            type: string
+            help: "Persistent volume name to use. Keep empty to use dynamic volume provisioning"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Please enter persistent volume name, keep empty if you need dynamic volume provisioning:"
+          - name: self-signed-cert
+            type: boolean
+            help: "Whether to use self-signed certificate"
+            prompt:
+              renderer: "{$constants.renderers.confirm}"
+              title: "{$constants.titles.self_signed_cert}"
+          - name: tls-secret-name
+            type: string
+            required: false
+            help: "Secret name to use"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              pattern: "{$constants.patterns.namespace}"
+              conditions:
+                equals:
+                  - "{$options[self-signed-cert]}"
+                  - "False"
+              title: "{$constants.titles.tls_secret_name}"
+              default: "{$constants.defaults.tls_secret_name}"
+              # For prompt input, it is required
+              required: true
+          - name: tls-cert
+            type: string
+            required: false
+            help: "TLS cert to use, please provide the cert file path"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              conditions:
+                equals:
+                  - "{$options[self-signed-cert]}"
+                  - "False"
+              title: "{$constants.titles.cert_file_path}"
+              # For prompt input, it is required
+              required: true
+          - name: tls-key
+            type: string
+            required: false
+            help: "TLS key to use, please provide the key file path"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              conditions:
+                equals:
+                  - "{$options[self-signed-cert]}"
+                  - "False"
+              title: "{$constants.titles.cert_key_path}"
+              # For prompt input, it is required
+              required: true
+          - name: issuer
+            type: string
+            required: false
+            help: "The issuer to use"
+            prompt:
+              renderer: "{$constants.renderers.issuer_selector}"
+              title: "{$constants.titles.issuer_name}"
+              required: true
+          - name: issuer-type
+            type: string
+            required: false
+            help: "Type of the issuer: ClusterIssuer or Issuer. Required for using custom issuer."
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: cert-duration
+            type: string
+            required: false
+            default: "17520"
+            help: "The duration of certificates for management service (in hours)"
+            prompt:
+              renderer: "{$constants.renderers.cert_duration_input}"
+              title: "Input your expected certificate duration (in hours):"
+              required: true
+          - name: helm-package
+            type: string
+            required: false
+            default: ""
+            help: "Use local helm package to install operator. Keep empty to download from CMC portal"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              pattern: "{$constants.patterns.helm_operator_package}"
+              title: "{$constants.titles.helm_package_path}"
+          - name: consul-namespace
+            type: string
+            required: false
+            help: "Namespace where the consul is installed if you use consul as service mesh"
+            prompt:
+              renderer: "{$constants.renderers.namespace_for_consul}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_consul}"
+              createOnNotExist: false
+          - name: watched-namespaces
+            type: string
+            required: false
+            default: ""
+            help: "Namespace(s) for management service to monitor (Keep empty to watch all namespaces. Format: ns1,ns2,ns3)"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              pattern: "{$constants.patterns.watched_namespaces}"
+              title: "{$constants.titles.watched_namespaces}"
+          - name: web-layer-variant
+            type: string
+            required: false
+            help: "Web Layer variant to install: Standard or New UI (leave empty to keep the current/default selection)"
+            prompt:
+              renderer: "{$constants.renderers.web_layer_variant_selector}"
+              title: "Select Web Layer variant:"
+              choices: ["Standard", "New UI"]
+      - name: upgrade
+        description: "Upgrade the management service"
+        function: upgrade
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to upgrade"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_upgrade}"
+              createOnNotExist: false
+          - name: version
+            short: v
+            type: string
+            required: true
+            help: "Version to upgrade to"
+            prompt:
+              renderer: "{$constants.renderers.version_input}"
+              pattern: "{$constants.patterns.version}"
+              title: "Please enter the version to upgrade to (latest: 26.10):"
+          - name: helm-package
+            type: string
+            required: false
+            default: ""
+            help: "Use local helm package to upgrade operator. Keep empty to download from CMC portal"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              pattern: "{$constants.patterns.helm_operator_package}"
+              title: "{$constants.titles.helm_package_path}"
+          - name: image-registry
+            type: string
+            required: false
+            help: "New image registry to pull images from (leave empty to keep current)"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "{$constants.titles.image_registry_new}"
+          - name: image-pull-secrets
+            type: list
+            items:
+              type: string
+            required: false
+            help: "New image pull secrets to use (leave empty to keep current)"
+            prompt:
+              renderer: "{$constants.renderers.image_pull_secrets_checkbox}"
+          - name: web-layer-variant
+            type: string
+            required: false
+            help: "Switch the Web Layer variant during this upgrade (leave empty to preserve the current variant): Standard or New UI"
+            prompt:
+              renderer: "{$constants.renderers.web_layer_variant_selector}"
+              title: "Select Web Layer variant:"
+              choices: ["Standard", "New UI"]
+
+      - name: update
+        description: "Update the management service"
+        function: update
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace of the installed management service to update"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_update}"
+              createOnNotExist: false
+          - name: update-selections
+            type: list
+            items:
+              type: string
+            required: false
+            ui_only: true
+            help: "Which settings to update (interactive multi-select)"
+            prompt:
+              renderer: "{$constants.renderers.update_options_checkbox}"
+              title: "{$constants.titles.update_options}"
+          - name: issuer
+            type: string
+            required: false
+            help: "The issuer to use"
+            prompt:
+              renderer: "{$constants.renderers.issuer_selector}"
+              title: "{$constants.titles.issuer_name}"
+              required: false
+              selector: true
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Issuer"
+          - name: issuer-type
+            type: string
+            required: false
+            default: "Issuer"
+            help: "Type of the issuer: ClusterIssuer or Issuer. Required for using custom issuer."
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: update-profile
+            type: boolean
+            required: false
+            help: "Whether to update the profile (only prompted if a new profile is detected)"
+            prompt:
+              renderer: "{$constants.renderers.profile_update_confirm}"
+              title: "{$constants.titles.profile_update_confirm}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Profile"
+          - name: image-registry
+            type: string
+            required: false
+            help: "New image registry to pull images from"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "{$constants.titles.image_registry_new}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Image registry"
+          - name: image-pull-secrets
+            type: list
+            items:
+              type: string
+            required: false
+            help: "New image pull secrets to use (leave empty to keep current):"
+            prompt:
+              renderer: "{$constants.renderers.image_pull_secrets_checkbox}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Image pull secrets"
+          - name: self-signed-cert
+            type: boolean
+            required: false
+            help: "Whether to use self-signed certificate"
+            prompt:
+              renderer: "{$constants.renderers.confirm}"
+              title: "{$constants.titles.self_signed_cert}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "TLS / Certificate settings"
+          - name: tls-secret-name
+            type: string
+            required: false
+            help: "Name of the TLS secret to use (required when not using self-signed cert)"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              pattern: "{$constants.patterns.namespace}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "TLS / Certificate settings"
+                equals:
+                  - "{$options[self-signed-cert]}"
+                  - "False"
+              title: "{$constants.titles.tls_secret_name}"
+              default: "{$constants.defaults.tls_secret_name}"
+              required: true
+          - name: tls-cert
+            type: string
+            required: false
+            help: "TLS certificate file path (required when not using self-signed cert)"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "TLS / Certificate settings"
+                equals:
+                  - "{$options[self-signed-cert]}"
+                  - "False"
+              title: "{$constants.titles.cert_file_path}"
+              required: true
+          - name: tls-key
+            type: string
+            required: false
+            help: "TLS key file path (required when not using self-signed cert)"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "TLS / Certificate settings"
+                equals:
+                  - "{$options[self-signed-cert]}"
+                  - "False"
+              title: "{$constants.titles.cert_key_path}"
+              required: true
+          - name: helm-package
+            type: string
+            required: false
+            default: ""
+            help: "Use local helm package to update operator. Keep empty to download from CMC portal"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              pattern: "{$constants.patterns.helm_operator_package}"
+              title: "{$constants.titles.helm_package_path}"
+          - name: web-layer-variant
+            type: string
+            required: false
+            help: "Select a Web Layer variant to switch to during this update: Standard or New UI"
+            prompt:
+              renderer: "{$constants.renderers.web_layer_variant_selector}"
+              title: "Select Web Layer variant:"
+              choices: ["Standard", "New UI"]
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Web Layer"
+          - name: network-diagnose
+            type: boolean
+            required: false
+            help: "Enable or disable network diagnose"
+            prompt:
+              renderer: "{$constants.renderers.network_diagnose_selector}"
+              title: "Select network diagnose setting:"
+              choices: ["Enable network diagnose", "Disable network diagnose"]
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Network diagnose"
+          - name: host-network
+            type: boolean
+            required: false
+            default: false
+            help: "Allow diagnosis containers to use the host network namespace"
+            prompt:
+              renderer: "{$constants.renderers.confirm}"
+              title: "Would you allow diagnosis containers to use the host network namespace?"
+              choices: ["No", "Yes"]
+              conditions:
+                equals:
+                  - "{$options[network-diagnose]}"
+                  - "True"
+          - name: privileged
+            type: boolean
+            required: false
+            default: false
+            help: "Allow privileged diagnosis containers or privilege escalation"
+            prompt:
+              renderer: "{$constants.renderers.confirm}"
+              title: "Would you allow privileged containers or containers that can escalate privileges at runtime?"
+              choices: ["No", "Yes"]
+              conditions:
+                equals:
+                  - "{$options[network-diagnose]}"
+                  - "True"
+
+      - name: patch
+        description: "Import patch"
+        function: add_patch
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to import the patch"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_security_patch}"
+              createOnNotExist: false
+          - name: patch-package
+            type: string
+            required: true
+            help: "The path of local package used to import patch."
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              pattern: "{$constants.patterns.patch_package}"
+              title: "Please input the local patch package path:"
+
+      - name: security-patch
+        description: "Add security patch"
+        interactive: false
+        function: add_security_patch
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to add security patch"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_security_patch}"
+              createOnNotExist: false
+          - name: patch-package
+            type: string
+            required: true
+            default: ""
+            help: "The path of local package used to add security patch."
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              pattern: "{$constants.patterns.security_patch}"
+              title: "Please input the local patch package path:"
+
+      - name: uninstall
+        description: "Uninstall the management service"
+        function: uninstall
+        doubleConfirm: true
+        reedit: false
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to uninstall"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_uninstall}"
+              createOnNotExist: false
+      - name: expose
+        description: "Expose the API and GUI for external access"
+        function: expose
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to expose"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_expose}"
+              createOnNotExist: false
+          - name: service-type
+            type: string
+            prompt:
+              renderer: "{$constants.renderers.selector}"
+              title: "{$constants.titles.service_type}"
+              choices: ["LoadBalancer", "NodePort"]
+            required: true
+            default: "{$constants.defaults.service_type}"
+            help: "Type of service to expose"
+          - name: expose-api
+            type: boolean
+            prompt:
+              renderer: "{$constants.renderers.expose_selector}"
+              title: "{$constants.titles.expose_service}"
+              choices:
+                - "Expose GUI (GUI only external access)"
+                - "Expose GUI and API (Both GUI and API external access)"
+            required: true
+            default: "{$constants.defaults.expose_option}"
+            help: "Whether to expose API"
+      - name: unexpose
+        description: "Cancel exposing the API and GUI for external access"
+        function: unexpose
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to unexpose"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_unexpose}"
+              createOnNotExist: false
+
+      - name: pack-tel-data
+        description: "Package telemetry data for manual upload"
+        function: compress_files
+        doubleConfirm: true
+        options:
+          - name: directory_path
+            type: string
+            required: false
+            default: ""
+            help: "The directory path to save the telemetry data"
+            prompt:
+              renderer: "{$constants.renderers.directory_path_input}"
+              title: "Please input the directory path to save the telemetry data (Keep it empty will save to current path):"
+
+      - name: network-diagnose
+        module: network_diagnose
+        description: "Manage network diagnose and view its cluster status"
+        subCommands:
+          - name: status
+            description: "Show network diagnose status and version compatibility"
+            function: status
+            options:
+              - name: namespace
+                short: n
+                type: string
+                required: false
+                default: "{$constants.defaults.namespace}"
+                help: "Namespace of the installed management service"
+                prompt:
+                  renderer: "{$constants.renderers.namespace_input}"
+                  pattern: "{$constants.patterns.namespace}"
+                  title: "{$constants.titles.namespace_network_diagnose}"
+                  createOnNotExist: false
+      - name: update-AI
+        description: "Import AI artifacts"
+        function: update_ai
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "{$constants.defaults.namespace}"
+            help: "Namespace to import AI artifact"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_ai_import}"
+              createOnNotExist: false
+          - name: helm-package
+            type: string
+            required: false
+            default: ""
+            help: "Use local helm package to import AI artifact. Keep empty to download from CMC portal"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              pattern: "{$constants.patterns.ai_artifacts}"
+              title: "{$constants.titles.helm_package_path}"
+
+
+
+  - name: secret
+    module: secret
+    aliases:
+      - secrets
+    description: "Manage secrets"
+    subCommands:
+      - name: create
+        description: "Create a secret"
+        function: create
+        doubleConfirm: true
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: true
+            help: "Namespace which you want your secret to be in"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_secret}"
+          - name: type
+            type: string
+            prompt:
+              renderer: "{$constants.renderers.secret_type_selector}"
+              title: "Please select a secret type:"
+            required: true
+            help: "Type of secret to create"
+          - name: name
+            type: string
+            required: true
+            help: "Name of the secret"
+            prompt:
+              renderer: "{$constants.renderers.secret_name_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.secret_name}"
+          - name: data
+            # Json string
+            type: string
+            required: true
+            help: "Data of the secret"
+            prompt:
+              renderer: "{$constants.renderers.secret_data_input}"
+
+      - name: update
+        description: "Update a secret"
+        doubleConfirm: true
+        function: update
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: true
+            help: "Namespace for your secrets"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "{$constants.titles.namespace_secret}"
+          - name: name
+            type: string
+            required: true
+            help: "Name of the secret"
+            prompt:
+              renderer: "{$constants.renderers.secret_selector}"
+              mode: update
+          - name: data
+            # Json string
+            type: string
+            required: true
+            help: "Data of the secret"
+            prompt:
+              renderer: "{$constants.renderers.update_secret_data_input}"
+      - name: delete
+        description: "Delete a secret"
+        doubleConfirm: true
+        function: delete
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: true
+            existedCheck: true
+            help: "Namespace for your secrets"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace_loose}"
+              title: "{$constants.titles.namespace_secret}"
+          - name: name
+            type: string
+            required: true
+            help: "Name of the secret"
+            prompt:
+              renderer: "{$constants.renderers.secret_selector}"
+              mode: delete
+  
+  - name: managed-services
+    module: managed_services
+    description: "Manage managed services in the cluster"
+    subCommands:
+      - name: install
+        description: "Install managed services"
+        function: install
+        doubleConfirm: true
+        options:
+          - name: application
+            type: list
+            items:
+              type: string
+            prompt:
+              renderer: "{$constants.renderers.managed_services_checkbox}"
+              reminder: true
+              title: "Please select the managed services to install:"
+            required: true
+            help: "Managed services to install (multiple selections allowed)"
+          - name: custom-namespace
+            type: boolean
+            required: false
+            help: "Whether to use custom namespace"
+            prompt:
+              renderer: custom_confirm
+              conditions:
+                notEquals:
+                  - "{$options[application]}"
+                  - "['istio']"
+              title: "Would you prefer to use custom namespaces for managed services?"
+          - name: namespace-json
+            type: string
+            required: false
+            help: "A JSON-formatted string containing the service names and namespaces"
+            prompt:
+              renderer: custom_namespace_input
+              pattern: "{$constants.patterns.namespace}"
+              conditions:
+                equals:
+                  - "{$options[custom-namespace]}"
+                  - "True"
+              # For prompt input, it is required
+              required: true
+          - name: helm-chart-package-path
+            type: string
+            required: true
+            help: "Directory path to the unzipped StrategyOne package folder containing prometheus and keda helm charts and services.json file"
+            prompt:
+              renderer: "{$constants.renderers.strategyone_directory_input}"
+              title: "Please enter the path to StrategyOne package directory containing helm charts:"
+          - name: image-registry
+            type: string
+            required: true
+            help: "Image registry to pull the image from"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "{$constants.titles.image_registry}"
+          - name: image-pull-secret-option
+            type: string
+            required: true
+            help: "Image pull secret option"
+            prompt:
+              renderer: "{$constants.renderers.selector}"
+              title: "{$constants.titles.image_pull_secret_option}"
+              choices: 
+                - "Create new image pull secret"
+                - "Image pull secret not required"
+                - "Use existing image pull secret"
+          - name: image-server
+            type: string
+            required: false
+            help: "Image server host for image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "Please enter image server host:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: username
+            type: string
+            required: false
+            help: "Username for image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Please enter username for image registry:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: password
+            type: string
+            required: false
+            help: "Password for image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.password_input}"
+              title: "Please enter password for image registry:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: existing-secret-name
+            type: string
+            required: false
+            help: "Name of existing image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.existing_image_pull_secret_input}"
+              title: "{$constants.titles.existing_secret_name}"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Use existing image pull secret"
+          - name: storage-class-name
+            type: string
+            required: false
+            help: "Storage class name for managed services (optional for Prometheus and Keda)"
+            prompt:
+              renderer: "{$constants.renderers.storage_class_selector}"
+              title: "Please enter storage class name for managed services (leave empty to use default):"
+          - name: max-shards-per-node
+            type: integer
+            required: false
+            help: "Maximum shards per node for Elasticsearch (optional, default 1000)"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Enter maximum shards per Elasticsearch node (leave empty for default 1000):"
+              conditions:
+                contains:
+                  - "{$options[application]}"
+                  - "elasticsearch"
+          - name: nodes
+            type: integer
+            required: false
+            help: "Number of Elasticsearch nodes (optional, default 3)"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Enter number of Elasticsearch nodes (leave empty for default 3):"
+              pattern: "^$|^[13579]$|^[1-9]\\d*[13579]$"
+              conditions:
+                contains:
+                  - "{$options[application]}"
+                  - "elasticsearch"
+      - name: uninstall
+        description: "Uninstall managed services"
+        function: uninstall
+        doubleConfirm: true
+        options:
+          - name: application
+            type: list
+            items:
+              type: string
+            prompt:
+              renderer: "{$constants.renderers.managed_services_checkbox}"
+              title: "Please select the managed services to uninstall:"
+            required: true
+            help: "Managed services to uninstall (multiple selections allowed)"
+      - name: update
+        description: "Update Registry, image pull secret, or Configuration for installed managed services"
+        function: update
+        doubleConfirm: true
+        options:
+          - name: application
+            type: list
+            items:
+              type: string
+            prompt:
+              renderer: "{$constants.renderers.managed_services_checkbox}"
+              title: "Please select the managed services to update:"
+            required: true
+            help: "Managed services to update (multiple selections allowed)"
+          - name: update-selections
+            type: list
+            items:
+              type: string
+            required: false
+            ui_only: true
+            help: "Which fields to update (interactive multi-select)"
+            prompt:
+              renderer: "{$constants.renderers.managed_services_update_checkbox}"
+              title: "Which fields would you like to update?"
+          - name: image-registry
+            type: string
+            required: false
+            help: "New image registry to pull images from (leave empty to keep existing)"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "{$constants.titles.image_registry}"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Image registry"
+          - name: image-pull-secret-option
+            type: string
+            required: false
+            help: "Image pull secret option"
+            prompt:
+              renderer: "{$constants.renderers.selector}"
+              title: "{$constants.titles.image_pull_secret_option}"
+              choices:
+                - "Create new image pull secret"
+                - "Image pull secret not required"
+                - "Use existing image pull secret"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Image pull secret"
+          - name: image-server
+            type: string
+            required: false
+            help: "Image server host for image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "Please enter image server host:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: username
+            type: string
+            required: false
+            help: "Username for image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Please enter username for image registry:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: password
+            type: string
+            required: false
+            help: "Password for image pull secret"
+            prompt:
+              renderer: "{$constants.renderers.password_input}"
+              title: "Please enter password for image registry:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: existing-secret-name
+            type: string
+            required: false
+            help: "Name of existing image pull secret (used as the default per-namespace; you'll be prompted to override per release if it does not exist in a target namespace)"
+            prompt:
+              renderer: "{$constants.renderers.existing_image_pull_secret_input}"
+              title: "{$constants.titles.existing_secret_name}"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Use existing image pull secret"
+          - name: helm-package
+            type: string
+            required: true
+            default: ""
+            help: "Directory path to the unzipped StrategyOne package folder (same as used for install). Keep empty to download from CMC portal"
+            prompt:
+              renderer: "{$constants.renderers.strategyone_directory_input}"
+              title: "Please enter the path to StrategyOne package directory containing helm charts:"
+          - name: max-shards-per-node
+            type: integer
+            required: false
+            help: "Maximum shards per node for Elasticsearch (optional, default 1000)"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Enter maximum shards per Elasticsearch node (leave empty to keep current):"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Elasticsearch configuration"
+          - name: nodes
+            type: integer
+            required: false
+            help: "Number of Elasticsearch nodes (optional, default 3)"
+            prompt:
+              renderer: "{$constants.renderers.input}"
+              title: "Enter number of Elasticsearch nodes (leave empty to keep current):"
+              pattern: "^$|^[13579]$|^[1-9]\\d*[13579]$"
+              conditions:
+                contains:
+                  - "{$options[update-selections]}"
+                  - "Elasticsearch configuration"
+#      Because this upgrade has been integrated into the management service upgrade, comment this out.
+#      - name: upgrade
+#        description: "Upgrade managed services"
+#        function: upgrade
+#        doubleConfirm: true
+#        options:
+#          - name: helm-chart-package-path
+#            type: string
+#            required: false
+#            help: "OPTIONAL: Path to the unzipped StrategyOne package directory containing local Helm charts and services.json. Leave empty to download charts and tags from CMC portal."
+#            prompt:
+#              renderer: "{$constants.renderers.strategyone_directory_input}"
+#              title: "Enter StrategyOne package directory (leave empty for online upgrade):"
+
+  - name: diagnose
+    module: diagnose
+    description: "Collect logs for management service or environment"
+    subCommands:
+      - name: mgmt-svc
+        description: "Package management service logs for manual upload"
+        function: get_mgmt_svc_logs
+        doubleConfirm: true
+        options:
+          - name: directory_path
+            type: string
+            required: false
+            default: ""
+            help: "The directory path to save the management service logs. Defaults to current path"
+            prompt:
+              renderer: "{$constants.renderers.directory_path_input}"
+              title: "Please input the directory path to save the management service logs (Keep it empty will save to current path):"
+          - name: since
+            type: string
+            required: false
+            default: "1h"
+            help: "Only return logs newer than a relative duration like 5s, 2m, or 3h. Defaults to 1h"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+      - name: environment
+        description: "Package environment logs for manual upload"
+        function: get_env_logs
+        doubleConfirm: true
+        options:
+          - name: namespace
+            type: string
+            required: true
+            help: "Namespace for the environment"
+            prompt:
+              renderer: env_namespace_selector
+          - name: directory_path
+            type: string
+            required: false
+            default: ""
+            help: "The directory path to save the environment logs. Defaults to current path"
+            prompt:
+              renderer: "{$constants.renderers.directory_path_input}"
+              title: "Please input the directory path to save the environment logs (Keep it empty will save to current path):"
+          - name: since
+            type: string
+            required: false
+            default: "1h"
+            help: "Only return logs newer than a relative duration like 5s, 2m, or 3h. Defaults to 1h"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+
+  - name: validate
+    module: validate 
+    aliases:
+      - v
+    description: "Validate custom resource and pre-requisites"
+    subCommands:
+      - name: custom-resource 
+        description: "Validate custom resource"
+        function: validate_custom_resource  
+        options:
+          - name: file
+            short: f
+            type: string
+            required: true
+            help: "File name of your custom resource"
+            prompt:
+              renderer: "{$constants.renderers.file_path_input}"
+              title: "{$constants.titles.cr_file_path}"
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            existedCheck: true
+            help: "Namespace which you want your environment to be in"
+            prompt:
+              renderer: "{$constants.renderers.ns_in_cr_file_getter}"
+              pattern: "{$constants.patterns.namespace_loose}"
+              title: "{$constants.titles.cr_namespace}"
+      
+      - name: images
+        description: "Validate image accessibility from services.json"
+        function: validate_images
+        options:
+          - name: services-json-path
+            type: string
+            required: true
+            help: "Path to services.json file from StrategyOne package"
+            prompt:
+              renderer: "{$constants.renderers.services_json_input}"
+              title: "Please enter path to services.json file:"
+          - name: image-registry
+            type: string
+            required: true
+            help: "Image server URL to test against"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "Please enter image server URL:"
+          - name: image-pull-secret-option
+            type: string
+            required: true
+            help: "Image pull secret option"
+            prompt:
+              renderer: "{$constants.renderers.selector}"
+              title: "How would you like to configure image pull secret?"
+              choices:
+                - "Image pull secret not required"
+                - "Use existing image pull secret"
+                - "Create new image pull secret"
+          - name: name
+            type: string
+            required: false
+            help: "Name for the new image pull secret (required only if using 'Create new image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.secret_name_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "Please enter name for the image pull secret:"
+              secret_type: "image-pull-secret"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: data
+            type: string
+            required: false
+            help: "Image pull secret data (server, username, password, email) (required only if using 'Create new image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.secret_data_input}"
+              secret_type: "image-pull-secret"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: existing-secret-namespace
+            type: string
+            required: false
+            help: "Namespace where the existing secret is located (required only if using 'Use existing image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "Please enter the namespace where the image pull secret exists:"
+              createOnNotExist: false
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Use existing image pull secret"
+          - name: existing-secret-name
+            type: string
+            required: false
+            help: "Existing secret name (required only if using 'Use existing image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.validation_secret_selector}"
+              title: "Please select an image pull secret:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Use existing image pull secret"
+      
+      - name: storage
+        description: "Validate storage class and PV/PVC configuration"
+        function: validate_storage
+        options:
+          - name: storage-class-name
+            type: string
+            required: false
+            help: "Storage class name for dynamic provisioning"
+            prompt:
+              renderer: "{$constants.renderers.storage_class_validation_selector}"
+              title: "Please select a storage class:"
+          - name: pv-yaml-path
+            type: string
+            required: false
+            help: "Path to PV YAML file (required for static provisioning)"
+            prompt:
+              renderer: "{$constants.renderers.yaml_file_input}"
+              title: "Please enter path to PV YAML file:"
+              required: true
+              conditions:
+                isEmpty:
+                  - "{$options[storage-class-name]}"
+          - name: pvc-yaml-path
+            type: string
+            required: false
+            help: "Path to PVC YAML file (optional for dynamic, required for static provisioning)"
+            prompt:
+              renderer: "{$constants.renderers.yaml_file_input}"
+              title: "Please enter path to PVC YAML file (optional for dynamic, required for static provisioning):"
+          - name: services-json-path
+            type: string
+            required: true
+            help: "Path to services.json file from StrategyOne package"
+            prompt:
+              renderer: "{$constants.renderers.services_json_input}"
+              title: "Please enter path to services.json file:"
+          - name: image-registry
+            type: string
+            required: true
+            help: "Image server URL for mstr-utilbox image"
+            prompt:
+              renderer: "{$constants.renderers.image_registry_input}"
+              pattern: "{$constants.patterns.image_registry}"
+              title: "Please enter image server URL:"
+          - name: image-pull-secret-option
+            type: string
+            required: true
+            help: "Image pull secret option"
+            prompt:
+              renderer: "{$constants.renderers.selector}"
+              title: "How would you like to configure image pull secret?"
+              choices:
+                - "Image pull secret not required"
+                - "Use existing image pull secret"
+                - "Create new image pull secret"
+          - name: name
+            type: string
+            required: false
+            help: "Name for the new image pull secret (required only if using 'Create new image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.secret_name_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "Please enter name for the image pull secret:"
+              secret_type: "image-pull-secret"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: data
+            type: string
+            required: false
+            help: "Image pull secret data (server, username, password, email) (required only if using 'Create new image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.secret_data_input}"
+              secret_type: "image-pull-secret"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Create new image pull secret"
+          - name: existing-secret-namespace
+            type: string
+            required: false
+            help: "Namespace where the existing secret is located (required only if using 'Use existing image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "Please enter the namespace where the image pull secret exists:"
+              createOnNotExist: false
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Use existing image pull secret"
+          - name: existing-secret-name
+            type: string
+            required: false
+            help: "Existing secret name (required only if using 'Use existing image pull secret' option)"
+            prompt:
+              renderer: "{$constants.renderers.validation_secret_selector}"
+              title: "Please select an image pull secret:"
+              conditions:
+                equals:
+                  - "{$options[image-pull-secret-option]}"
+                  - "Use existing image pull secret"
+
+      - name: preflight
+        module: preflight
+        description: "Run modular validation checks: cluster, network, storage, images, TLS, security"
+        function: validate_preflight
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: false
+            default: "mstr-operator"
+            help: "Target namespace for validation"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace}"
+              title: "Please enter the target namespace:"
+              createOnNotExist: false
+          - name: category
+            short: c
+            type: string
+            required: false
+            default: "all"
+            help: "Validation category: all, cluster, network, database, redis, elasticsearch, storage, images, security, compatibility"
+            prompt:
+              renderer: "{$constants.renderers.selector}"
+              title: "Select validation category:"
+              choices:
+                - "all"
+                - "cluster"
+                - "network"
+                - "storage"
+                - "images"
+                - "security"
+                - "database"
+                - "redis"
+                - "elasticsearch"
+                - "compatibility"
+          - name: check
+            type: string
+            required: false
+            default: ""
+            help: "Optional check ID(s) to run (comma-separated), e.g. NET-012 or NET-001,NET-012"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: platform
+            type: string
+            required: false
+            default: ""
+            help: "Cloud platform (auto-detected if empty): aws, azure, gcp, openshift, stackit"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: config-file
+            type: string
+            required: false
+            default: ""
+            help: "Path to preflight config YAML file (see preflight-config.example.yaml)"
+            prompt:
+              renderer: "file_path_input"
+              title: "Enter path to preflight config file — database, Redis, and Elasticsearch connection details are read from this file (press Enter to skip):"
+          - name: image-pull-secret-name
+            type: string
+            required: false
+            default: ""
+            help: "Docker registry pull secret used to pull the diagnostic validation pod image (registries are auto-extracted from the secret)"
+            prompt:
+              renderer: "preflight_secret_selector"
+              title: "Select a pull secret for the diagnostic validation pod (used to pull the troubleshooting image into the cluster):"
+          - name: image-pull-secret-namespace
+            type: string
+            required: false
+            default: ""
+            help: "Namespace where the image pull secret exists (defaults to target namespace)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: image-registry
+            type: string
+            required: false
+            default: ""
+            help: "Optional: specific registry URL to validate (if omitted, all registries in the secret are validated)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: storage-class
+            type: string
+            required: false
+            default: ""
+            help: "Storage class name to validate"
+            prompt:
+              renderer: "storage_class_validation_selector"
+              title: "Select a storage class to validate:"
+              conditions:
+                isOneOf:
+                  - "{$options[category]}"
+                  - "all"
+                  - "storage"
+          - name: static-pv
+            type: boolean
+            required: false
+            help: "Validate static PersistentVolumes (STR-006) for CMC deployed without dynamic provisioning (e.g. NFS). Combine with --storage-class to filter PVs by class."
+            prompt:
+              renderer: "static_pv_selector"
+              conditions:
+                isOneOf:
+                  - "{$options[category]}"
+                  - "all"
+                  - "storage"
+          - name: db-host
+            type: string
+            required: false
+            default: ""
+            help: "Database host to validate connectivity (set via --db-host or the database section of the preflight config file)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: db-secret-name
+            type: string
+            required: false
+            default: ""
+            help: "Kubernetes secret containing database credentials (set via --db-secret-name or the database section of the preflight config file)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: redis-host
+            type: string
+            required: false
+            default: ""
+            help: "Redis host to validate connectivity (set via --redis-host or the redis section of the preflight config file)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: redis-secret-name
+            type: string
+            required: false
+            default: ""
+            help: "Kubernetes secret containing Redis credentials (set via --redis-secret-name or the redis section of the preflight config file)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: elasticsearch-host
+            type: string
+            required: false
+            default: ""
+            help: "Elasticsearch host to validate connectivity (set via --elasticsearch-host or the elasticsearch section of the preflight config file)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: elasticsearch-secret-name
+            type: string
+            required: false
+            default: ""
+            help: "Kubernetes secret containing Elasticsearch/OpenSearch credentials (set via --elasticsearch-secret-name or the elasticsearch section of the preflight config file)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: proxy-targets
+            type: list
+            required: false
+            default: ""
+            help: "Optional proxy endpoints to validate from inside the cluster (examples: proxy.company.com:8080,https://proxy.company.com:8443)"
+            prompt:
+              renderer: "input"
+              title: "Optional: enter proxy targets to validate (comma-separated host:port or URL, e.g. company.com:8080,https://company.com:8443,company.com press Enter to skip):"
+              conditions:
+                isOneOf:
+                  - "{$options[category]}"
+                  - "all"
+                  - "network"
+          - name: node-ports
+            type: list
+            required: false
+            default: ""
+            help: "Optional comma-separated NodePort values and/or ranges to verify are available (example: 30080,30000-30010,30443,30440-30445)"
+            prompt:
+              renderer: "input"
+              title: "Optional: enter NodePort values and/or ranges to check (comma-separated, e.g. 30080,30000-30010,34952, press Enter to skip):"
+              conditions:
+                isOneOf:
+                  - "{$options[category]}"
+                  - "all"
+                  - "network"
+          - name: whitelist-ip-ranges
+            type: list
+            required: false
+            help: "Optional IPs/CIDRs/ranges that must be reachable on TCP/443 (example: 10.0.0.5,10.0.0.0/24,10.0.1.10-10.0.1.20)"
+            prompt:
+              renderer: "input"
+              title: "Optional: enter whitelist IPs/CIDRs/ranges to validate on TCP/443 (comma-separated, press Enter to skip):"
+              conditions:
+                isOneOf:
+                  - "{$options[category]}"
+                  - "all"
+                  - "network"
+          - name: output-format
+            type: string
+            required: false
+            default: "table"
+            help: "Output format: table, json, detailed"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: verbose
+            type: boolean
+            help: "Show verbose output including debug details"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: skip-auto-diagnose
+            type: boolean
+            help: "Skip automatic diagnosis of failed checks"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: fail-on-fail
+            type: boolean
+            help: "Exit with code 1 if any check fails (for CI/CD pipelines)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: skip-pod-checks
+            type: boolean
+            help: "Skip checks that require deploying diagnostic pods"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: permission-level
+            type: string
+            required: false
+            default: ""
+            help: "Permission level: local (no cluster), readonly (read-only cluster), full (diagnostic pods + PVC)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: show-permissions
+            type: boolean
+            help: "Show permission levels, required RBAC, and which checks run at each level"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: generate-rbac
+            type: boolean
+            help: "Generate minimal RBAC YAML for the specified permission level"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: diagnostic-image
+            type: string
+            required: false
+            default: ""
+            help: "Full diagnostic image reference (overrides services.json resolution, e.g. myregistry.example.com/mstr-troubleshoot:26.05.35)"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+          - name: services-json-path
+            type: string
+            required: false
+            default: ""
+            help: "Path to services.json from StrategyOne package (auto-discovered relative to mstrcli binary if not set)"
+            prompt:
+              renderer: "preflight_services_json_input"
+              title: "Path to services.json (auto-discovered, press Enter to accept or type to change):"
+          - name: check-permissions
+            type: boolean
+            help: "Verify your current RBAC permissions against a permission level and report what you have vs what's missing"
+            prompt:
+              conditions:
+                equals:
+                  - "True"
+                  - "False"
+
+  - name: environment
+    module: environment 
+    aliases:
+      - env
+      - environments
+    description: "List environment and status"
+    subCommands:
+      - name: list 
+        description: "List environments on this cluster"
+        function: list 
+      - name: status 
+        description: "Get status of one environment"
+        function: status 
+        options:
+          - name: namespace
+            short: n
+            type: string
+            required: true
+            existedCheck: true
+            help: "The namespace which your environment is in"
+            prompt:
+              renderer: "{$constants.renderers.namespace_input}"
+              pattern: "{$constants.patterns.namespace_loose}"
+              title: "{$constants.titles.namespace_environment}"
+
+  - name: advanced
+    module: advanced
+    description: "Advanced operations for management service"
+    subCommands:
+      - name: purge-resources
+        description: "Force cleanup of all Strategy resources"
+        function: purge_resources
+        doubleConfirm: true
+        reedit: false

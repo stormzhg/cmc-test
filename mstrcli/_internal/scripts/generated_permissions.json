@@ -1,0 +1,2997 @@
+[
+  {
+    "verb": "create",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "bindings",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "configmaps",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "endpoints",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "events",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "events",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "events",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "events",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "events",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "events",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "limitranges",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "limitranges",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "limitranges",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "namespaces",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "namespaces/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "namespaces/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "namespaces/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "nodes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "nodes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "nodes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "persistentvolumeclaims",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "persistentvolumeclaims/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "persistentvolumeclaims/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "persistentvolumeclaims/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "persistentvolumes",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "pods",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "pods/exec",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "pods/log",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "pods/log",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "pods/log",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "pods/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "pods/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "pods/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "replicationcontrollers",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "replicationcontrollers/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "replicationcontrollers/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "replicationcontrollers/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "resourcequotas",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "resourcequotas/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "resourcequotas/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "resourcequotas/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "secrets",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "serviceaccounts",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "services",
+    "apiGroup": ""
+  },
+  {
+    "verb": "create",
+    "resource": "services/proxy",
+    "apiGroup": ""
+  },
+  {
+    "verb": "delete",
+    "resource": "services/proxy",
+    "apiGroup": ""
+  },
+  {
+    "verb": "patch",
+    "resource": "services/proxy",
+    "apiGroup": ""
+  },
+  {
+    "verb": "update",
+    "resource": "services/proxy",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "services/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "list",
+    "resource": "services/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "watch",
+    "resource": "services/status",
+    "apiGroup": ""
+  },
+  {
+    "verb": "get",
+    "resource": "mutatingwebhookconfigurations",
+    "apiGroup": "admissionregistration.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "mutatingwebhookconfigurations",
+    "apiGroup": "admissionregistration.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "mutatingwebhookconfigurations",
+    "apiGroup": "admissionregistration.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "validatingwebhookconfigurations",
+    "apiGroup": "admissionregistration.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "validatingwebhookconfigurations",
+    "apiGroup": "admissionregistration.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "validatingwebhookconfigurations",
+    "apiGroup": "admissionregistration.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "customresourcedefinitions",
+    "apiGroup": "apiextensions.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "customresourcedefinitions",
+    "apiGroup": "apiextensions.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "customresourcedefinitions",
+    "apiGroup": "apiextensions.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "controllerrevisions",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "controllerrevisions",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "controllerrevisions",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "daemonsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "daemonsets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "daemonsets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "daemonsets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "deployments",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "deployments/rollback",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "deployments/rollback",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "deployments/rollback",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "deployments/rollback",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "deployments/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "deployments/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "deployments/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "deployments/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicasets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicasets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "replicasets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "replicasets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicasets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "statefulsets",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "delete",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "patch",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "update",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "statefulsets/scale",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "get",
+    "resource": "statefulsets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "list",
+    "resource": "statefulsets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "watch",
+    "resource": "statefulsets/status",
+    "apiGroup": "apps"
+  },
+  {
+    "verb": "create",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "delete",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "get",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "list",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "patch",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "update",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "watch",
+    "resource": "horizontalpodautoscalers",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "get",
+    "resource": "horizontalpodautoscalers/status",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "list",
+    "resource": "horizontalpodautoscalers/status",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "watch",
+    "resource": "horizontalpodautoscalers/status",
+    "apiGroup": "autoscaling"
+  },
+  {
+    "verb": "create",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "delete",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "get",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "list",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "patch",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "update",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "watch",
+    "resource": "cronjobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "get",
+    "resource": "cronjobs/status",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "list",
+    "resource": "cronjobs/status",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "watch",
+    "resource": "cronjobs/status",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "create",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "delete",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "get",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "list",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "patch",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "update",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "watch",
+    "resource": "jobs",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "get",
+    "resource": "jobs/status",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "list",
+    "resource": "jobs/status",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "watch",
+    "resource": "jobs/status",
+    "apiGroup": "batch"
+  },
+  {
+    "verb": "create",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "get",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "list",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "update",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "certificaterequests",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "create",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "get",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "list",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "update",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "certificates",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "create",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "get",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "list",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "update",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "issuers",
+    "apiGroup": "cert-manager.io"
+  },
+  {
+    "verb": "create",
+    "resource": "backendconfigs",
+    "apiGroup": "cloud.google.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "backendconfigs",
+    "apiGroup": "cloud.google.com"
+  },
+  {
+    "verb": "get",
+    "resource": "backendconfigs",
+    "apiGroup": "cloud.google.com"
+  },
+  {
+    "verb": "list",
+    "resource": "backendconfigs",
+    "apiGroup": "cloud.google.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "backendconfigs",
+    "apiGroup": "cloud.google.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "backendconfigs",
+    "apiGroup": "cloud.google.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrbackups",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrbackups/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrbackups/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrbackuptemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrenvironmentrecords",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrenvironmentrecords/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrenvironmentrecords/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrenvironments",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrenvironments/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrenvironments/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrrefreshes",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrrefreshes/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrrefreshes/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrsyncs",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrsyncs/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrsyncs/status",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "get",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "list",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "update",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "mstrsynctemplates",
+    "apiGroup": "cloud.microstrategy.com"
+  },
+  {
+    "verb": "create",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "get",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "list",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "update",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "routetimeoutfilters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "create",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "get",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "list",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "update",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "servicedefaults",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "create",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "get",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "list",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "update",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "serviceintentions",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "create",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "get",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "list",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "update",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "serviceresolvers",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "create",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "get",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "list",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "update",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "servicerouters",
+    "apiGroup": "consul.hashicorp.com"
+  },
+  {
+    "verb": "create",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "leases",
+    "apiGroup": "coordination.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "events",
+    "apiGroup": "events.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "daemonsets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "daemonsets/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "daemonsets/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "daemonsets/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "deployments",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "deployments/rollback",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "deployments/rollback",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "deployments/rollback",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "deployments/rollback",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "deployments/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "deployments/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "deployments/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "deployments/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "ingresses",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "ingresses/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "ingresses/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "ingresses/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "networkpolicies",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicasets",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicasets/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "replicasets/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "replicasets/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicasets/status",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "delete",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "get",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "list",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "patch",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "update",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "watch",
+    "resource": "replicationcontrollers/scale",
+    "apiGroup": "extensions"
+  },
+  {
+    "verb": "create",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "gateways",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "httproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "tcproutes",
+    "apiGroup": "gateway.networking.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "delete",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "get",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "list",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "patch",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "update",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "watch",
+    "resource": "scaledobjects",
+    "apiGroup": "keda.sh"
+  },
+  {
+    "verb": "get",
+    "resource": "nodes",
+    "apiGroup": "metrics.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "nodes",
+    "apiGroup": "metrics.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "nodes",
+    "apiGroup": "metrics.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "pods",
+    "apiGroup": "metrics.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "pods",
+    "apiGroup": "metrics.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "pods",
+    "apiGroup": "metrics.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "delete",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "get",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "list",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "patch",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "update",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "watch",
+    "resource": "podmonitors",
+    "apiGroup": "monitoring.coreos.com"
+  },
+  {
+    "verb": "create",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "list",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "update",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "destinationrules",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "create",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "list",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "update",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "envoyfilters",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "create",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "list",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "update",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "gateways",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "create",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "list",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "update",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "virtualservices",
+    "apiGroup": "networking.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "ingressclasses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "ingressclasses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "ingressclasses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "ingresses",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "ingresses/status",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "ingresses/status",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "ingresses/status",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "ingresses/status",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "networkpolicies",
+    "apiGroup": "networking.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "delete",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "get",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "list",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "patch",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "update",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "watch",
+    "resource": "poddisruptionbudgets",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "get",
+    "resource": "poddisruptionbudgets/status",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "list",
+    "resource": "poddisruptionbudgets/status",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "watch",
+    "resource": "poddisruptionbudgets/status",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "create",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "delete",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "get",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "list",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "patch",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "update",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "watch",
+    "resource": "podsecuritypolicies",
+    "apiGroup": "policy"
+  },
+  {
+    "verb": "create",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "clusterrolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "clusterroles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "rolebindings",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "roles",
+    "apiGroup": "rbac.authorization.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "priorityclasses",
+    "apiGroup": "scheduling.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "priorityclasses",
+    "apiGroup": "scheduling.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "priorityclasses",
+    "apiGroup": "scheduling.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "priorityclasses",
+    "apiGroup": "scheduling.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "priorityclasses",
+    "apiGroup": "scheduling.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "priorityclasses",
+    "apiGroup": "scheduling.k8s.io"
+  },
+  {
+    "verb": "create",
+    "resource": "authorizationpolicies",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "authorizationpolicies",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "authorizationpolicies",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "authorizationpolicies",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "create",
+    "resource": "peerauthentications",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "peerauthentications",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "get",
+    "resource": "peerauthentications",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "peerauthentications",
+    "apiGroup": "security.istio.io"
+  },
+  {
+    "verb": "create",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  },
+  {
+    "verb": "delete",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  },
+  {
+    "verb": "get",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  },
+  {
+    "verb": "list",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  },
+  {
+    "verb": "patch",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  },
+  {
+    "verb": "update",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  },
+  {
+    "verb": "watch",
+    "resource": "storageclasses",
+    "apiGroup": "storage.k8s.io"
+  }
+]

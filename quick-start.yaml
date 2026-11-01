@@ -1,0 +1,24 @@
+apiVersion: cloud.microstrategy.com/v1
+kind: MstrEnvironment
+metadata:
+  name: mstr-quickstart
+spec:
+  environmentType: sandbox
+  environmentSize: 64
+  persistentVolumeClaimSpecOverrides:
+    resources:
+      requests:
+        storage: 1024Gi
+    storageClassName: <replace-with-your-storage-class-name>
+  restoreFrom:
+    preset: image
+  imageRegistry:  <replace-with-your-image-registry>
+  dnsEntry:  <replace-with-your-dns-entry>
+  networkPolicies:
+    dnsPort: 53
+  ingressController:
+    type: istio
+    tlsSecretName: <replace-with-your-tls-secret-name>
+    cloudLBConfiguration:
+      service:
+        type: LoadBalancer

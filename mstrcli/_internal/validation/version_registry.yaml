@@ -1,0 +1,212 @@
+# =============================================================================
+# CMC Preflight - Version Compatibility Registry
+# =============================================================================
+#
+# Central source of truth for all supported tool and component versions.
+# Update version ranges HERE — no Python code changes needed.
+#
+# How version tiers work:
+#   supported  - Tested and verified with CMC. Check returns PASS.
+#   compatible - Expected to work but not formally tested. Check returns WARN.
+#   Outside both ranges -> FAIL (unsupported).
+#
+# How to add a new tool:
+#   1. Add an entry under local_tools or cluster_components
+#   2. Assign a unique check_id (VER-0xx for local, VER-1xx for cluster)
+#   3. Done — the check factory creates it automatically
+#
+# Version format: semver (major.minor.patch). Partial versions are normalized
+# (e.g. "1.28" -> "1.28.0"). Leading "v" is stripped automatically.
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL TOOLS (L1) — checked on the machine running mstrcli
+# =============================================================================
+local_tools:
+
+  kubectl:
+    display_name: "kubectl"
+    check_id: "VER-001"
+    required: true
+    severity: low
+    command: ["kubectl", "version", "--client", "-o", "json"]
+    version_extract: "jsonpath:clientVersion.gitVersion"
+    strip_prefix: "v"
+    supported:
+      min: "1.28.0"
+      max: "1.34.99"
+      description: "Tested with CMC 2025.Q1+"
+    compatible:
+      min: "1.28.0"
+      max: "1.34.99"
+    install_hint: "https://kubernetes.io/docs/tasks/tools/"
+
+  helm:
+    display_name: "Helm"
+    check_id: "VER-002"
+    required: true
+    severity: medium
+    command: ["helm", "version", "--template", "{{.Version}}"]
+    version_extract: "raw"
+    strip_prefix: "v"
+    supported:
+      min: "3.12.0"
+      max: "4.1.4"
+      description: "Tested with CMC Helm charts"
+    compatible:
+      min: "3.10.0"
+      max: "4.1.4"
+    install_hint: "https://helm.sh/docs/intro/install/"
+
+  python:
+    display_name: "Python"
+    check_id: "VER-003"
+    required: false
+    severity: low
+    command: ["python3", "--version"]
+    command_windows: ["python", "--version"]
+    version_extract: "regex:Python\\s+(\\d+\\.\\d+\\.\\d+)"
+    strip_prefix: ""
+    supported:
+      min: "3.9.0"
+      max: "3.14.99"
+    compatible:
+      min: "3.8.0"
+      max: "3.14.99"
+    install_hint: "https://www.python.org/downloads/"
+
+  # -- Uncomment and configure as needed --
+  #
+  # openssl:
+  #   display_name: "OpenSSL"
+  #   check_id: "VER-004"
+  #   required: false
+  #   severity: low
+  #   command: ["openssl", "version"]
+  #   version_extract: "regex:OpenSSL\\s+(\\d+\\.\\d+\\.\\d+)"
+  #   strip_prefix: ""
+  #   supported:
+  #     min: "1.1.1"
+  #     max: "3.4.99"
+  #   compatible:
+  #     min: "1.1.0"
+  #     max: "3.5.99"
+  #   install_hint: "https://www.openssl.org/source/"
+  #
+  # docker:
+  #   display_name: "Docker CLI"
+  #   check_id: "VER-005"
+  #   required: false
+  #   severity: medium
+  #   command: ["docker", "version", "--format", "{{.Client.Version}}"]
+  #   version_extract: "raw"
+  #   strip_prefix: ""
+  #   supported:
+  #     min: "24.0.0"
+  #     max: "27.99.99"
+  #   compatible:
+  #     min: "23.0.0"
+  #     max: "28.99.99"
+  #   install_hint: "https://docs.docker.com/get-docker/"
+
+
+# =============================================================================
+# CLUSTER COMPONENTS (L2) — checked via Kubernetes API
+# =============================================================================
+cluster_components:
+
+  kubernetes:
+    display_name: "Kubernetes"
+    check_id: "VER-010"
+    severity: critical
+    supported:
+      min: "1.28.0"
+      max: "1.35.99"
+      description: "Officially supported for CMC deployment"
+    compatible:
+      min: "1.27.0"
+      max: "1.35.99"
+
+  cert_manager:
+    display_name: "Cert Manager"
+    check_id: "VER-012"
+    severity: critical
+    supported:
+      min: "1.14.0"
+      max: "1.99.99"
+      description: "Required for TLS certificate management in CMC"
+    compatible:
+      min: "1.14.0"
+      max: "1.99.99"
+
+  # ---------------------------------------------------------------------------
+  # Service Mesh Components
+  # ---------------------------------------------------------------------------
+  # Each mesh type has its own entry. The check auto-detects which mesh is
+  # installed and validates against the matching entry.
+
+  service_mesh_istio:
+    display_name: "Istio Service Mesh"
+    check_id: "VER-013"
+    severity: critical
+    supported:
+      min: "1.22.0"
+      max: "1.99.99"
+      description: "Standard Istio for AWS, GCP, STACKIT deployments"
+    compatible:
+      min: "1.22.0"
+      max: "1.99.99"
+
+  service_mesh_asm:
+    display_name: "Azure Service Mesh"
+    check_id: "VER-013"
+    severity: critical
+    supported:
+      min: "1.26.0"
+      max: "1.99.99"
+      description: "Azure managed Istio (ASM)"
+    compatible:
+      min: "1.26.0"
+      max: "1.99.99"
+
+  service_mesh_ossm2:
+    display_name: "OpenShift Service Mesh 2"
+    check_id: "VER-013"
+    severity: critical
+    supported:
+      min: "2.6.4"
+      max: "2.99.99"
+      description: "OSSM 2.6+ required for CMC on OpenShift"
+    compatible:
+      min: "2.6.0"
+      max: "2.99.99"
+
+  service_mesh_ossm3:
+    display_name: "OpenShift Service Mesh 3"
+    check_id: "VER-013"
+    severity: critical
+    supported:
+      min: "1.24.3"
+      max: "1.99.99"
+      description: "OSSM 3 uses Istio versioning (Sail operator)"
+    compatible:
+      min: "1.24.0"
+      max: "1.99.99"
+
+  service_mesh_consul:
+    display_name: "HashiCorp Consul"
+    check_id: "VER-013"
+    severity: critical
+    supported:
+      min: "1.7.2"
+      max: "1.99.99"
+      description: "Consul Enterprise recommended for full capabilities"
+    compatible:
+      min: "1.7.0"
+      max: "1.99.99"
+
+  # Maximum allowed minor version difference between control plane and any node.
+  # Kubernetes supports N-2 skew (https://kubernetes.io/releases/version-skew-policy/).
+  node_skew:
+    max_minor_skew: 2
